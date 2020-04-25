@@ -28,7 +28,7 @@
   --label-color: var(--text-notice-color);
   --label-focused-color: #aaa;
   --form-background-color: #fff;
-  --background-color: #fff;
+  --background-color: #000;
 
   /*Form*/
   --border-form: 1px solid #dddddd;

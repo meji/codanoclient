@@ -8,6 +8,7 @@ body {
   color: var(--text-body-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--background-color);
 }
 a {
   color: var(--main-color);

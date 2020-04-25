@@ -1,6 +1,5 @@
-main.container{
+main.container {
   width: 980px;
   margin: 0 auto;
+  background: var(--background-color);
 }
-
-
