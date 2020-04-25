@@ -1,0 +1,11 @@
+@import 'reset.css';
+@import 'typography.css';
+@import 'theme.css';
+
+
+body {
+  margin: 0;
+  font-family: var(--body-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

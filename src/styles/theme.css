@@ -1,0 +1,11 @@
+:root {
+  --body-font: 'Roboto';
+  --title-font: 'Roboto';
+  --base-p: 0.25em;
+  --s: calc(var(--base-p)*2);
+  --m: calc(var(--base-p)*4);
+  --l: calc(var(--base-p)*8);
+  --border-form: 1px solid #dddddd
+
+}
+

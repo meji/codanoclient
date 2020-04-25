@@ -1,0 +1,28 @@
+.input {
+  background: #EBEBEB;
+  border: none;
+  border-bottom: 7px solid #737373;
+  padding: var(--s);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+}
+.input:focus{
+  border-color: #0B22F7;
+}
+.input.required{
+  border-color: #DF0000
+}
+.label{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  display: block;
+  margin: 0;
+  color: #737373;
+}
+.required{
+  display: block
+}
