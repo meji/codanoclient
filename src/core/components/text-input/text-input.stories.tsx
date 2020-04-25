@@ -6,13 +6,24 @@ export default {
   component: TextInput
 }
 
-const InputWithState: React.FC<{ isRequired: boolean; label: string }> = ({
-  isRequired,
-  label
-}) => {
+const InputLight: React.FC<{ isRequired: boolean; label: string }> = ({ isRequired, label }) => {
   const [value, setValue] = useState('')
-  return <TextInput value={value} label={label} required={isRequired} onChange={setValue} />
+  return (
+    <span className={'light-theme'}>
+      <TextInput value={value} label={label} required={isRequired} onChange={setValue} />
+    </span>
+  )
+}
+const InputDark: React.FC<{ isRequired: boolean; label: string }> = ({ isRequired, label }) => {
+  const [value, setValue] = useState('')
+  return (
+    <span className={'dark-theme'}>
+      <TextInput value={value} label={label} required={isRequired} onChange={setValue} />
+    </span>
+  )
 }
 
-export const textInput = () => <InputWithState isRequired={false} label={'My input'} />
-export const required = () => <InputWithState isRequired label={'My input'} />
+export const textInput = () => <InputLight isRequired={false} label={'My input'} />
+export const required = () => <InputLight isRequired label={'My input'} />
+export const textInputDark = () => <InputDark isRequired={false} label={'My input'} />
+export const requiredDark = () => <InputDark isRequired label={'My input'} />

@@ -6,5 +6,23 @@ export default {
   component: Button
 }
 
-export const primary = () => <Button theme="primary">Click me</Button>
-export const secondary = () => <Button theme="secondary">Click me</Button>
+export const primary = () => (
+  <Button theme={'primary'} className={'light-theme'}>
+    Click me
+  </Button>
+)
+export const secondary = () => (
+  <Button theme={'secondary'} className={'light-theme'}>
+    Click me
+  </Button>
+)
+export const primaryDark = () => (
+  <Button theme={'primary'} className={'dark-theme'}>
+    Click me
+  </Button>
+)
+export const secondaryDark = () => (
+  <Button theme={'secondary'} className={'dark-theme'}>
+    Click me
+  </Button>
+)

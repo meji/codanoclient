@@ -11,8 +11,11 @@ body {
   background: var(--background-color);
 }
 a {
-  color: var(--main-color);
+  color: var(--primary-color);
 }
 a:hover {
   color: var(--secondary-color);
+}
+*:focus {
+  outline: transparent;
 }
