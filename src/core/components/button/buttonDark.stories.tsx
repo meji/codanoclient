@@ -2,17 +2,17 @@ import React from 'react'
 import { Button } from './button'
 
 export default {
-  title: 'Light/Buttons',
+  title: 'Dark/Buttons',
   component: Button
 }
 
 export const primary = () => (
-  <Button theme={'primary'} className={'light-theme'}>
+  <Button theme={'primary'} className={'dark-theme'}>
     Click me
   </Button>
 )
 export const secondary = () => (
-  <Button theme={'secondary'} className={'light-theme'}>
+  <Button theme={'secondary'} className={'dark-theme'}>
     Click me
   </Button>
 )

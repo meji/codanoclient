@@ -34,7 +34,7 @@
   --text-notice-color: #333;
   --label-color: var(--text-notice-color);
   --label-focused-color: #ccc;
-  --form-background-color: #333;
+  --form-background-color: #46001d;
   --background-color: #000;
 }
 .light-theme {

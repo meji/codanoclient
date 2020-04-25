@@ -3,7 +3,7 @@ import { Icon } from './icon'
 import { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core'
 
 export default {
-  title: 'Light/Icons',
+  title: 'Dark/Icons',
   component: Icon
 }
 
@@ -11,14 +11,14 @@ interface Props {
   icon: IconProp
   size: SizeProp
 }
+
 const IconContainer: React.FC<Props> = ({ icon, size }) => {
   return (
-    <span className={'light-theme'}>
+    <span className={'dark-theme'}>
       <Icon icon={icon} size={size} />
     </span>
   )
 }
-
 export const eye = () => <IconContainer icon={'eye'} size={'lg'} />
 export const slash = () => <IconContainer icon={'eye-slash'} size={'lg'} />
 export const menu = () => <IconContainer icon={'bars'} size={'lg'} />
