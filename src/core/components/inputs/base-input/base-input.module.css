@@ -35,8 +35,16 @@
   color: red;
 }
 /*Con icono*/
+.label-container.with-icon {
+  position: relative;
+}
 .label-container.with-icon svg {
   position: absolute;
   right: var(--m);
   top: var(--m);
+}
+
+p.error {
+  font-size: 0.6rem;
+  color: var(--text-error);
 }

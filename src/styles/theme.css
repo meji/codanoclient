@@ -36,6 +36,7 @@
   --label-focused-color: #ccc;
   --form-background-color: #46001d;
   --background-color: #000;
+  --text-error: #ff0000;
 }
 .light-theme {
   /*Colors*/
@@ -47,6 +48,7 @@
   --text-title-color: #333;
   --text-form-color: #444;
   --text-notice-color: #777;
+  --text-error: #ff0000;
   --label-color: var(--text-notice-color);
   --label-focused-color: #aaa;
   --form-background-color: #fff;

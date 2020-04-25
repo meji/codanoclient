@@ -5,6 +5,19 @@ import {
   faEye,
   faEyeSlash,
   faSearch,
-  faUserCog
+  faUserCog,
+  faPhone,
+  faAt,
+  faCalendarAlt
 } from '@fortawesome/free-solid-svg-icons'
-library.add(faEye, faEyeSlash, faEllipsisH, faBars, faSearch, faUserCog)
+library.add(
+  faEye,
+  faEyeSlash,
+  faEllipsisH,
+  faBars,
+  faSearch,
+  faUserCog,
+  faPhone,
+  faAt,
+  faCalendarAlt
+)
