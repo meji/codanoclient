@@ -1,11 +1,36 @@
 :root {
+  /*Typography*/
   --body-font: 'Roboto';
   --title-font: 'Roboto';
-  --base-p: 0.25em;
-  --s: calc(var(--base-p)*2);
-  --m: calc(var(--base-p)*4);
-  --l: calc(var(--base-p)*8);
-  --border-form: 1px solid #dddddd
+  --base-font-size: 16px;
+  --font-size-small: 0.8rem;
+  --line-height: 1.6;
 
+  /*Padding*/
+  --base-p: 0.25rem;
+  --s: calc(var(--base-p) * 2);
+  --m: calc(var(--base-p) * 4);
+  --l: calc(var(--base-p) * 8);
+
+  /*Radius*/
+  --rs: 2px;
+  --rm: 4px;
+  --rl: 6px;
+
+  /*Colors*/
+  --main-color: green;
+  --secondary-color: red;
+  --terciary-color: orange;
+  --text-body-color: #333;
+  --text-title-color: #333;
+  --text-form-color: #444;
+  --text-notice-color: #777;
+  --label-color: var(--text-notice-color);
+  --label-focused-color: #aaa;
+  --form-background-color: #fff;
+
+  /*Form*/
+  --border-form: 1px solid #dddddd;
+  --border-form-focus: 1px solid blue;
+  --border-form-error: 1px solid red;
 }
-

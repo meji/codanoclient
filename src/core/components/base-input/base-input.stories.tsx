@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { BaseInput } from './base-input'
 
 export default {
@@ -6,19 +6,10 @@ export default {
   component: BaseInput
 }
 
-const InputWithState: React.FC<{ isRequired: boolean, label:string}> = ({ isRequired , label}) => {
+const InputStates: React.FC<{ isRequired: boolean; label: string }> = ({ isRequired, label }) => {
   const [value, setValue] = useState('')
-  return (
-    <BaseInput
-      value={value}
-      label={label}
-      required={isRequired}
-      onChange={setValue}
-    />
-  )
+  return <BaseInput value={value} label={label} required={isRequired} onChange={setValue} />
 }
 
-export const base = () => <InputWithState isRequired={false}  label={'My input'}/>
-export const focused = () => <InputWithState  isRequired={false} label={'My input'}/>
-export const error = () => <InputWithState isRequired label={'My input*'} />
-
+export const base = () => <InputStates isRequired={false} label={'My input'} />
+export const required = () => <InputStates isRequired label={'My input'} />
