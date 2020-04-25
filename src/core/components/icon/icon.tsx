@@ -15,7 +15,7 @@ const icons: Record<string, string> ={
 interface Props {
   type : IconType
   size?: Size
-  className: string
+  className?: string
 }
 
 
