@@ -1,23 +1,25 @@
 import React from 'react'
-import '../size'
-import { Size } from '../size'
+import './iconTypes'
+import { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core'
 import { bind } from '../../../utils/bind'
 import styles from './icon.module.css'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const cx = bind(styles)
 
-type IconType = 'checked' | 'unchecked' | 'other'
-const icons: Record<string, string> = {
-  checked: '✔',
-  unchecked: '⭕',
-  other: '❤'
-}
 interface Props {
-  type: IconType
-  size?: Size
+  icon: IconProp
+  size?: SizeProp
   className?: string
+  onClick?(): void
 }
 
-export const Icon: React.FunctionComponent<Props> = ({ type, size, className }) => {
-  return <i className={cx({ className }, `icon-size-${size}`)}>{icons[type]}</i>
+export const Icon: React.FC<Props> = ({ icon, size, className, onClick }) => {
+  return (
+    <FontAwesomeIcon
+      icon={icon}
+      size={size}
+      className={cx({ className }, 'icon')}
+      onClick={onClick}
+    />
+  )
 }

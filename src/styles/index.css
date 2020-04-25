@@ -9,3 +9,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+a {
+  color: var(--main-color);
+}
+a:hover {
+  color: var(--secondary-color);
+}

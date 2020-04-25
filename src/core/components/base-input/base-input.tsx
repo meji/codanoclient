@@ -26,7 +26,11 @@ export const BaseInput: React.FunctionComponent<Props> = ({
   const [focused, setFocused] = useState(false)
   const [error, setError] = useState(false)
   return (
-    <label className={cx('label-container')}>
+    <label
+      className={
+        endSlot ? cx('label-container', 'with-icon', className) : cx('label-container', className)
+      }
+    >
       <span className={focused || value ? cx('label', 'focused') : cx('label')}>
         {label}
         {required && '*'}

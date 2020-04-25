@@ -1,22 +1,14 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { PasswordInput } from './password-input'
 
 export default {
-  title: 'TextInput',
+  title: 'Input',
   component: PasswordInput
 }
 
-export const InputWithState: React.FC<{ label:string }> = ({label }) => {
+const InputWithState: React.FC<{ label: string }> = ({ label }) => {
   const [value, setValue] = useState('')
-  return (
-    <PasswordInput
-      value={value}
-      label={label}
-      onChange={setValue}
-    />
-  )
+  return <PasswordInput value={value} label={label} onChange={setValue} />
 }
 
-
-export const password = () => <InputWithState label={'My input password'}/>
-
+export const password = () => <InputWithState label={'Password'} />

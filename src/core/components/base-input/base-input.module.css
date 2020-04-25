@@ -1,3 +1,9 @@
+.label-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
 .input {
   background: var(--form-background-color);
   border: var(--border-form);
@@ -11,13 +17,6 @@
   box-shadow: none;
   outline: none;
 }
-.label-container {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: auto;
-}
-
 .label {
   color: var(--label-color);
   position: absolute;
@@ -32,4 +31,10 @@
 }
 .input.error {
   border: var(--border-form-error);
+}
+/*Con icono*/
+.label-container.with-icon svg {
+  position: absolute;
+  right: var(--m);
+  top: var(--m);
 }
