@@ -15,4 +15,4 @@ const InputLight: React.FC<{ isRequired: boolean; label: string }> = ({ isRequir
   )
 }
 
-export const email = () => <InputLight isRequired={false} label={'Phone'} />
+export const email = () => <InputLight isRequired={false} label={'Email'} />

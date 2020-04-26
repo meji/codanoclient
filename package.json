@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-env": "7.9.5",
     "@storybook/addon-actions": "5.3.18",
     "@storybook/addon-links": "5.3.18",
     "@storybook/addons": "5.3.18",

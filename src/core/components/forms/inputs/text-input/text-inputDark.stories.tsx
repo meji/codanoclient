@@ -15,5 +15,5 @@ const InputDark: React.FC<{ isRequired: boolean; label: string }> = ({ isRequire
   )
 }
 
-export const textInputDark = () => <InputDark isRequired={false} label={'My input'} />
-export const requiredDark = () => <InputDark isRequired label={'My input'} />
+export const textInput = () => <InputDark isRequired={false} label={'Text'} />
+export const required = () => <InputDark isRequired label={'Required'} />

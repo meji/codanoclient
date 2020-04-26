@@ -11,6 +11,10 @@
   font-weight: 600;
   letter-spacing: 1px;
   font-size: 0.8rem;
+  cursor: pointer;
+}
+.button:hover {
+  cursor: pointer;
 }
 
 .primary,
@@ -25,4 +29,12 @@
   --button-background: #fff;
   --button-text: var(--primary-color);
   --border-button-color: var(--primary-color);
+}
+.button.s {
+  font-size: 0.6rem;
+  padding: var(--s);
+}
+.button.l {
+  font-size: 1rem;
+  padding: var(--m) var(--l);
 }

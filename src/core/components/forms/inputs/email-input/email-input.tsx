@@ -9,7 +9,7 @@ export const EmailInput: React.FunctionComponent<Props> = ({ ...rest }) => {
   const endSlotIcon = <Icon icon={'at'} size={'sm'} />
   return (
     <>
-      <BaseInput className={cx('phone')} type={'email'} value="" {...rest} endSlot={endSlotIcon} />
+      <BaseInput className={cx('email')} type={'email'} value="" {...rest} endSlot={endSlotIcon} />
     </>
   )
 }

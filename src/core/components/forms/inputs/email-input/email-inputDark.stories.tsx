@@ -15,4 +15,4 @@ const InputDark: React.FC<{ isRequired: boolean; label: string }> = ({ isRequire
   )
 }
 
-export const email = () => <InputDark isRequired={false} label={'Phone'} />
+export const email = () => <InputDark isRequired={false} label={'Email'} />

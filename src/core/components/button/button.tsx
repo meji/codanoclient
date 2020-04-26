@@ -8,6 +8,7 @@ interface Props {
   className?: string
   onClick?(): void
   theme?: 'primary' | 'secondary'
+  size?: 's' | 'l'
   submit?: boolean
 }
 
@@ -16,13 +17,14 @@ export const Button: React.FunctionComponent<Props> = ({
   className,
   theme,
   submit,
+  size,
   onClick
 }) => {
   return (
     <button
       type={submit ? 'submit' : 'button'}
       onClick={onClick}
-      className={cx('button', theme, className)}
+      className={cx('button', theme, size, className)}
     >
       {children}
     </button>
