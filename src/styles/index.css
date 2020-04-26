@@ -38,3 +38,7 @@ body .rc-md-editor .editor-container .sec-html .html-wrap {
 body .custom-html-style {
   color: var(--text-body-color);
 }
+
+body .rc-md-navigation {
+  border-bottom: var(--border-form);
+}

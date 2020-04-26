@@ -18,7 +18,7 @@
   --rl: 6px;
 
   /*Form*/
-  --border-form: 1px solid #dddddd;
+
   --border-form-focus: 1px solid #a60146;
   --border-form-error: 1px solid red;
 }
@@ -38,6 +38,7 @@
   --background-color: #000;
   --text-error: #ff0000;
   --form-md-background: #333;
+  --border-form: 1px solid #333;
 }
 .light-theme {
   /*Colors*/
@@ -55,4 +56,5 @@
   --form-background-color: #fff;
   --background-color: #fff;
   --form-md-background: #eee;
+  --border-form: 1px solid #dddddd;
 }

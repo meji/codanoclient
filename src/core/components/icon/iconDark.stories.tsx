@@ -24,3 +24,6 @@ export const slash = () => <IconContainer icon={'eye-slash'} size={'lg'} />
 export const menu = () => <IconContainer icon={'bars'} size={'lg'} />
 export const config = () => <IconContainer icon={'user-cog'} size={'lg'} />
 export const search = () => <IconContainer icon={'search'} size={'lg'} />
+export const code = () => <IconContainer icon={'code'} size={'lg'} />
+export const link = () => <IconContainer icon={'link'} size={'lg'} />
+export const card = () => <IconContainer icon={'id-card'} size={'lg'} />

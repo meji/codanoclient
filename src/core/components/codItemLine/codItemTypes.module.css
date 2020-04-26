@@ -1,0 +1,28 @@
+.codItemLine {
+  padding: var(--s);
+  border: var(--border-form);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: var(--form-background-color);
+  border-radius: var(--rm);
+  cursor: pointer;
+}
+.codItemLine:hover {
+  background: var(--primary-color);
+  color: var(--on-primary-color);
+}
+.codItemLine .text {
+  margin-left: 10px;
+  font-weight: 600;
+  color: var(--text-body-color);
+  font-size: var(--font-size-small);
+}
+.codItemLine:hover .text {
+  color: var(--on-primary-color);
+}
+.codItemLine:hover svg,
+.codItemLine:hover .icon {
+  fill: var(--on-primary-color);
+  color: var(--on-primary-color);
+}

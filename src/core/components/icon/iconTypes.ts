@@ -8,8 +8,12 @@ import {
   faUserCog,
   faPhone,
   faAt,
-  faCalendarAlt
+  faCalendarAlt,
+  faCode,
+  faLink,
+  faIdCard
 } from '@fortawesome/free-solid-svg-icons'
+export type { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core'
 library.add(
   faEye,
   faEyeSlash,
@@ -19,5 +23,8 @@ library.add(
   faUserCog,
   faPhone,
   faAt,
-  faCalendarAlt
+  faCalendarAlt,
+  faCode,
+  faLink,
+  faIdCard
 )

@@ -1,6 +1,6 @@
 import React from 'react'
 import './iconTypes'
-import { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core'
+import { IconProp, SizeProp } from './iconTypes'
 import { bind } from '../../../utils/bind'
 import styles from './icon.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
