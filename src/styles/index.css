@@ -35,10 +35,12 @@ body .rc-md-editor .editor-container .sec-md .input {
 body .rc-md-editor .editor-container .sec-html .html-wrap {
   background: var(--form-md-background);
 }
-body .custom-html-style {
-  color: var(--text-body-color);
-}
 
 body .rc-md-navigation {
   border-bottom: var(--border-form);
+}
+
+body .custom-html-style code,
+body .custom-html-style pre {
+  background: #474949;
 }

@@ -3,15 +3,27 @@ import MarkdownIt from 'markdown-it'
 import MdEditor from 'react-markdown-editor-lite'
 import 'react-markdown-editor-lite/lib/index.css'
 import styles from './mdeditor.module.css'
+import 'highlight.js/styles/rainbow.css'
 import { useState } from 'react'
 import { bind } from '../../../../utils/bind'
+import hljs from 'highlight.js'
+
 const cx = bind(styles)
 
 // Initialize a markdown parser
-const mdParser = new MarkdownIt({
+const mdParser: any = new MarkdownIt({
   html: true,
   linkify: true,
-  typographer: true
+  typographer: true,
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return '<pre class="hljs"><code>' + hljs.highlight(lang, str, true).value + '</code></pre>'
+      } catch (__) {}
+    }
+
+    return '<pre class="hljs"><code>' + mdParser.utils.escapeHtml(str) + '</code></pre>'
+  }
 })
 
 export const Mdeditor: React.FC = () => {
