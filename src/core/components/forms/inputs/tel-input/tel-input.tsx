@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './tel-input.module.css'
-import { bind } from '../../../../utils/bind'
+import { bind } from '../../../../../utils/bind'
 import { BaseInput, Props } from '../base-input/base-input'
-import { Icon } from '../../icon/icon'
+import { Icon } from '../../../icon/icon'
 const cx = bind(styles)
 
 export const TelInput: React.FunctionComponent<Props> = ({ ...rest }) => {

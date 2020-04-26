@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { EmailInput } from './email-input'
 
 export default {
-  title: 'Dark/Inputs',
+  title: 'Dark/Forms/Inputs',
   component: EmailInput
 }
 

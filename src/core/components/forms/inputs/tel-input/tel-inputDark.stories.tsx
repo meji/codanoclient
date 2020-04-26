@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { TelInput } from './tel-input'
 
 export default {
-  title: 'Dark/Inputs',
+  title: 'Dark/Forms/Inputs',
   component: TelInput
 }
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { TelInput } from './tel-input'
 
 export default {
-  title: 'Light/Inputs',
+  title: 'Light/Forms/Inputs',
   component: TelInput
 }
 

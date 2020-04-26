@@ -2,17 +2,17 @@ import React, { useState } from 'react'
 import { PasswordInput } from './password-input'
 
 export default {
-  title: 'Light/Inputs',
+  title: 'Dark/Forms/Inputs',
   component: PasswordInput
 }
 
-const InputLight: React.FC<{ label: string }> = ({ label }) => {
+const InputDArk: React.FC<{ label: string }> = ({ label }) => {
   const [value, setValue] = useState('')
   return (
-    <span className={'light-theme'}>
+    <span className={'dark-theme'}>
       <PasswordInput value={value} label={label} onChange={setValue} />
     </span>
   )
 }
 
-export const password = () => <InputLight label={'Password'} />
+export const password = () => <InputDArk label={'Password'} />

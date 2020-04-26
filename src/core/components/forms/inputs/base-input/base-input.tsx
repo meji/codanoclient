@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './base-input.module.css'
-import { bind } from '../../../../utils/bind'
+import { bind } from '../../../../../utils/bind'
 
 const cx = bind(styles)
 

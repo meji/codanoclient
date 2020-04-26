@@ -2,17 +2,17 @@ import React, { useState } from 'react'
 import { CalendarInput } from './calendar-input'
 
 export default {
-  title: 'Dark/Inputs',
+  title: 'Light/Forms/Inputs',
   component: CalendarInput
 }
 
-const InputDark: React.FC = () => {
+const InputLight: React.FC = () => {
   const [value, setValue] = useState('')
   return (
-    <span className={'dark-theme'}>
+    <span className={'light-theme'}>
       <CalendarInput value={value} onChange={setValue} />
     </span>
   )
 }
 
-export const calendar = () => <InputDark />
+export const calendar = () => <InputLight />
