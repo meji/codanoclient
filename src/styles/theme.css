@@ -37,6 +37,7 @@
   --form-background-color: #46001d;
   --background-color: #000;
   --text-error: #ff0000;
+  --form-md-background: #333;
 }
 .light-theme {
   /*Colors*/
@@ -53,4 +54,5 @@
   --label-focused-color: #aaa;
   --form-background-color: #fff;
   --background-color: #fff;
+  --form-md-background: #eee;
 }

@@ -19,3 +19,22 @@ a:hover {
 *:focus {
   outline: transparent;
 }
+
+/*Mc editor*/
+body .rc-md-navigation .button-wrap .button {
+  color: var(--primary-color);
+}
+body .rc-md-navigation .button-wrap .button:hover {
+  color: var(--secondary-color);
+}
+body .rc-md-navigation,
+body .rc-md-editor .editor-container .sec-md .input {
+  background: var(--background-color);
+  color: var(--text-body-color);
+}
+body .rc-md-editor .editor-container .sec-html .html-wrap {
+  background: var(--form-md-background);
+}
+body .custom-html-style {
+  color: var(--text-body-color);
+}
