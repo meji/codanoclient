@@ -8,13 +8,13 @@ export default {
 
 export const select = () => {
   const optionTags = [
-    { value: 'option1', text: 'Option 1' },
+    { value: 'option1', text: 'Select Dark' },
     { value: 'option2', text: 'Option 2' },
     { value: 'option3', text: 'Option 3' }
   ]
   return (
     <p className={'dark-theme'}>
-      <Select required={false} label={'Select Light'} options={optionTags} />
+      <Select required={false} options={optionTags} />
     </p>
   )
 }
