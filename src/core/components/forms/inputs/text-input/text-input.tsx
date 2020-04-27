@@ -7,7 +7,7 @@ const cx = bind(styles)
 export const TextInput: React.FunctionComponent<Props> = ({ ...rest }) => {
   return (
     <>
-      <BaseInput className={cx('text-input')} type={'text'} value="" {...rest} />
+      <BaseInput className={cx('text-input')} type={'text'} {...rest} />
     </>
   )
 }

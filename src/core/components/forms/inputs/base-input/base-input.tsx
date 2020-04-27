@@ -41,7 +41,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
   const [valueIn, setValueIn] = useState(value)
   const errTag = <p className={cx('notice', 'error')}>{error}</p>
   const labelTag = (
-    <span className={focused || value ? cx('label', 'focused') : cx('label')}>
+    <span className={focused || valueIn ? cx('label', 'focused') : cx('label')}>
       {label}
       {required && '*'}
     </span>
@@ -61,7 +61,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
           }}
           onBlur={() => {
             setFocused(false)
-            if (!value && required) {
+            if (!valueIn && required) {
               setError('Field required')
             } else {
               setError('')
