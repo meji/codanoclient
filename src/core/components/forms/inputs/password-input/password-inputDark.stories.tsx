@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { PasswordInput } from './password-input'
 
 export default {
@@ -10,10 +10,9 @@ export default {
 }
 
 const InputDArk: React.FC<{ label: string }> = ({ label }) => {
-  const [value, setValue] = useState('')
   return (
     <span className={'dark-theme'}>
-      <PasswordInput value={value} label={label} onChange={setValue} />
+      <PasswordInput label={label} />
     </span>
   )
 }

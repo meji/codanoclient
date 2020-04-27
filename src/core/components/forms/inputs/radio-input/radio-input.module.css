@@ -2,7 +2,7 @@
 .radio {
   display: inline-flex;
   position: relative;
-  padding-left: 20px;
+  padding-left: 24px;
   cursor: pointer;
   margin-right: var(--m);
   font-size: 0.8rem;
@@ -24,8 +24,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 16px;
-  width: 16px;
+  height: 20px;
+  width: 20px;
   background-color: var(--form-dark-background);
   border-radius: 50%;
 }
@@ -54,8 +54,8 @@
 
 /* Style the indicator (dot/circle) */
 .radio .checkmark:after {
-  top: 4px;
-  left: 4px;
+  top: 6px;
+  left: 6px;
   width: 8px;
   height: 8px;
   border-radius: 50%;

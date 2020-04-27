@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { CalendarInput } from './calendar-input'
 
 export default {
@@ -10,10 +10,9 @@ export default {
 }
 
 const InputDark: React.FC = () => {
-  const [value, setValue] = useState('')
   return (
     <span className={'dark-theme'}>
-      <CalendarInput value={value} onChange={setValue} />
+      <CalendarInput />
     </span>
   )
 }

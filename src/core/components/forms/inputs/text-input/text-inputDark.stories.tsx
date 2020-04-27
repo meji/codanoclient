@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { TextInput } from './text-input'
 
 export default {
@@ -10,10 +10,9 @@ export default {
 }
 
 const InputDark: React.FC<{ isRequired: boolean; label: string }> = ({ isRequired, label }) => {
-  const [value, setValue] = useState('')
   return (
     <span className={'dark-theme'}>
-      <TextInput value={value} label={label} required={isRequired} onChange={setValue} />
+      <TextInput label={label} required={isRequired} />
     </span>
   )
 }
