@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   height: auto;
+  position: relative;
 }
 .input {
   background: var(--form-background-color);
@@ -11,7 +12,7 @@
   font-size: var(--font-size-small);
   font-family: var(--body-font);
   border-radius: var(--rm);
-  color: var(--text-body-color);
+  color: var(--text-form-color);
 }
 .input:focus {
   border: var(--border-form-focus);
