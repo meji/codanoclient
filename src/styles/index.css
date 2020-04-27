@@ -21,6 +21,10 @@ a:hover {
 }
 
 /*Mc editor*/
+body .rc-md-editor {
+  border: var(--border-form);
+  background: #000;
+}
 body .rc-md-navigation .button-wrap .button {
   color: var(--primary-color);
 }

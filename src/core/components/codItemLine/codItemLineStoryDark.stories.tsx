@@ -4,15 +4,15 @@ import { cardType, linkType, codeType } from './codItemTypes'
 
 export default {
   title: 'Dark/Componentes',
+  parameters: {
+    backgrounds: [{ name: 'dark', value: '#000000', default: true }]
+  },
   component: CodItemLine
 }
 
 export const cardItem = () => {
   return (
-    <div
-      className={'dark-theme'}
-      style={{ width: '400px', padding: '20px', backgroundColor: '#0000000' }}
-    >
+    <div className={'dark-theme'} style={{ width: '400px' }}>
       <p>
         <CodItemLine id={1} text={'Tipo card'} type={cardType} />
       </p>

@@ -3,7 +3,10 @@ import { Button } from './button'
 
 export default {
   title: 'Dark/Buttons',
-  component: Button
+  component: Button,
+  parameters: {
+    backgrounds: [{ name: 'dark', value: '#000000', default: true }]
+  }
 }
 
 export const primary = () => (

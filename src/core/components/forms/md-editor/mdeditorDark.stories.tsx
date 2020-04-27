@@ -3,6 +3,9 @@ import { Mdeditor } from './mdeditor'
 
 export default {
   title: 'Dark/Forms/MdEditor',
+  parameters: {
+    backgrounds: [{ name: 'dark', value: '#000000', default: true }]
+  },
   component: Mdeditor
 }
 

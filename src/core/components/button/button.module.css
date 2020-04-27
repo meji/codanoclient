@@ -26,7 +26,7 @@
 
 .secondary,
 .primary:hover {
-  --button-background: #fff;
+  --button-background: var(--background-color);
   --button-text: var(--primary-color);
   --border-button-color: var(--primary-color);
 }

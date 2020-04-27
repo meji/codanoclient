@@ -3,6 +3,7 @@ module.exports = {
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-links',
+    '@storybook/addon-backgrounds/register',
     {
       name: '@storybook/preset-create-react-app',
       options: {
