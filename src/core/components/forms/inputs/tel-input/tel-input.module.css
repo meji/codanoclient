@@ -1,0 +1,5 @@
+.icon {
+  position: absolute;
+  right: var(--m);
+  top: var(--m);
+}

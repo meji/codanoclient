@@ -4,6 +4,9 @@ import { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core'
 
 export default {
   title: 'Light/Icons',
+  parameters: {
+    backgrounds: [{ name: 'light', value: '#ffffff', default: true }]
+  },
   component: Icon
 }
 

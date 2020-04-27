@@ -6,7 +6,7 @@ import { Icon } from '../../../icon/icon'
 const cx = bind(styles)
 
 export const EmailInput: React.FunctionComponent<Props> = ({ ...rest }) => {
-  const endSlotIcon = <Icon icon={'at'} size={'sm'} />
+  const endSlotIcon = <Icon icon={'at'} size={'sm'} className={'icon'} />
   return (
     <>
       <BaseInput className={cx('email')} type={'email'} value="" {...rest} endSlot={endSlotIcon} />

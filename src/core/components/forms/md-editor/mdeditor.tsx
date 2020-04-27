@@ -27,10 +27,12 @@ const mdParser: any = new MarkdownIt({
 })
 
 export const Mdeditor: React.FC = () => {
+  const myPlugins = ['header', 'fonts', 'link', 'image', 'clear', 'logger', 'mode-toggle']
   const [content, setContent] = useState('')
   return (
     <div className={cx('mdeditor')}>
       <MdEditor
+        plugins={myPlugins}
         value=""
         renderHTML={text => mdParser.render(text)}
         onChange={text => setContent(text.text)}

@@ -3,6 +3,9 @@ import { Select } from './select'
 
 export default {
   title: 'Light/Forms/Select',
+  parameters: {
+    backgrounds: [{ name: 'light', value: '#ffffff', default: true }]
+  },
   component: Select
 }
 

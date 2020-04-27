@@ -1,4 +1,4 @@
-.label-container {
+.label-container:not(.checkbox):not(.radio) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -19,13 +19,13 @@
   box-shadow: none;
   outline: none;
 }
-.label {
+.label-container:not(.checkbox):not(.radio) .label {
   color: var(--label-color);
   position: absolute;
   left: var(--m);
   font-size: var(--font-size-small);
 }
-.label.focused {
+.label-container:not(.checkbox):not(.radio) .label.focused {
   font-size: 0.52rem;
   top: calc(var(--s) / 2);
   left: var(--m);
@@ -35,14 +35,11 @@
   border: var(--border-form-error);
   color: red;
 }
-/*Con icono*/
-.label-container.with-icon {
-  position: relative;
-}
-.label-container.with-icon svg {
+.label-container:not(.checkbox):not(.radio) .endSlot {
   position: absolute;
   right: var(--m);
   top: var(--m);
+  line-height: 0;
 }
 
 p.error {

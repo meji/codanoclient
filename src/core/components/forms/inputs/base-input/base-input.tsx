@@ -6,10 +6,21 @@ const cx = bind(styles)
 
 export interface Props {
   label?: string
-  value: string
-  onChange(value: string): void
+  value?: string
+  name?: string
   required?: boolean
-  type?: 'text' | 'tel' | 'password' | 'email' | 'date' | 'file' | 'number' | 'search' | 'url'
+  type?:
+    | 'text'
+    | 'tel'
+    | 'password'
+    | 'email'
+    | 'date'
+    | 'file'
+    | 'number'
+    | 'search'
+    | 'url'
+    | 'radio'
+    | 'checkbox'
   endSlot?: React.ReactNode
   className?: string
   errMsg?: string
@@ -18,7 +29,7 @@ export interface Props {
 export const BaseInput: React.FunctionComponent<Props> = ({
   label,
   value,
-  onChange,
+  name,
   required,
   type,
   endSlot,
@@ -27,6 +38,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
 }) => {
   const [focused, setFocused] = useState(false)
   const [error, setError] = useState(errMsg)
+  const [valueIn, setValueIn] = useState(value)
   const errTag = <p className={cx('notice', 'error')}>{error}</p>
   const labelTag = (
     <span className={focused || value ? cx('label', 'focused') : cx('label')}>
@@ -34,18 +46,14 @@ export const BaseInput: React.FunctionComponent<Props> = ({
       {required && '*'}
     </span>
   )
+  const endSlotTag = <span className={cx('endSlot')}>{endSlot}</span>
   return (
     <>
-      <label
-        className={
-          endSlot ? cx('label-container', 'with-icon', className) : cx('label-container', className)
-        }
-      >
-        {label && labelTag}
+      <label className={cx('label-container', type, className)}>
         <input
           className={error ? cx(className, 'input', 'error') : cx(className, 'input')}
-          onChange={event => onChange(event.target.value)}
-          value={value}
+          onChange={event => setValueIn(event.target.value)}
+          value={valueIn}
           type={type}
           onFocus={() => {
             setFocused(true)
@@ -60,8 +68,10 @@ export const BaseInput: React.FunctionComponent<Props> = ({
             }
           }}
           {...(required && +'required=required')}
+          name={name}
         />
-        {endSlot}
+        {label && labelTag}
+        {endSlot && endSlotTag}
       </label>
       {error && errTag}
     </>

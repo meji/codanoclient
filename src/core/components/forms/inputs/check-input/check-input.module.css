@@ -1,0 +1,56 @@
+.check {
+  display: inline-flex;
+  position: relative;
+  padding-left: 20px;
+  cursor: pointer;
+  margin-right: var(--m);
+  font-size: 0.8rem;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  color: var(--text-body-color);
+}
+
+.check input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: var(--form-dark-background);
+  border-radius: var(--rs);
+}
+
+.check:hover input ~ span .checkmark {
+  background-color: var(--primary-color);
+}
+
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.check input:checked ~ span .checkmark:after {
+  display: block;
+  background: var(--form-dark-background);
+  content: '✓';
+}
+.check input:checked ~ span .checkmark {
+  background-color: var(--primary-color);
+}
+.check .checkmark:after {
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  color: var(--primary-color);
+  line-height: 14px;
+  font-weight: bold;
+}

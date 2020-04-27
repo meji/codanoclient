@@ -3,6 +3,9 @@ import { Button } from './button'
 
 export default {
   title: 'Light/Buttons',
+  parameters: {
+    backgrounds: [{ name: 'light', value: '#ffffff', default: true }]
+  },
   component: Button
 }
 

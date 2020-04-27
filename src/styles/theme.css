@@ -1,7 +1,7 @@
 :root {
   /*Typography*/
-  --body-font: 'Roboto';
-  --title-font: 'Roboto';
+  --body-font: 'Spartan';
+  --title-font: 'Spartan';
   --base-font-size: 16px;
   --font-size-small: 0.8rem;
   --line-height: 1.6;
@@ -38,6 +38,7 @@
   --background-color: #000;
   --text-error: #ff0000;
   --form-md-background: #333;
+  --form-dark-backgroun: #444;
   --border-form: 1px solid #333;
 }
 .light-theme {
@@ -56,5 +57,6 @@
   --form-background-color: #fff;
   --background-color: #fff;
   --form-md-background: #fcfcfc;
+  --form-dark-background: #ddd;
   --border-form: 1px solid #dddddd;
 }

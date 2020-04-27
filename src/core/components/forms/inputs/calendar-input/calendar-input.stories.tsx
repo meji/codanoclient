@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { CalendarInput } from './calendar-input'
 
 export default {
   title: 'Light/Forms/Inputs',
+  parameters: {
+    backgrounds: [{ name: 'light', value: '#ffffff', default: true }]
+  },
   component: CalendarInput
 }
 
 const InputLight: React.FC = () => {
-  const [value, setValue] = useState('')
   return (
     <span className={'light-theme'}>
-      <CalendarInput value={value} onChange={setValue} />
+      <CalendarInput />
     </span>
   )
 }

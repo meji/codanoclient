@@ -6,10 +6,10 @@ import { Icon } from '../../../icon/icon'
 const cx = bind(styles)
 
 export const TelInput: React.FunctionComponent<Props> = ({ ...rest }) => {
-  const endSlotIcon = <Icon icon={'phone'} size={'sm'} />
+  const endSlotIcon = <Icon className={'icon'} icon={'phone'} size={'sm'} />
   return (
     <>
-      <BaseInput className={cx('phone')} type={'tel'} value="" {...rest} endSlot={endSlotIcon} />
+      <BaseInput className={cx('phone')} type={'tel'} {...rest} endSlot={endSlotIcon} />
     </>
   )
 }

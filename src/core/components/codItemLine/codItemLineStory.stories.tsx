@@ -4,6 +4,9 @@ import { cardType, linkType, codeType } from './codItemTypes'
 
 export default {
   title: 'Light/Componentes',
+  parameters: {
+    backgrounds: [{ name: 'light', value: '#ffffff', default: true }]
+  },
   component: CodItemLine
 }
 
