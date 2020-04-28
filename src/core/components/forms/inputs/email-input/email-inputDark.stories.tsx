@@ -9,12 +9,12 @@ export default {
   component: EmailInput
 }
 
-const InputDark: React.FC<{ isRequired: boolean; label: string }> = ({ isRequired, label }) => {
+const InputDark: React.FC<{ label: string }> = ({ label }) => {
   return (
     <span className={'dark-theme'}>
-      <EmailInput label={label} required={isRequired} />
+      <EmailInput label={label} />
     </span>
   )
 }
 
-export const email = () => <InputDark isRequired={false} label={'Email'} />
+export const email = () => <InputDark label={'Email'} />

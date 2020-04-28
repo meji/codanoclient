@@ -9,6 +9,7 @@ export interface Props {
   value?: string
   name?: string
   required?: boolean
+  multiple?: boolean
   type?:
     | 'text'
     | 'tel'
@@ -32,6 +33,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
   name,
   required,
   type,
+  multiple,
   endSlot,
   className,
   errMsg
@@ -67,6 +69,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
               setError('')
             }
           }}
+          multiple={multiple}
           {...(required && +'required=required')}
           name={name}
         />

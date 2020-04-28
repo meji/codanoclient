@@ -11,7 +11,9 @@ import {
   faCalendarAlt,
   faCode,
   faLink,
-  faIdCard
+  faIdCard,
+  faImages,
+  faImage
 } from '@fortawesome/free-solid-svg-icons'
 export type { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core'
 library.add(
@@ -26,5 +28,7 @@ library.add(
   faCalendarAlt,
   faCode,
   faLink,
-  faIdCard
+  faIdCard,
+  faImages,
+  faImage
 )

@@ -9,6 +9,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--background-color);
+  font-size: var(--base-font-size);
+}
+p {
+  color: var(--text-body-color);
 }
 a {
   color: var(--primary-color);

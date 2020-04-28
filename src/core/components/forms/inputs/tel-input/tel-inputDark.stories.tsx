@@ -9,12 +9,12 @@ export default {
   component: TelInput
 }
 
-const InputDark: React.FC<{ isRequired: boolean; label: string }> = ({ isRequired, label }) => {
+const InputDark: React.FC<{ label: string }> = ({ label }) => {
   return (
     <span className={'dark-theme'}>
-      <TelInput label={label} required={isRequired} />
+      <TelInput label={label} />
     </span>
   )
 }
 
-export const phone = () => <InputDark isRequired={false} label={'Phone'} />
+export const phone = () => <InputDark label={'Phone'} />

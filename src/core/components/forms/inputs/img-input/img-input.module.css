@@ -1,0 +1,8 @@
+.icon {
+  position: absolute;
+  right: var(--m);
+  top: var(--m);
+}
+.img .label {
+  position: inherit;
+}

@@ -9,12 +9,12 @@ export default {
   component: EmailInput
 }
 
-const InputLight: React.FC<{ isRequired: boolean; label: string }> = ({ isRequired, label }) => {
+const InputLight: React.FC<{ label: string }> = ({ label }) => {
   return (
     <span className={'light-theme'}>
-      <EmailInput label={label} required={isRequired} />
+      <EmailInput label={label} />
     </span>
   )
 }
 
-export const email = () => <InputLight isRequired={false} label={'Email'} />
+export const email = () => <InputLight label={'Email'} />

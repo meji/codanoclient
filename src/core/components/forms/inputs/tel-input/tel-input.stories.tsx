@@ -9,12 +9,12 @@ export default {
   component: TelInput
 }
 
-const InputLight: React.FC<{ isRequired: boolean; label: string }> = ({ isRequired, label }) => {
+const InputLight: React.FC<{ label: string }> = ({ label }) => {
   return (
     <span className={'light-theme'}>
-      <TelInput label={label} required={isRequired} />
+      <TelInput label={label} />
     </span>
   )
 }
 
-export const phone = () => <InputLight isRequired={false} label={'Phone'} />
+export const phone = () => <InputLight label={'Phone'} />
