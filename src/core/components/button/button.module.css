@@ -36,5 +36,5 @@
 }
 .button.l {
   font-size: 1rem;
-  padding: var(--m) var(--l);
+  padding: calc(var(--m) / 2) var(--l);
 }

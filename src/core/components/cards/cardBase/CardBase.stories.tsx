@@ -1,26 +1,26 @@
 import React from 'react'
-import { CodItemLine } from './codItemLine'
-import { cardType, linkType, codeType } from './codItemTypes'
+import { CardBase } from './cardBase'
+import { linkType, codeType, imgType } from './cardTypes'
 
 export default {
   title: 'Light/Componentes',
   parameters: {
     backgrounds: [{ name: 'light', value: '#ffffff', default: true }]
   },
-  component: CodItemLine
+  component: CardBase
 }
 
 export const cardItem = () => {
   return (
     <div className={'light-theme'} style={{ width: '400px' }}>
       <p>
-        <CodItemLine id={1} text={'Tipo card'} type={cardType} />
+        <CardBase id={1} title={'Tipo card'} type={imgType} />
       </p>
       <p>
-        <CodItemLine id={2} text={'Tipo link'} type={linkType} />
+        <CardBase id={2} title={'Tipo link'} type={linkType} />
       </p>
       <p>
-        <CodItemLine id={3} text={'Tipo code'} type={codeType} />
+        <CardBase id={3} title={'Tipo code'} type={codeType} />
       </p>
     </div>
   )

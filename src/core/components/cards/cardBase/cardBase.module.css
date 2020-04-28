@@ -1,0 +1,38 @@
+.card {
+  padding: var(--s);
+  border: var(--border-form);
+  display: block;
+  background: var(--form-background-color);
+  border-radius: var(--rm);
+  color: var(--text-body-color);
+}
+.card .card-title {
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+}
+.card.fold:hover {
+  background: var(--primary-color);
+  color: var(--on-primary-color);
+  cursor: pointer;
+}
+.card .title {
+  margin-left: 10px;
+  font-weight: 700;
+  color: var(--text-body-color);
+  font-size: var(--font-size-small);
+  border: none;
+  background: transparent;
+}
+.card .title.input {
+  font-weight: 500;
+  width: calc(100% - 50px);
+}
+.card.fold:hover .title {
+  color: var(--on-primary-color);
+}
+.card.fold:hover svg,
+.card.fold:hover .icon {
+  fill: var(--on-primary-color);
+  color: var(--on-primary-color);
+}

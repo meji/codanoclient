@@ -12,7 +12,7 @@ export default {
 export const Editor = () => {
   return (
     <div className={'light-theme'}>
-      <Mdeditor />
+      <Mdeditor initialText={'Iniciar edición de texto'} />
     </div>
   )
 }

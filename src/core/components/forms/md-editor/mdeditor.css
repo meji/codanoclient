@@ -1,0 +1,28 @@
+/*Mc editor*/
+.myEditor .rc-md-editor {
+  border: var(--border-form);
+  background: #000;
+}
+.myEditor .rc-md-navigation .button-wrap .button {
+  color: var(--primary-color);
+}
+.myEditor .rc-md-navigation .button-wrap .button:hover {
+  color: var(--secondary-color);
+}
+.myEditor .rc-md-navigation,
+.myEditor .rc-md-editor .editor-container .sec-md .input {
+  background: var(--background-color);
+  color: var(--text-body-color);
+}
+.myEditor .rc-md-editor .editor-container .sec-html .html-wrap {
+  background: var(--form-md-background);
+}
+
+.myEditor .rc-md-navigation {
+  border-bottom: var(--border-form);
+}
+
+.myEditor .custom-html-style code,
+.myEditor .custom-html-style pre {
+  background: #474949;
+}
