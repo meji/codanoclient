@@ -13,7 +13,11 @@ import {
   faLink,
   faIdCard,
   faImages,
-  faImage
+  faImage,
+  faCaretDown,
+  faAngleDown,
+  faCaretUp,
+  faAngleUp
 } from '@fortawesome/free-solid-svg-icons'
 export type { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core'
 library.add(
@@ -30,5 +34,9 @@ library.add(
   faLink,
   faIdCard,
   faImages,
-  faImage
+  faImage,
+  faCaretDown,
+  faAngleDown,
+  faCaretUp,
+  faAngleUp
 )

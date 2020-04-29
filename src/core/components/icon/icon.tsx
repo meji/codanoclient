@@ -15,11 +15,6 @@ interface Props {
 
 export const Icon: React.FC<Props> = ({ icon, size, className, onClick }) => {
   return (
-    <FontAwesomeIcon
-      icon={icon}
-      size={size}
-      className={cx({ className }, 'icon')}
-      onClick={onClick}
-    />
+    <FontAwesomeIcon icon={icon} size={size} className={cx(className, 'icon')} onClick={onClick} />
   )
 }

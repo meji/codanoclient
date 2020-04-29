@@ -1,7 +1,7 @@
 /*Mc editor*/
 .myEditor .rc-md-editor {
   border: var(--border-form);
-  background: #000;
+  background: var(--background-color);
 }
 .myEditor .rc-md-navigation .button-wrap .button {
   color: var(--primary-color);

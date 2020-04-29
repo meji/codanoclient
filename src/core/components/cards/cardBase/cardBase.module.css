@@ -1,15 +1,19 @@
 .card {
-  padding: var(--s);
+  padding: calc(var(--l) / 2) var(--m);
   border: var(--border-form);
   display: block;
   background: var(--form-background-color);
   border-radius: var(--rm);
   color: var(--text-body-color);
 }
-.card .card-title {
-  align-items: center;
-  justify-content: flex-start;
+.card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-color: transparent;
+}
+.title-container {
   display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 .card.fold:hover {
   background: var(--primary-color);
@@ -17,16 +21,26 @@
   cursor: pointer;
 }
 .card .title {
-  margin-left: 10px;
+  margin-left: 6px;
   font-weight: 700;
   color: var(--text-body-color);
   font-size: var(--font-size-small);
   border: none;
   background: transparent;
+  height: fit-content;
+  vertical-align: text-top;
+  line-height: 1;
+  width: calc(100% - 42px);
+}
+.card .title-container .folder {
+  justify-self: flex-end;
+  margin-left: auto;
+  cursor: pointer;
 }
 .card .title.input {
   font-weight: 500;
-  width: calc(100% - 50px);
+  height: content-box;
+  border-bottom: var(--border-form);
 }
 .card.fold:hover .title {
   color: var(--on-primary-color);
@@ -35,4 +49,11 @@
 .card.fold:hover .icon {
   fill: var(--on-primary-color);
   color: var(--on-primary-color);
+}
+.content {
+  margin-top: var(--s);
+}
+
+.content .prev-container {
+  cursor: pointer;
 }

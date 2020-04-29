@@ -30,6 +30,10 @@ export const Mdeditor: React.FC<{ initialText?: string }> = ({ initialText }) =>
   const myPlugins = ['header', 'fonts', 'link', 'clear', 'logger']
   const [content, setContent] = useState({ text: '', html: '' })
   const [visible, setVisible] = useState(false)
+  const saveContent = () => {
+    setVisible(false)
+    return content
+  }
   const editor = (
     <MdEditor
       plugins={myPlugins}
@@ -49,9 +53,9 @@ export const Mdeditor: React.FC<{ initialText?: string }> = ({ initialText }) =>
   )
 
   return (
-    <div className="myEditor" onClick={() => setVisible(true)} onBlur={() => setVisible(false)}>
+    <div className="myEditor" onClick={() => setVisible(true)} onBlur={() => saveContent()}>
       {!visible && !content.html && initialText && (
-        <div className={cx('prev-container')}> initialText</div>
+        <div className={cx('prev-container')}> {initialText}</div>
       )}
       {visible ? (
         editor
