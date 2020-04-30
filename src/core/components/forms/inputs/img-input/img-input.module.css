@@ -1,8 +1,6 @@
-.icon {
-  position: absolute;
-  right: var(--m);
-  top: var(--m);
-}
 .img .label {
   position: inherit;
+}
+.img input {
+  padding-right: var(--l);
 }

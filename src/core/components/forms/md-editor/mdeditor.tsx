@@ -51,7 +51,6 @@ export const Mdeditor: React.FC<{ initialText?: string }> = ({ initialText }) =>
       }}
     />
   )
-
   return (
     <div className="myEditor" onClick={() => setVisible(true)} onBlur={() => saveContent()}>
       {!visible && !content.html && initialText && (

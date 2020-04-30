@@ -17,4 +17,4 @@ const InputLight: React.FC<{ isRequired: boolean; label: string }> = ({ isRequir
   )
 }
 
-export const url = () => <InputLight isRequired={false} label={'Url'} />
+export const url = () => <InputLight isRequired={true} label={'Url'} />

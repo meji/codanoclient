@@ -9,12 +9,7 @@ const cx = bind(styles)
 export const PasswordInput: React.FunctionComponent<Props> = ({ ...rest }) => {
   const [visible, setVisible] = useState(false)
   const endSlotIcon = (
-    <Icon
-      className={'icon'}
-      icon={visible ? 'eye' : 'eye-slash'}
-      size={'sm'}
-      onClick={() => setVisible(!visible)}
-    />
+    <Icon icon={visible ? 'eye' : 'eye-slash'} size={'sm'} onClick={() => setVisible(!visible)} />
   )
   return (
     <BaseInput

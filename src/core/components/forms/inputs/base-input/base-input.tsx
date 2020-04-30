@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './base-input.module.css'
 import { bind } from '../../../../../utils/bind'
 
@@ -25,6 +25,7 @@ export interface Props {
   endSlot?: React.ReactNode
   className?: string
   errMsg?: string
+  callback?: any
 }
 
 export const BaseInput: React.FunctionComponent<Props> = ({
@@ -36,7 +37,8 @@ export const BaseInput: React.FunctionComponent<Props> = ({
   multiple,
   endSlot,
   className,
-  errMsg
+  errMsg,
+  callback
 }) => {
   const [focused, setFocused] = useState(false)
   const [error, setError] = useState(errMsg)
@@ -49,6 +51,10 @@ export const BaseInput: React.FunctionComponent<Props> = ({
     </span>
   )
   const endSlotTag = <span className={cx('endSlot')}>{endSlot}</span>
+  //update error on errMsg
+  useEffect(() => {
+    setError(errMsg)
+  }, [errMsg])
   return (
     <>
       <label className={cx('label-container', type, className)}>
@@ -59,14 +65,13 @@ export const BaseInput: React.FunctionComponent<Props> = ({
           type={type}
           onFocus={() => {
             setFocused(true)
-            setError('')
+            setError(errMsg)
           }}
-          onBlur={() => {
+          onBlur={e => {
             setFocused(false)
+            callback(e)
             if (!valueIn && required) {
               setError('Field required')
-            } else {
-              setError('')
             }
           }}
           multiple={multiple}

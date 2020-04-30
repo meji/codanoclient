@@ -11,9 +11,11 @@ export default {
 
 const InputDark: React.FC<{ isRequired: boolean; label: string }> = ({ isRequired, label }) => {
   return (
-    <span className={'dark-theme'}>
-      <UrlInput label={label} required={isRequired} />
-    </span>
+    <form>
+      <span className={'dark-theme'}>
+        <UrlInput label={label} required={isRequired} />
+      </span>
+    </form>
   )
 }
 

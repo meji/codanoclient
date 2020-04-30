@@ -6,7 +6,7 @@ import { Icon } from '../../../icon/icon'
 const cx = bind(styles)
 
 export const ImgInput: React.FunctionComponent<{ multiple?: boolean }> = ({ multiple = false }) => {
-  const endSlotIcon = <Icon className={'icon'} icon={multiple ? 'images' : 'image'} size={'sm'} />
+  const endSlotIcon = <Icon icon={multiple ? 'images' : 'image'} size={'sm'} />
   return (
     <>
       <BaseInput className={cx('img')} type={'file'} multiple={multiple} endSlot={endSlotIcon} />

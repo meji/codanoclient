@@ -51,6 +51,15 @@
   color: var(--on-primary-color);
 }
 .content {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.content.unfold {
+  opacity: 1;
+  height: auto;
+  transition: 0.3s;
   margin-top: var(--s);
 }
 

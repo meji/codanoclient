@@ -13,7 +13,7 @@ export default {
 export const cardLink = () => {
   return (
     <div className={'light-theme'} style={{ width: '400px' }}>
-      <CardLink title={'Tipo link'}></CardLink>
+      <CardLink title={'Escribe una url'}></CardLink>
     </div>
   )
 }

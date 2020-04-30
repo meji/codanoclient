@@ -46,3 +46,7 @@ p.error {
   font-size: 0.6rem;
   color: var(--text-error);
 }
+
+.input:not(:focus):invalid {
+  border: var(--border-form-error);
+}

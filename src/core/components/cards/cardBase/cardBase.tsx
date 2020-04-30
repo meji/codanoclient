@@ -46,7 +46,7 @@ export const CardBase: React.FunctionComponent<Props> = ({ id, type, title, chil
         {titleContainer}
         {unfold && <Icon icon={'angle-up'} onClick={() => fold()} className={cx('folder')} />}
       </div>
-      {unfold && <div className={cx('content')}>{children}</div>}
+      <div className={unfold ? cx('content', 'unfold') : cx('content')}>{children}</div>
     </div>
   )
 }
