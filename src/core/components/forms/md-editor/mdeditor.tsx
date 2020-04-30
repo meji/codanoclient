@@ -26,12 +26,16 @@ const mdParser: any = new MarkdownIt({
   }
 })
 
-export const Mdeditor: React.FC<{ initialText?: string }> = ({ initialText }) => {
+export const Mdeditor: React.FC<{ initialText?: string; callback?: any }> = ({
+  initialText,
+  callback
+}) => {
   const myPlugins = ['header', 'fonts', 'link', 'clear', 'logger']
   const [content, setContent] = useState({ text: '', html: '' })
   const [visible, setVisible] = useState(false)
   const saveContent = () => {
     setVisible(false)
+    callback(content)
     return content
   }
   const editor = (

@@ -10,9 +10,16 @@ interface Props {
   id: Id
   type: cardType
   title: string
+  callback?: any
 }
 
-export const CardBase: React.FunctionComponent<Props> = ({ id, type, title, children }) => {
+export const CardBase: React.FunctionComponent<Props> = ({
+  id,
+  type,
+  title,
+  callback,
+  children
+}) => {
   const [titleIn, setTitleIn] = useState(title)
   const [unfold, setUnfold] = useState(false)
   const [editingTitle, setEditingTitle] = useState(false)
@@ -20,7 +27,7 @@ export const CardBase: React.FunctionComponent<Props> = ({ id, type, title, chil
     setUnfold(false)
     console.log(unfold)
   }
-
+  !titleIn && setTitleIn(title)
   const titleContainer = editingTitle ? (
     <input
       type="text"
@@ -28,6 +35,7 @@ export const CardBase: React.FunctionComponent<Props> = ({ id, type, title, chil
       value={titleIn}
       onChange={e => setTitleIn(e.target.value)}
       onKeyDown={e => e.key === 'Enter' && setEditingTitle(false)}
+      onBlur={e => callback(e)}
     />
   ) : (
     <span className={cx('title')} onDoubleClick={() => setEditingTitle(true)}>

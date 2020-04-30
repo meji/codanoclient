@@ -50,3 +50,12 @@ p.error {
 .input:not(:focus):invalid {
   border: var(--border-form-error);
 }
+
+.input.no-styles {
+  padding: var(--s);
+  border: none;
+  background: transparent;
+}
+.input.no-styles .endSlot {
+  display: none;
+}
