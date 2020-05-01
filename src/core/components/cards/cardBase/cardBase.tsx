@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 import { Id } from './id'
-import { cardType } from './cardTypes'
+import { cardType, linkType } from './cardTypes'
 import { bind } from '../../../../utils/bind'
 import styles from './cardBase.module.css'
 import { Icon } from '../../icon/icon'
+import { UrlInput } from '../../forms/inputs/url-input/url-input'
+import { TextInput } from '../../forms/inputs/text-input/text-input'
 const cx = bind(styles)
 
 interface Props {
   id: Id
   type: cardType
   title: string
-  callback?: any
+  callback?: (data: any) => void
 }
 
 export const CardBase: React.FunctionComponent<Props> = ({
@@ -20,28 +22,35 @@ export const CardBase: React.FunctionComponent<Props> = ({
   callback,
   children
 }) => {
-  const [titleIn, setTitleIn] = useState(title)
   const [unfold, setUnfold] = useState(false)
   const [editingTitle, setEditingTitle] = useState(false)
+  const [data, setData] = useState({ id: id, title: title, description: '', extra: '', err: '' })
   const fold = () => {
     setUnfold(false)
-    console.log(unfold)
   }
-  !titleIn && setTitleIn(title)
+
   const titleContainer = editingTitle ? (
-    <input
-      type="text"
-      className={cx('title', 'input')}
-      value={titleIn}
-      onChange={e => setTitleIn(e.target.value)}
-      onKeyDown={e => e.key === 'Enter' && setEditingTitle(false)}
-      onBlur={e => callback(e)}
-    />
+    type === linkType ? (
+      <UrlInput
+        callback={() => callback && callback(data)}
+        onChange={e => setData({ ...data, title: e.target.value, err: e.target.validationMessage })}
+        className={cx('no-styles')}
+        required={true}
+      />
+    ) : (
+      <TextInput
+        className={cx('no-styles')}
+        callback={data => callback && callback(data)}
+        onChange={e => setData({ ...data, title: e.target.value, err: e.target.validationMessage })}
+      />
+    )
   ) : (
     <span className={cx('title')} onDoubleClick={() => setEditingTitle(true)}>
-      {titleIn}
+      {data.title}
+      {data.err && <p className={cx('error')}>{data.err}</p>}
     </span>
   )
+
   return (
     <div
       data-id={id}

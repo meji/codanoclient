@@ -4,10 +4,10 @@ import { bind } from '../../../../../utils/bind'
 import { BaseInput, Props } from '../base-input/base-input'
 const cx = bind(styles)
 
-export const TextInput: React.FunctionComponent<Props> = ({ ...rest }) => {
+export const TextInput: React.FunctionComponent<Props> = ({ onChange, className, ...rest }) => {
   return (
     <>
-      <BaseInput className={cx('title-input')} type={'text'} {...rest} />
+      <BaseInput onChange={onChange} className={cx(className)} type={'text'} {...rest} />
     </>
   )
 }

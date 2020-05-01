@@ -26,7 +26,8 @@ export interface Props {
   endSlot?: React.ReactNode
   className?: string
   errMsg?: string
-  callback?: (e: any) => void
+  callback?: (data: any) => void
+  onChange?: (e: any) => void
 }
 
 export const BaseInput: React.FunctionComponent<Props> = ({
@@ -40,11 +41,14 @@ export const BaseInput: React.FunctionComponent<Props> = ({
   endSlot,
   className,
   errMsg,
+  onChange,
   callback
 }) => {
-  const [error, setError] = useState(errMsg)
-  const [valueIn, setValueIn] = useState(value)
-  const errTag = <p className={cx('notice', 'error')}>{error}</p>
+  const [data, setData] = useState({ value: value, err: errMsg })
+  useEffect(() => {
+    console.log(data.err)
+  }, [data])
+  const errTag = <p className={cx('error')}>{data.err}</p>
   const labelTag = (
     <span className={cx('label')}>
       {label}
@@ -54,22 +58,27 @@ export const BaseInput: React.FunctionComponent<Props> = ({
   const endSlotTag = <span className={cx('endSlot')}>{endSlot}</span>
   //update error on errMsg
   const checkValidity = (input: HTMLInputElement) => {
-    input.validationMessage ? setError(input.validationMessage) : setError('')
+    input.validationMessage
+      ? setData({ ...data, err: input.validationMessage })
+      : setData({ ...data, err: '' })
   }
   useEffect(() => {
-    setError(errMsg)
+    setData({ ...data, err: errMsg })
   }, [errMsg])
   return (
     <>
       <label className={cx('label-container', type, className)}>
         <input
-          className={error ? cx(className, 'input', 'error') : cx(className, 'input')}
-          onChange={event => setValueIn(event.target.value)}
-          value={valueIn ? valueIn : ''}
+          className={cx(className, 'input')}
+          onChange={e => {
+            setData({ ...data, value: e.target.value })
+            onChange && onChange(e)
+          }}
+          value={data.value ? data.value : ''}
           type={type}
           onBlur={e => {
             checkValidity(e.target)
-            callback && callback(e.target)
+            callback && callback(data)
           }}
           multiple={multiple}
           required={required}
@@ -79,7 +88,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
         {label && labelTag}
         {endSlot && endSlotTag}
       </label>
-      {error && errTag}
+      {data.err && errTag}
     </>
   )
 }

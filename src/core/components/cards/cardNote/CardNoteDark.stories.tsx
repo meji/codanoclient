@@ -1,18 +1,18 @@
 import React from 'react'
-import { CardLink } from './cardLink'
+import { CardNote } from './cardNote'
 
 export default {
   title: 'Dark/Componentes',
   parameters: {
     backgrounds: [{ name: 'dark', value: '#000000', default: true }]
   },
-  component: CardLink
+  component: CardNote
 }
 
-export const cardLink = () => {
+export const cardNote = () => {
   return (
     <div className={'dark-theme'} style={{ width: '400px' }}>
-      <CardLink id={1} title={'http://www.url.com'} />
+      <CardNote id={1} title={'Note title'} />
     </div>
   )
 }

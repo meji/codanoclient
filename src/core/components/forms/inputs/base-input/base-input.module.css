@@ -1,11 +1,11 @@
-.label-container:not(.checkbox):not(.radio) {
+.label-container:not(.checkbox):not(.radio):not(.no-styles) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   height: auto;
   position: relative;
 }
-.input {
+.input:not(.no-styles) {
   background: var(--form-background-color);
   border: var(--border-form);
   padding: var(--m);
@@ -14,26 +14,29 @@
   border-radius: var(--rm);
   color: var(--text-form-color);
 }
-.input:focus {
+.input:focus:not(.no-styles) {
   border: var(--border-form-focus);
   box-shadow: none;
   outline: none;
 }
-.label-container:not(.checkbox):not(.radio) .label {
+:not(.no-styles) .label-container:not(.checkbox):not(.radio) .label {
   color: var(--label-color);
   position: absolute;
   left: var(--m);
   font-size: var(--font-size-small);
 }
-.label-container:not(.checkbox):not(.radio) input:focus + .label,
-.label-container:not(.checkbox):not(.radio) input:valid:not([value='']) + .label,
-.label-container:not(.checkbox):not(.radio) input:invalid:not([value='']) + .label {
+:not(.no-styles) .label-container:not(.checkbox):not(.radio) input:focus + .label,
+:not(.no-styles) .label-container:not(.checkbox):not(.radio) input:valid:not([value='']) + .label,
+:not(.no-styles)
+  .label-container:not(.checkbox):not(.radio)
+  input:invalid:not([value=''])
+  + .label {
   font-size: 0.52rem;
   top: calc(var(--s) / 2);
   left: var(--m);
   color: var(--label-focused-color);
 }
-.label-container:not(.checkbox):not(.radio) .endSlot {
+:not(.no-styles) .label-container:not(.checkbox):not(.radio) .endSlot {
   position: absolute;
   right: var(--m);
   top: var(--m);
@@ -45,21 +48,23 @@ p.error {
   color: var(--text-error);
 }
 
-.input:not(:focus):invalid:not([value='']) {
+.input:not(:focus):invalid:not(no-styles):not([value='']) {
   border: var(--border-form-error);
   color: var(--text-error);
 }
 
-.input:not(:focus):not([value='']):valid {
+.input:not(:focus):not([value='']):not(no-styles):valid {
   border: var(--border-form-ok);
   color: var(--color-ok);
 }
 
 .input.no-styles {
-  padding: var(--s);
-  border: none !important;
-  background: transparent !important;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: var(--font-size-small);
+  font-family: var(--body-font);
 }
 .input.no-styles .endSlot {
-  display: none;
+  display: none !important;
 }

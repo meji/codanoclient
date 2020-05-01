@@ -20,28 +20,34 @@
   color: var(--on-primary-color);
   cursor: pointer;
 }
-.card .title {
+.card .title,
+.card label {
   margin-left: 6px;
   font-weight: 700;
   color: var(--text-body-color);
   font-size: var(--font-size-small);
   border: none;
   background: transparent;
-  height: fit-content;
   vertical-align: text-top;
   line-height: 1;
   width: calc(100% - 42px);
 }
+
+.card input {
+  border-bottom: var(--border-form) !important;
+  width: 100%;
+}
+
 .card .title-container .folder {
   justify-self: flex-end;
   margin-left: auto;
   cursor: pointer;
 }
-.card .title.input {
+.card .input input {
   font-weight: 500;
-  height: content-box;
-  border-bottom: var(--border-form);
+  border-bottom: var(--border-form) !important ;
 }
+
 .card.fold:hover .title {
   color: var(--on-primary-color);
 }
@@ -65,4 +71,9 @@
 
 .content .prev-container {
   cursor: pointer;
+}
+
+p.error {
+  font-size: 0.6rem;
+  color: var(--text-error);
 }
