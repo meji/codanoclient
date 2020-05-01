@@ -21,6 +21,8 @@
 
   --border-form-focus: 1px solid #a60146;
   --border-form-error: 1px solid red;
+  --border-form-ok: 1px solid green;
+  --color-ok: green;
 }
 
 .dark-theme {

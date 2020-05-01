@@ -13,15 +13,15 @@ export default {
 export const cardItem = () => {
   return (
     <div className={'light-theme'} style={{ width: '400px' }}>
-      <p>
+      <div>
         <CardBase id={1} title={'Tipo card'} type={imgType} />
-      </p>
-      <p>
+      </div>
+      <div>
         <CardBase id={2} title={'Tipo link'} type={linkType} />
-      </p>
-      <p>
+      </div>
+      <div>
         <CardBase id={3} title={'Tipo code'} type={codeType} />
-      </p>
+      </div>
     </div>
   )
 }

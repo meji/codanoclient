@@ -22,10 +22,11 @@ export interface Props {
     | 'url'
     | 'radio'
     | 'checkbox'
+  pattern?: string
   endSlot?: React.ReactNode
   className?: string
   errMsg?: string
-  callback?: any
+  callback?: (e: any) => void
 }
 
 export const BaseInput: React.FunctionComponent<Props> = ({
@@ -35,23 +36,26 @@ export const BaseInput: React.FunctionComponent<Props> = ({
   required,
   type,
   multiple,
+  pattern,
   endSlot,
   className,
   errMsg,
   callback
 }) => {
-  const [focused, setFocused] = useState(false)
   const [error, setError] = useState(errMsg)
   const [valueIn, setValueIn] = useState(value)
   const errTag = <p className={cx('notice', 'error')}>{error}</p>
   const labelTag = (
-    <span className={focused || valueIn ? cx('label', 'focused') : cx('label')}>
+    <span className={cx('label')}>
       {label}
       {required && '*'}
     </span>
   )
   const endSlotTag = <span className={cx('endSlot')}>{endSlot}</span>
   //update error on errMsg
+  const checkValidity = (input: HTMLInputElement) => {
+    input.validationMessage ? setError(input.validationMessage) : setError('')
+  }
   useEffect(() => {
     setError(errMsg)
   }, [errMsg])
@@ -61,22 +65,16 @@ export const BaseInput: React.FunctionComponent<Props> = ({
         <input
           className={error ? cx(className, 'input', 'error') : cx(className, 'input')}
           onChange={event => setValueIn(event.target.value)}
-          value={valueIn}
+          value={valueIn ? valueIn : ''}
           type={type}
-          onFocus={() => {
-            setFocused(true)
-            setError(errMsg)
-          }}
           onBlur={e => {
-            setFocused(false)
-            callback(e)
-            if (!valueIn && required) {
-              setError('Field required')
-            }
+            checkValidity(e.target)
+            callback && callback(e.target)
           }}
           multiple={multiple}
-          {...(required && +'required=required')}
+          required={required}
           name={name}
+          pattern={pattern}
         />
         {label && labelTag}
         {endSlot && endSlotTag}

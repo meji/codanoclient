@@ -9,7 +9,15 @@ export const TelInput: React.FunctionComponent<Props> = ({ ...rest }) => {
   const endSlotIcon = <Icon icon={'phone'} size={'sm'} />
   return (
     <>
-      <BaseInput className={cx('phone')} type={'tel'} {...rest} endSlot={endSlotIcon} />
+      <BaseInput
+        className={cx('phone')}
+        type={'tel'}
+        pattern={
+          '^((\\+34[\\s])|(\\(\\+34\\)|\\+34|0034[\\s]?))?[9|8|7|6][0-9]{2}([0-9]{6}|([\\s][0-9]{3}){2}|([\\s][0-9]{2}){3})$'
+        }
+        {...rest}
+        endSlot={endSlotIcon}
+      />
     </>
   )
 }

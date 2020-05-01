@@ -26,7 +26,7 @@ const mdParser: any = new MarkdownIt({
   }
 })
 
-export const Mdeditor: React.FC<{ initialText?: string; callback?: any }> = ({
+export const Mdeditor: React.FC<{ initialText?: string; callback: (content: any) => void }> = ({
   initialText,
   callback
 }) => {
@@ -41,7 +41,7 @@ export const Mdeditor: React.FC<{ initialText?: string; callback?: any }> = ({
   const editor = (
     <MdEditor
       plugins={myPlugins}
-      value={content.text}
+      value={content.text && content.text}
       renderHTML={text => mdParser.render(text)}
       onChange={content => setContent({ text: content.text, html: content.html })}
       config={{
