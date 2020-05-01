@@ -30,3 +30,4 @@ export const search = () => <IconContainer icon={'search'} size={'lg'} />
 export const code = () => <IconContainer icon={'code'} size={'lg'} />
 export const link = () => <IconContainer icon={'link'} size={'lg'} />
 export const card = () => <IconContainer icon={'id-card'} size={'lg'} />
+export const note = () => <IconContainer icon={'sticky-note'} size={'lg'} />

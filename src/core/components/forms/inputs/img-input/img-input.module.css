@@ -1,6 +1,6 @@
-.img .label {
+.label {
   position: inherit;
 }
-.img input {
+input {
   padding-right: var(--l);
 }

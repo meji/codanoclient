@@ -34,18 +34,15 @@
 }
 
 .card input {
-  border-bottom: var(--border-form) !important;
-  width: 100%;
+  font-weight: 500;
+  border-bottom: var(--border-form) !important ;
+  color: var(--text-body-color);
 }
 
 .card .title-container .folder {
   justify-self: flex-end;
   margin-left: auto;
   cursor: pointer;
-}
-.card .input input {
-  font-weight: 500;
-  border-bottom: var(--border-form) !important ;
 }
 
 .card.fold:hover .title {

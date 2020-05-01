@@ -7,14 +7,15 @@ const cx = bind(styles)
 
 export const ImgInput: React.FunctionComponent<{
   multiple?: boolean
+  className?: string
   onChange?: (e: any) => void
-}> = ({ onChange, multiple = false }) => {
+}> = ({ onChange, multiple = false, className }) => {
   const endSlotIcon = <Icon icon={multiple ? 'images' : 'image'} size={'sm'} />
   return (
     <>
       <BaseInput
         onChange={onChange}
-        className={cx('img')}
+        className={cx(className)}
         type={'file'}
         multiple={multiple}
         endSlot={endSlotIcon}

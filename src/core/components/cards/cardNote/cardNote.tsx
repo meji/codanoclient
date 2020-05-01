@@ -5,7 +5,7 @@ import { Mdeditor } from '../../forms/md-editor/mdeditor'
 import { Id } from '../cardBase/id'
 
 export const CardNote: React.FC<{ title: string; id: Id }> = ({ title, id, children }) => {
-  const [description, setDescription] = useState({ text: 'Note', html: '' })
+  const [description, setDescription] = useState({ text: 'Note it, MarkDown', html: '' })
   const saveValue = async (e: any) => {
     console.log(e)
     // await fetch(`http://localhost:5000/getUrlData/?url${e.target.value}`).then(response => setDescription(response.description))

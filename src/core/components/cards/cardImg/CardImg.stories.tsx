@@ -12,7 +12,7 @@ export default {
 export const cardImg = () => {
   return (
     <div className={'light-theme'} style={{ width: '400px' }}>
-      <CardImg id={1} title={'Note title'} />
+      <CardImg id={1} title={'Image Title'} />
     </div>
   )
 }
