@@ -37,6 +37,7 @@
   font-weight: 500;
   border-bottom: var(--border-form) !important ;
   color: var(--text-body-color);
+  width: 100%;
 }
 
 .card .title-container .folder {
