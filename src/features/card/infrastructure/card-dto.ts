@@ -3,7 +3,7 @@ import { Id } from '../domain/id'
 export interface CardDto {
   id: Id
   name: string
-  type: ['Snippet' | 'Note' | 'Image' | 'Link']
+  type: 'Snippet' | 'Note' | 'Image' | 'Link'
   description: string
   url: string
   img: string

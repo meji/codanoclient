@@ -12,7 +12,7 @@ export default {
 export const cardLink = () => {
   return (
     <div className={'light-theme'} style={{ width: '400px' }}>
-      <CardLink id={1} title={'http://www.url.com'} />
+      <CardLink id={'1'} title={'http://www.url.com'} />
     </div>
   )
 }

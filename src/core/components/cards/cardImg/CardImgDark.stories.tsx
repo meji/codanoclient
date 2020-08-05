@@ -13,7 +13,7 @@ export const cardImg = () => {
   return (
     <div className={'dark-theme'} style={{ width: '400px' }}>
       <p>
-        <CardImg id={1} title={'Image title'} />
+        <CardImg id={'1'} title={'Image title'} />
       </p>
     </div>
   )

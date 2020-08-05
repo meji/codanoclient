@@ -12,7 +12,7 @@ export default {
 export const cardSnippet = () => {
   return (
     <div className={'light-theme'} style={{ width: '400px' }}>
-      <CardSnippet id={1} title={'Snippet title'} />
+      <CardSnippet id={'1'} title={'Snippet title'} />
     </div>
   )
 }
