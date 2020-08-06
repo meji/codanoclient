@@ -5,7 +5,7 @@ export class CardToCardDtoMapper {
   map({ name, id, type, description, url, img, inList, createdBy }: Card): CardDto {
     return {
       name: name,
-      id: id,
+      _id: id,
       type: type,
       description: description,
       url: url,

@@ -1,7 +1,7 @@
 import { Id } from './id'
-import { Card } from '../../card/domain/card'
+import { CardDto } from '../../card/infrastructure/card-dto'
 export interface List {
   id: Id
   name: string
-  cards: Card[]
+  cards: CardDto[]
 }

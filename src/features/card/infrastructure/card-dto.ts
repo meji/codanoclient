@@ -1,7 +1,7 @@
 import { Id } from '../domain/id'
 
 export interface CardDto {
-  id: Id
+  _id: Id
   name: string
   type: 'Snippet' | 'Note' | 'Image' | 'Link'
   description: string

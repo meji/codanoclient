@@ -3,5 +3,5 @@ export const routes = {
   boards: '/boards',
   home: '/home',
   savetoken: '/savetoken',
-  board: '/boards/:board:id'
+  board: '/boards/:boardName'
 }

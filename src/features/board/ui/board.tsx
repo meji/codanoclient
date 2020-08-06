@@ -5,8 +5,10 @@ import { List as listModel } from '../../list/domain/list'
 import { CardList } from '../../list/ui/card-list'
 
 export const Board: React.FC = () => {
-  const { board, id } = useParams()
-
+  const querystring = window.location.search
+  const params = new URLSearchParams(querystring)
+  const inBoard: any = params.get('id')
+  const { boardName } = useParams()
   const [lists, setLists] = useState([])
   useEffect(() => {
     fetchLists()
@@ -14,19 +16,18 @@ export const Board: React.FC = () => {
 
   async function fetchLists() {
     const listRepository = new ListHttpRepository()
-    const lists: any = await listRepository.findAll(id)
+    const lists: any = await listRepository.findAll(inBoard)
     setLists(lists.lists)
-    console.log()
   }
 
   return (
     <>
-      <h1>{board}</h1>
+      <h1>{boardName}</h1>
       {lists.length && (
         <ul>
           {lists.map((list: listModel) => {
             return (
-              <li>
+              <li key={list.id}>
                 <h2>{list.name}</h2>
                 <CardList cards={list.cards} name={list.name} key={list.id} />
               </li>

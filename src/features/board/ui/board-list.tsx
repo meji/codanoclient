@@ -12,7 +12,8 @@ export const BoardList: React.FC<{
           <li key={board.id}>
             <Link
               to={{
-                pathname: `/boards/:${board.name}:${board.id}`
+                pathname: `/boards/${board.name}`,
+                search: `?id=${board.id}`
               }}
             >
               {' '}
