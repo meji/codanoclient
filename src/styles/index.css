@@ -11,6 +11,12 @@ body {
   background: var(--background-color);
   font-size: var(--base-font-size);
 }
+#wrapper {
+  background: var(--background-color);
+  color: var(--text-body-color);
+  min-width: 100%;
+  min-height: 100vh;
+}
 p {
   color: var(--text-body-color);
 }

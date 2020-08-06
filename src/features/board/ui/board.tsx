@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { ListHttpRepository } from '../../list/infrastructure/list-http-repository'
+import { ListRepositoryFactory } from '../../list/infrastructure/list-repository-factory'
 import { List as listModel } from '../../list/domain/list'
 import { CardList } from '../../list/ui/card-list'
 
@@ -15,9 +15,9 @@ export const Board: React.FC = () => {
   }, [])
 
   async function fetchLists() {
-    const listRepository = new ListHttpRepository()
+    const listRepository = ListRepositoryFactory.build()
     const lists: any = await listRepository.findAll(inBoard)
-    setLists(lists.lists)
+    setLists(lists)
   }
 
   return (
