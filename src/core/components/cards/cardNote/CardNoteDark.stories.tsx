@@ -1,5 +1,6 @@
 import React from 'react'
 import { CardNote } from './cardNote'
+import { card } from '../card'
 
 export default {
   title: 'Dark/Componentes',
@@ -12,7 +13,7 @@ export default {
 export const cardNote = () => {
   return (
     <div className={'dark-theme'} style={{ width: '400px' }}>
-      <CardNote id={'1'} title={'Note title'} />
+      <CardNote card={card} />
     </div>
   )
 }

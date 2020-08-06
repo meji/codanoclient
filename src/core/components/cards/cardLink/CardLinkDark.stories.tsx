@@ -1,5 +1,6 @@
 import React from 'react'
 import { CardLink } from './cardLink'
+import { card } from '../card'
 
 export default {
   title: 'Dark/Componentes',
@@ -12,7 +13,7 @@ export default {
 export const cardLink = () => {
   return (
     <div className={'dark-theme'} style={{ width: '400px' }}>
-      <CardLink id={'1'} title={'http://www.url.com'} />
+      <CardLink card={card} />
     </div>
   )
 }

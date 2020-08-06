@@ -1,5 +1,6 @@
 import React from 'react'
 import { CardImg } from './cardImg'
+import { card } from '../card'
 
 export default {
   title: 'Light/Componentes',
@@ -12,7 +13,7 @@ export default {
 export const cardImg = () => {
   return (
     <div className={'light-theme'} style={{ width: '400px' }}>
-      <CardImg id={'1'} title={'Image Title'} />
+      <CardImg card={card} />
     </div>
   )
 }

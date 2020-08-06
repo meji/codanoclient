@@ -1,5 +1,6 @@
 import React from 'react'
 import { CardSnippet } from './cardSnippet'
+import { card } from '../card'
 
 export default {
   title: 'Light/Componentes',
@@ -12,7 +13,7 @@ export default {
 export const cardSnippet = () => {
   return (
     <div className={'light-theme'} style={{ width: '400px' }}>
-      <CardSnippet id={'1'} title={'Snippet title'} />
+      <CardSnippet card={card} />
     </div>
   )
 }

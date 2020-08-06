@@ -45,9 +45,6 @@ export const BaseInput: React.FunctionComponent<Props> = ({
   callback
 }) => {
   const [data, setData] = useState({ value: value, err: errMsg })
-  useEffect(() => {
-    console.log(data.err)
-  }, [data])
   const errTag = <p className={cx('error')}>{data.err}</p>
   const labelTag = (
     <span className={cx('label')}>
@@ -73,6 +70,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
           onChange={e => {
             setData({ ...data, value: e.target.value })
             onChange && onChange(e)
+            callback && callback(data)
           }}
           value={data.value ? data.value : ''}
           type={type}

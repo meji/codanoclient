@@ -1,30 +1,22 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { CardBase } from '../cardBase/cardBase'
 import { noteType } from '../cardBase/cardTypes'
-import { Mdeditor } from '../../forms/md-editor/mdeditor'
-import { Id } from '../cardBase/id'
-import styles from './cardImg.module.css'
-import { ImgInput } from '../../forms/inputs/img-input/img-input'
+import { Card } from '../../../../features/card/domain/card'
 
-import { bind } from '../../../../utils/bind'
-const cx = bind(styles)
-
-export const CardImg: React.FC<{ title: string; id: Id }> = ({ title, id, children }) => {
-  const [data, setData] = useState({ text: 'Describe it, MarkDown', html: '', img: '' })
-  const saveValue = async (e: any) => {
-    console.log(e)
-    // await fetch(`http://localhost:5000/getUrlData/?url${e.target.value}`).then(response => setDescription(response.description))
-  }
+export const CardImg: React.FC<{ card: Card; callback?: (data: any) => void }> = ({
+  card,
+  callback,
+  children
+}) => {
   return (
-    <CardBase id={id} type={noteType} title={title} callback={(e: any) => saveValue(e)}>
-      <ImgInput
-        className={cx('no-styles')}
-        onChange={(e: any) => setData({ ...data, img: e.target.value })}
-      />
-      <Mdeditor
-        initialText={data.text}
-        callback={(content: any) => setData({ ...data, text: content.text, html: content.html })}
-      />
+    <CardBase
+      id={card.id}
+      type={noteType}
+      name={card.name}
+      img={card.img}
+      description={card.description}
+      callback={(data: any) => callback && callback(data)}
+    >
       {children}
     </CardBase>
   )

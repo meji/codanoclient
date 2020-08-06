@@ -1,6 +1,6 @@
 import React from 'react'
 import { CardNote } from './cardNote'
-
+import { card } from '../card'
 export default {
   title: 'Light/Componentes',
   parameters: {
@@ -12,7 +12,7 @@ export default {
 export const cardNote = () => {
   return (
     <div className={'light-theme'} style={{ width: '400px' }}>
-      <CardNote id={'1'} title={'Note title'} />
+      <CardNote card={card} />
     </div>
   )
 }

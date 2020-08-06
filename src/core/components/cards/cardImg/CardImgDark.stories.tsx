@@ -1,5 +1,6 @@
 import React from 'react'
 import { CardImg } from './cardImg'
+import { card } from '../card'
 
 export default {
   title: 'Dark/Componentes',
@@ -13,7 +14,7 @@ export const cardImg = () => {
   return (
     <div className={'dark-theme'} style={{ width: '400px' }}>
       <p>
-        <CardImg id={'1'} title={'Image title'} />
+        <CardImg card={card} />
       </p>
     </div>
   )

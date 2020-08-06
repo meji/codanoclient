@@ -20,7 +20,7 @@ export class CardHttpRepository implements CardRepository {
   }
 
   async update(card: Card): Promise<void> {
-    await http.post('/cards/update', this.cardToCardDtoMapper.map(card))
+    await http.post('/cards/update', card)
   }
 
   async delete(card: Card): Promise<void> {

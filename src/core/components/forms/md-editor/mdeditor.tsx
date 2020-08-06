@@ -35,7 +35,6 @@ export const Mdeditor: React.FC<{ initialText?: string; callback?: (content: any
   const [visible, setVisible] = useState(false)
   const saveContent = () => {
     setVisible(false)
-    callback && callback(content)
     return content
   }
   const editor = (
@@ -43,7 +42,10 @@ export const Mdeditor: React.FC<{ initialText?: string; callback?: (content: any
       plugins={myPlugins}
       value={content.text && content.text}
       renderHTML={text => mdParser.render(text)}
-      onChange={content => setContent({ text: content.text, html: content.html })}
+      onChange={content => {
+        setContent({ text: content.text, html: content.html })
+        callback && callback(content)
+      }}
       config={{
         view: {
           menu: false,
