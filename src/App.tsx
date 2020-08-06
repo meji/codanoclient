@@ -8,6 +8,7 @@ import { PrivateRoute } from './private-route'
 import { Boards } from './routes/boards'
 import { Home } from './routes/home'
 import { SaveToken } from './routes/saveToken'
+import { Board } from './features/board/ui/board'
 
 export const App: React.FC = () => {
   const [theme, setTheme] = useState('light-theme')
@@ -31,8 +32,11 @@ export const App: React.FC = () => {
             <Route path={routes.savetoken} exact>
               <SaveToken />
             </Route>
-            <PrivateRoute path={routes.boards}>
+            <PrivateRoute path={routes.boards} exact>
               <Boards />
+            </PrivateRoute>
+            <PrivateRoute path={routes.board} exact>
+              <Board />
             </PrivateRoute>
           </Switch>
         </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { BoardHttpRepository } from '../features/board/infrastructure/board-http-repository'
 import { BoardList } from '../features/board/ui/board-list'
+import { BoardRepositoryFactory } from '../features/board/infrastructure/board-repository-factory'
 
 export const Boards: React.FC = () => {
   const [boards, setBoards] = useState([])
@@ -9,9 +9,9 @@ export const Boards: React.FC = () => {
   }, [])
 
   async function fetchBoards() {
-    const boardsRepository = new BoardHttpRepository()
+    const boardsRepository = BoardRepositoryFactory.build()
     const boards: any = await boardsRepository.findAll()
-    setBoards(boards.boards)
+    setBoards(boards)
   }
 
   return (
