@@ -4,11 +4,12 @@ import MdEditor from 'react-markdown-editor-lite'
 import 'react-markdown-editor-lite/lib/index.css'
 import './mdeditor.css'
 import 'highlight.js/styles/rainbow.css'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import hljs from 'highlight.js'
 import ReactHtmlParser from 'react-html-parser'
 import { bind } from '../../../../utils/bind'
 import styles from './mdeditor.module.css'
+import { useOutsideClick } from '../../../utils/use-outside-click'
 const cx = bind(styles)
 
 // Initialize a markdown parser
@@ -30,6 +31,10 @@ export const Mdeditor: React.FC<{ initialText?: string; callback?: (content: any
   initialText,
   callback
 }) => {
+  const divRef = useRef<HTMLDivElement>(null)
+  useOutsideClick(divRef, () => {
+    saveContent()
+  })
   const myPlugins = ['header', 'fonts', 'link', 'clear', 'logger']
   const [content, setContent] = useState({ text: initialText, html: '' })
   const [visible, setVisible] = useState(false)
@@ -48,7 +53,7 @@ export const Mdeditor: React.FC<{ initialText?: string; callback?: (content: any
       }}
       config={{
         view: {
-          menu: false,
+          menu: true,
           md: true,
           html: false,
           fullScreen: false,
@@ -58,7 +63,7 @@ export const Mdeditor: React.FC<{ initialText?: string; callback?: (content: any
     />
   )
   return (
-    <div className="myEditor" onClick={() => setVisible(true)} onBlur={() => saveContent()}>
+    <div ref={divRef} className="myEditor" onClick={() => setVisible(true)}>
       {!visible && !content.html && initialText && (
         <div className={cx('prev-container')}> {initialText}</div>
       )}
