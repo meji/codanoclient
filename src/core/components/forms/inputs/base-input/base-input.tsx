@@ -10,6 +10,7 @@ export interface Props {
   name?: string
   required?: boolean
   multiple?: boolean
+  fileUploaded?: boolean
   type?:
     | 'text'
     | 'tel'
@@ -62,6 +63,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
   useEffect(() => {
     setData({ ...data, err: errMsg })
   }, [errMsg])
+
   return (
     <>
       <label className={cx('label-container', type, className)}>

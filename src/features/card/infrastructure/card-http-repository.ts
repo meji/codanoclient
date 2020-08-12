@@ -34,11 +34,12 @@ export class CardHttpRepository implements CardRepository {
     await http.post('/cards/delete', this.cardToCardDtoMapper.map(card))
   }
 
-  async newImg(imageFile: any, id: Id): Promise<void> {
+  async newImg(imageFile: any, id: Id): Promise<string> {
     const formData = new FormData()
     console.log('imageFile', imageFile)
     formData.append('imageFile', imageFile[0])
-    await httpForm.post(`/cards/newImg?id=${id}`, formData)
+    const response = await httpForm.post(`/cards/newImg?id=${id}`, formData)
+    return response.data.path
   }
 
   // async img(name: string): Promise<any> {
