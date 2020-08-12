@@ -44,7 +44,7 @@ export const Board: React.FC = () => {
           {lists.map((list: listModel) => {
             return (
               <li key={list.id}>
-                <CardList cards={list.cards} name={list.name} key={list.id} id={list.id} />
+                <CardList name={list.name} key={list.id} id={list.id} />
               </li>
             )
           })}

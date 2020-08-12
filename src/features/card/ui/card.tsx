@@ -20,9 +20,6 @@ export const Card: React.FC<{
       cardRepositoryFactory.create(data).then(response => {
         const id = response.id
         setData({ ...data, id: id })
-        console.log('response', response)
-        console.log(id)
-        console.log('creando card', data)
       })
       setNewCard(false)
     }
