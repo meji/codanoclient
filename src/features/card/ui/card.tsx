@@ -18,6 +18,9 @@ export const Card: React.FC<{
   useEffect(() => {
     if (data.name && data.id) {
       cardRepositoryFactory.update(data)
+      if (data.imageFile && data.imageFile.length > 0) {
+        cardRepositoryFactory.newImg(data.imageFile, data.id)
+      }
     }
   }, [data])
 
@@ -50,7 +53,24 @@ export const Card: React.FC<{
       <CardImg
         card={cardMapped}
         callback={(e: any) => {
-          setData({ ...data, name: e.name, description: e.description, img: e.img, type: 'Image' })
+          if (e.img) {
+            setData({
+              ...data,
+              name: e.name,
+              description: e.description,
+              img: e.img,
+              imageFile: '',
+              type: 'Image'
+            })
+          } else if (e.imagefile !== '') {
+            setData({
+              ...data,
+              name: e.name,
+              description: e.description,
+              imageFile: e.imageFile,
+              type: 'Image'
+            })
+          }
         }}
       />
     )

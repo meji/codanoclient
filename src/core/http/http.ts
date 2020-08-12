@@ -4,11 +4,17 @@ const validToken = () => {
   return localStorage.getItem('access_token')
 }
 
-const http = axios.create({
+export const http = axios.create({
   baseURL: process.env.REACT_APP_BACK_URL,
   headers: {
     Authorization: 'Bearer ' + validToken()
   }
 })
 
-export { http }
+export const httpForm = axios.create({
+  baseURL: process.env.REACT_APP_BACK_URL,
+  headers: {
+    Authorization: 'Bearer ' + validToken(),
+    'Content-Type': 'multipart/form-data'
+  }
+})

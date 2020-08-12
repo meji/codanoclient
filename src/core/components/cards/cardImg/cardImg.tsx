@@ -1,6 +1,6 @@
 import React from 'react'
 import { CardBase } from '../cardBase/cardBase'
-import { noteType } from '../cardBase/cardTypes'
+import { imgType } from '../cardBase/cardTypes'
 import { Card } from '../../../../features/card/domain/card'
 
 export const CardImg: React.FC<{ card: Card; callback?: (data: any) => void }> = ({
@@ -11,9 +11,10 @@ export const CardImg: React.FC<{ card: Card; callback?: (data: any) => void }> =
   return (
     <CardBase
       id={card.id}
-      type={noteType}
+      type={imgType}
       name={card.name}
       img={card.img}
+      imageFile={card.imageFile}
       description={card.description}
       callback={(data: any) => callback && callback(data)}
     >

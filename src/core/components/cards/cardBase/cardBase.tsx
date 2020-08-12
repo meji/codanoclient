@@ -16,6 +16,7 @@ interface Props {
   description?: string
   name?: string
   img?: string
+  imageFile?: any
   callback?: (data: any) => void
 }
 
@@ -25,6 +26,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
   name,
   description,
   img,
+  imageFile,
   callback,
   children
 }) => {
@@ -35,10 +37,10 @@ export const CardBase: React.FunctionComponent<Props> = ({
     name: name,
     description: description,
     img: img,
+    imageFile: imageFile,
     extra: '',
     err: ''
   })
-
   useEffect(() => {
     callback && callback(data)
   }, [data])
@@ -90,13 +92,25 @@ export const CardBase: React.FunctionComponent<Props> = ({
             setData({ ...data, description: content.text })
           }}
         />
-        {type === imgType && (
+        {type === imgType && !data.img && (
           <ImgInput
             className={cx('no-styles')}
             onChange={(e: any) => {
-              setData({ ...data, img: e.target.value })
+              setData({ ...data, imageFile: e.target.files })
             }}
           />
+        )}
+        {type === imgType && data.img && (
+          <div className="img-container">
+            <img
+              src={process.env.REACT_APP_BACK_URL + 'cards/img/' + data.img}
+              title={data.name}
+              alt={data.name}
+            />
+            <span className={'delete'} onClick={() => setData({ ...data, img: undefined })}>
+              X
+            </span>
+          </div>
         )}
         {children}
       </div>

@@ -7,6 +7,7 @@ export interface Card {
   description?: string | undefined
   url?: string
   img?: string
+  imageFile?: any
   inList?: string
   createdBy?: string
 }
