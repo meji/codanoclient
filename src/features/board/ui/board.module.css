@@ -1,0 +1,11 @@
+ul.lists-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+ul.lists-container > li {
+  width: 300px;
+  margin-right: 20px;
+  border: var(--border-form);
+  padding: var(--m);
+}

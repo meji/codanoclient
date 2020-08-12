@@ -15,8 +15,12 @@ export class ListHttpRepository implements ListRepository {
     const response = await http.get<{ lists: listDto[] }>('/lists?inBoard=' + inBoard)
     return response.data.lists.map(listDto => this.listDtoToListMapper.map(listDto))
   }
-  async create(list: List): Promise<void> {
-    await http.post('/lists/new?name=' + list.name, this.listToListDtoMapper.map(list))
+  async create(list: List): Promise<List> {
+    const response = await http.post(
+      '/lists/new?name=' + list.name + '&inBoard=' + list.inBoard,
+      this.listToListDtoMapper.map(list)
+    )
+    return response.data
   }
 
   async update(list: List): Promise<void> {

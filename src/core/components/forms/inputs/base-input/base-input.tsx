@@ -24,6 +24,7 @@ export interface Props {
     | 'radio'
     | 'checkbox'
   pattern?: string
+  onKeyDown?: (e: any) => void
   endSlot?: React.ReactNode
   className?: string
   errMsg?: string
@@ -39,6 +40,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
   type,
   multiple,
   pattern,
+  onKeyDown,
   endSlot,
   className,
   errMsg,
@@ -60,6 +62,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
       ? setData({ ...data, err: input.validationMessage })
       : setData({ ...data, err: '' })
   }
+
   useEffect(() => {
     setData({ ...data, err: errMsg })
   }, [errMsg])
@@ -80,6 +83,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
             checkValidity(e.target)
             callback && callback(data)
           }}
+          onKeyDown={onKeyDown}
           multiple={multiple}
           required={required}
           name={name}

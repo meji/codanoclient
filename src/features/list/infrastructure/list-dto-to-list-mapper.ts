@@ -6,6 +6,7 @@ export class ListDtoToListMapper {
     return {
       name: listDto.name,
       id: listDto._id,
+      inBoard: listDto.inBoard,
       cards: listDto.cards
     }
   }
