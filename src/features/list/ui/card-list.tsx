@@ -12,16 +12,11 @@ export const CardList: React.FC<{
   id?: Id
   name: string
 }> = ({ name, id, children }) => {
-  const deleteCard = (card: CardD) => {
-    const cardRepositoryFactory = CardRepositoryFactory.build()
-    cardRepositoryFactory
-      .delete(card)
-      .then(() =>
-        setCardsIn(cardsIn ? cardsIn.filter((cardn: CardD) => cardn.id !== card.id) : cardsIn)
-      )
-  }
   const cardRepository = CardRepositoryFactory.build()
 
+  const deleteCard = (card: CardD) => {
+    cardRepository.delete(card).then(() => fetchCards())
+  }
   async function fetchCards() {
     if (id) {
       const cards: any = await cardRepository.findAll(id)
@@ -31,7 +26,7 @@ export const CardList: React.FC<{
   const [cardsIn, setCardsIn] = useState([])
   useEffect(() => {
     fetchCards()
-  }, [cardsIn])
+  }, [])
   return (
     <>
       <p>{name}</p>
@@ -52,6 +47,10 @@ export const CardList: React.FC<{
               name: 'Escribe tu card nueva',
               description: 'Mark it down',
               inList: id
+            }}
+            onChange={() => {
+              fetchCards()
+              console.log('changed')
             }}
           />
         </li>

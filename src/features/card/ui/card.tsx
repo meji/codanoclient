@@ -9,7 +9,8 @@ import { CardRepositoryFactory } from '../infrastructure/card-repository-factory
 
 export const Card: React.FC<{
   card: CardDto
-}> = ({ card }): any => {
+  onChange?: () => void
+}> = ({ card, onChange }): any => {
   const cardDtoToCardMapper = new CardDtoToCardMapper()
   const cardMapped = cardDtoToCardMapper.map(card)
   const [data, setData] = useState(cardMapped)
@@ -74,6 +75,7 @@ export const Card: React.FC<{
           })
         }}
         onBlur={() => createCard()}
+        onChange={onChange}
       />
     )
   } else if (cardMapped.type === 'Link') {

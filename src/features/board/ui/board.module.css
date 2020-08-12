@@ -4,7 +4,7 @@ ul.lists-container {
   justify-content: space-between;
 }
 ul.lists-container > li {
-  width: 300px;
+  min-width: 300px;
   margin-right: 20px;
   border: var(--border-form);
   padding: var(--m);
