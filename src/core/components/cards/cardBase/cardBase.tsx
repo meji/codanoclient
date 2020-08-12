@@ -17,6 +17,7 @@ interface Props {
   name?: string
   img?: string
   imageFile?: any
+  onBlur?: () => void
   callback?: (data: any) => void
 }
 
@@ -28,6 +29,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
   img,
   imageFile,
   callback,
+  onBlur,
   children
 }) => {
   const [unfold, setUnfold] = useState(false)
@@ -80,7 +82,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
       onClick={() => !unfold && setUnfold(true)}
       onBlur={() => setEditingTitle(false)}
     >
-      <div className={cx('title-container')}>
+      <div className={cx('title-container')} onBlur={onBlur}>
         <Icon icon={type.icon} className={cx('icon')} />
         {titleContainer}
         {unfold && <Icon icon={'angle-up'} onClick={() => fold()} className={cx('folder')} />}

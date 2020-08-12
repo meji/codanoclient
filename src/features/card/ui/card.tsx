@@ -13,8 +13,20 @@ export const Card: React.FC<{
   const cardDtoToCardMapper = new CardDtoToCardMapper()
   const cardMapped = cardDtoToCardMapper.map(card)
   const [data, setData] = useState(cardMapped)
+  const [newCard, setNewCard] = useState(true)
   const cardRepositoryFactory = CardRepositoryFactory.build()
-
+  const createCard = () => {
+    if (data.name && data.type && !data.id && newCard) {
+      cardRepositoryFactory.create(data).then(response => {
+        const id = response.id
+        setData({ ...data, id: id })
+        console.log('response', response)
+        console.log(id)
+        console.log('creando card', data)
+      })
+      setNewCard(false)
+    }
+  }
   useEffect(() => {
     if (data.name && data.id) {
       cardRepositoryFactory.update(data)
@@ -64,6 +76,7 @@ export const Card: React.FC<{
             type: 'Image'
           })
         }}
+        onBlur={() => createCard()}
       />
     )
   } else if (cardMapped.type === 'Link') {

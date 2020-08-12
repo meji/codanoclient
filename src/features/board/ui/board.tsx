@@ -29,7 +29,7 @@ export const Board: React.FC = () => {
             return (
               <li key={list.id}>
                 <h2>{list.name}</h2>
-                <CardList cards={list.cards} name={list.name} key={list.id} />
+                <CardList cards={list.cards} name={list.name} key={list.id} id={list.id} />
               </li>
             )
           })}
