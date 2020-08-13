@@ -85,39 +85,41 @@ export const CardBase: React.FunctionComponent<Props> = ({
       onBlur={() => setEditingTitle(false)}
       onChange={onChange}
     >
-      <div className={cx('title-container')} onBlur={onBlur}>
-        <Icon icon={type.icon} className={cx('icon')} />
-        {titleContainer}
-        {unfold && <Icon icon={'angle-up'} onClick={() => fold()} className={cx('folder')} />}
-      </div>
-      <div className={unfold ? cx('content', 'unfold') : cx('content')}>
-        <Mdeditor
-          initialText={data.description}
-          callback={(content: any) => {
-            setData({ ...data, description: content.text })
-          }}
-        />
-        {type === imgType && !data.img && (
-          <ImgInput
-            className={cx('no-styles')}
-            onChange={(e: any) => {
-              setData({ ...data, imageFile: e.target.files })
+      <div className={cx('inner-container')}>
+        <div className={cx('title-container')} onBlur={onBlur}>
+          <Icon icon={type.icon} className={cx('icon')} />
+          {titleContainer}
+          {unfold && <Icon icon={'times'} onClick={() => fold()} className={cx('folder')} />}
+        </div>
+        <div className={unfold ? cx('content', 'unfold') : cx('content')}>
+          <Mdeditor
+            initialText={data.description}
+            callback={(content: any) => {
+              setData({ ...data, description: content.text })
             }}
           />
-        )}
-        {type === imgType && data.img && (
-          <div className="img-container">
-            <img
-              src={process.env.REACT_APP_BACK_URL + 'cards/img/' + data.img}
-              title={data.name}
-              alt={data.name}
+          {type === imgType && !data.img && (
+            <ImgInput
+              // className={cx('no-styles')}
+              onChange={(e: any) => {
+                setData({ ...data, imageFile: e.target.files })
+              }}
             />
-            <span className={'delete'} onClick={() => setData({ ...data, img: undefined })}>
-              X
-            </span>
-          </div>
-        )}
-        {children}
+          )}
+          {type === imgType && data.img && (
+            <div className="img-container">
+              <img
+                src={process.env.REACT_APP_BACK_URL + 'cards/img/' + data.img}
+                title={data.name}
+                alt={data.name}
+              />
+              <span className={'delete'} onClick={() => setData({ ...data, img: undefined })}>
+                X
+              </span>
+            </div>
+          )}
+          {children}
+        </div>
       </div>
     </div>
   )

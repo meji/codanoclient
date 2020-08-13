@@ -63,7 +63,7 @@ export const Mdeditor: React.FC<{ initialText?: string; callback?: (content: any
     />
   )
   return (
-    <div ref={divRef} className="myEditor" onClick={() => setVisible(true)}>
+    <div ref={divRef} className={cx('myEditor')} onClick={() => setVisible(true)}>
       {!visible && !content.html && initialText && (
         <div className={cx('prev-container')}> {initialText}</div>
       )}

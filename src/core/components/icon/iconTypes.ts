@@ -18,7 +18,8 @@ import {
   faAngleDown,
   faCaretUp,
   faAngleUp,
-  faStickyNote
+  faStickyNote,
+  faTimes
 } from '@fortawesome/free-solid-svg-icons'
 export type { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core'
 library.add(
@@ -40,5 +41,6 @@ library.add(
   faAngleDown,
   faCaretUp,
   faAngleUp,
-  faStickyNote
+  faStickyNote,
+  faTimes
 )

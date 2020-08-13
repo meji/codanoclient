@@ -42,6 +42,7 @@
   --form-md-background: #333;
   --form-dark-background: #444;
   --border-form: 1px solid #333;
+  --bg-overlay: rgba(255, 255, 255, 0.4);
 }
 .light-theme {
   /*Colors*/
@@ -61,4 +62,5 @@
   --form-md-background: #fcfcfc;
   --form-dark-background: #ddd;
   --border-form: 1px solid #dddddd;
+  --bg-overlay: rgba(0, 0, 0, 0.6);
 }

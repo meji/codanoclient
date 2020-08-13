@@ -2,6 +2,8 @@
 .myEditor .rc-md-editor {
   border: var(--border-form);
   background: var(--background-color);
+  min-height: 38vh;
+  margin-bottom: var(--l);
 }
 .myEditor .rc-md-navigation .button-wrap .button {
   color: var(--primary-color);

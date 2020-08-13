@@ -10,6 +10,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-color: transparent;
 }
+
 .title-container {
   display: flex;
   align-items: flex-start;
@@ -20,6 +21,47 @@
   color: var(--on-primary-color);
   cursor: pointer;
 }
+.card.unfold {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  overflow: auto;
+  background: var(--bg-overlay);
+  border: none;
+  border-radius: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card.unfold .inner-container {
+  background: var(--background-color);
+  width: 90%;
+  max-width: 800px;
+  padding: var(--m);
+  border-radius: var(--rl);
+  max-height: 80vh;
+}
+
+.card.unfold .inner-container .content {
+  overflow-y: auto;
+  max-height: calc(100% - 30px);
+  opacity: 1;
+  height: auto;
+  transition: 0.3s;
+  margin-top: var(--l);
+}
+
+.card.unfold .inner-container label {
+  margin: var(--l) 0 0 0;
+  width: 100%;
+  display: block;
+}
+
 .card .title,
 .card label {
   margin-left: 6px;
@@ -54,17 +96,11 @@
   fill: var(--on-primary-color);
   color: var(--on-primary-color);
 }
+
 .content {
   opacity: 0;
   height: 0;
   overflow: hidden;
-}
-
-.content.unfold {
-  opacity: 1;
-  height: auto;
-  transition: 0.3s;
-  margin-top: var(--s);
 }
 
 .content .prev-container {
