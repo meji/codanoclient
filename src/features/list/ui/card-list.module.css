@@ -1,3 +1,17 @@
 ul.cards > li {
   margin-bottom: var(--m);
+  position: relative;
+}
+ul.cards > li > svg {
+  opacity: 0;
+  transition: var(--transition-fast);
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  color: var(--primary-color);
+  width: 1.5rem;
+  cursor: pointer;
+}
+ul.cards > li:hover > svg {
+  opacity: 1;
 }

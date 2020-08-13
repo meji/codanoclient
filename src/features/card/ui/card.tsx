@@ -10,7 +10,8 @@ import { CardRepositoryFactory } from '../infrastructure/card-repository-factory
 export const Card: React.FC<{
   card: CardDto
   onChange?: () => void
-}> = ({ card, onChange }): any => {
+  onClose?: () => void
+}> = ({ card, onClose, onChange }): any => {
   const cardDtoToCardMapper = new CardDtoToCardMapper()
   const cardMapped = cardDtoToCardMapper.map(card)
   const [data, setData] = useState(cardMapped)
@@ -75,6 +76,7 @@ export const Card: React.FC<{
           })
         }}
         onBlur={() => createCard()}
+        onClose={onClose}
         onChange={onChange}
       />
     )

@@ -7,6 +7,7 @@ const cx = bind(styles)
 export const TextInput: React.FunctionComponent<Props> = ({
   onChange,
   onKeyDown,
+  placeholder,
   className,
   ...rest
 }) => {
@@ -16,6 +17,7 @@ export const TextInput: React.FunctionComponent<Props> = ({
         onKeyDown={onKeyDown}
         onChange={onChange}
         className={cx(className)}
+        placeholder={placeholder}
         type={'text'}
         {...rest}
       />

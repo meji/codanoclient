@@ -9,7 +9,6 @@ export const useOutsideClick = (ref: any, callback: any) => {
 
   useEffect(() => {
     document.addEventListener('click', handleClick)
-
     return () => {
       document.removeEventListener('click', handleClick)
     }

@@ -23,6 +23,12 @@
   --border-form-error: 1px solid red;
   --border-form-ok: 1px solid green;
   --color-ok: green;
+
+  /*Transition*/
+
+  --transition: 0.5s;
+  --transition-slow: 1s;
+  --transition-fast: 0.25s;
 }
 
 .dark-theme {

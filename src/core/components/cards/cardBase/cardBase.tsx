@@ -19,6 +19,7 @@ interface Props {
   imageFile?: any
   onBlur?: () => void
   onChange?: () => void
+  onClose?: () => void
   callback?: (data: any) => void
 }
 
@@ -32,6 +33,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
   callback,
   onBlur,
   onChange,
+  onClose,
   children
 }) => {
   const [unfold, setUnfold] = useState(false)
@@ -51,6 +53,9 @@ export const CardBase: React.FunctionComponent<Props> = ({
 
   const fold = () => {
     setUnfold(false)
+    if (onClose) {
+      onClose()
+    }
   }
 
   const titleContainer = editingTitle ? (
@@ -61,6 +66,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
         }}
         className={cx('no-styles')}
         required={true}
+        placeholder={'Escribe la Url'}
       />
     ) : (
       <TextInput
@@ -68,6 +74,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
         onChange={e => {
           setData({ ...data, name: e.target.value, err: e.target.validationMessage })
         }}
+        placeholder={'Escribe el título'}
       />
     )
   ) : (
@@ -89,7 +96,15 @@ export const CardBase: React.FunctionComponent<Props> = ({
         <div className={cx('title-container')} onBlur={onBlur}>
           <Icon icon={type.icon} className={cx('icon')} />
           {titleContainer}
-          {unfold && <Icon icon={'times'} onClick={() => fold()} className={cx('folder')} />}
+          {unfold && (
+            <Icon
+              icon={'times'}
+              onClick={() => {
+                fold()
+              }}
+              className={cx('folder')}
+            />
+          )}
         </div>
         <div className={unfold ? cx('content', 'unfold') : cx('content')}>
           <Mdeditor

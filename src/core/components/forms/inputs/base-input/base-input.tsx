@@ -8,6 +8,7 @@ export interface Props {
   label?: string
   value?: string
   name?: string
+  placeholder?: string
   required?: boolean
   multiple?: boolean
   fileUploaded?: boolean
@@ -40,6 +41,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
   type,
   multiple,
   pattern,
+  placeholder,
   onKeyDown,
   endSlot,
   className,
@@ -88,6 +90,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
           required={required}
           name={name}
           pattern={pattern}
+          placeholder={placeholder}
         />
         {label && labelTag}
         {endSlot && endSlotTag}

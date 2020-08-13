@@ -49,7 +49,10 @@ export const Board: React.FC = () => {
             )
           })}
           <li>
-            <TextInput value={'Crear Nueva lista'} onKeyDown={e => handleKeyDown(e)}></TextInput>
+            <TextInput
+              placeholder={'Crear Nueva lista'}
+              onKeyDown={e => handleKeyDown(e)}
+            ></TextInput>
           </li>
         </ul>
       )}

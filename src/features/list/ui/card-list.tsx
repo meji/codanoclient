@@ -4,8 +4,8 @@ import { Card as CardD } from '../../card/domain/card'
 import { Id } from '../domain/id'
 import styles from './card-list.module.css'
 import { bind } from '../../../utils/bind'
-import { Button } from '../../../core/components/button/button'
 import { CardRepositoryFactory } from '../../card/infrastructure/card-repository-factory'
+import { Icon } from '../../../core/components/icon/icon'
 const cx = bind(styles)
 
 export const CardList: React.FC<{
@@ -35,8 +35,8 @@ export const CardList: React.FC<{
           cardsIn.map((card: CardD) => {
             return (
               <li key={card.id}>
-                <Card card={card} />
-                <Button onClick={() => deleteCard(card)}>Borrar</Button>
+                <Card card={card} onClose={fetchCards} />
+                <Icon icon={'times-circle'} onClick={() => deleteCard(card)} />
               </li>
             )
           })}
@@ -44,14 +44,11 @@ export const CardList: React.FC<{
           <Card
             card={{
               type: 'Image',
-              name: 'Escribe tu card nueva',
+              name: 'Card nueva',
               description: 'Mark it down',
               inList: id
             }}
-            onChange={() => {
-              fetchCards()
-              console.log('changed')
-            }}
+            onClose={fetchCards}
           />
         </li>
       </ul>
