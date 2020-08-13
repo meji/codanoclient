@@ -8,10 +8,33 @@ ul.cards > li > svg {
   position: absolute;
   top: -0.5rem;
   right: -0.5rem;
-  color: var(--primary-color);
+  color: var(--on-total-color);
   width: 1.5rem;
   cursor: pointer;
 }
 ul.cards > li:hover > svg {
   opacity: 1;
+}
+
+.card-list-conainer .new-card-container {
+  opacity: 0;
+  transition: var(--transition-fast);
+  width: 100%;
+}
+
+.card-list-conainer .new-card-container.visible {
+  opacity: 1;
+  transition: var(--transition-fast);
+}
+
+.add-button {
+  width: 100%;
+}
+.card-list-conainer .new-card-container.visible.with-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-list-conainer .new-card-container.visible.with-buttons .button {
+  border: none;
 }

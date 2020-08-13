@@ -17,6 +17,11 @@
   cursor: pointer;
 }
 
+.button .button-icon {
+  color: var(--button-text);
+  fill: var(--button-text);
+}
+
 .primary,
 .secondary:hover {
   --button-background: var(--primary-color);

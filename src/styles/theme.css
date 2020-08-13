@@ -34,6 +34,7 @@
 .dark-theme {
   --primary-color: #ff016c;
   --on-primary-color: #fff;
+  --on-total-color: #ffffff;
   --secondary-color: #a60146;
   --terciary-color: orange;
   --text-body-color: #fff;
@@ -54,6 +55,7 @@
   /*Colors*/
   --primary-color: #a60146;
   --on-primary-color: #fff;
+  --on-total-color: #000000;
   --secondary-color: #ff016c;
   --terciary-color: orange;
   --text-body-color: #333;
