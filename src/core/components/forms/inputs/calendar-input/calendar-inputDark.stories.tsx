@@ -11,7 +11,7 @@ export default {
 
 const InputDark: React.FC = () => {
   return (
-    <span className={'dark-theme'}>
+    <span className={'dark'}>
       <CalendarInput />
     </span>
   )

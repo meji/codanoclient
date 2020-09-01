@@ -17,7 +17,7 @@ interface Props {
 
 const IconContainer: React.FC<Props> = ({ icon, size }) => {
   return (
-    <span className={'dark-theme'}>
+    <span className={'dark'}>
       <Icon icon={icon} size={size} />
     </span>
   )

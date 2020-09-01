@@ -11,7 +11,7 @@ export default {
 
 const InputLight: React.FC<{ isRequired: boolean; label: string }> = ({ isRequired, label }) => {
   return (
-    <span className={'light-theme'}>
+    <span className={'light'}>
       <TextInput label={label} required={isRequired} />
     </span>
   )

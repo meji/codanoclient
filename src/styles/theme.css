@@ -29,9 +29,12 @@
   --transition: 0.5s;
   --transition-slow: 1s;
   --transition-fast: 0.25s;
+
+  /*Box shadow*/
+  --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.dark-theme {
+.dark {
   --primary-color: #ff016c;
   --on-primary-color: #fff;
   --on-total-color: #ffffff;
@@ -51,7 +54,7 @@
   --border-form: 1px solid #333;
   --bg-overlay: rgba(255, 255, 255, 0.4);
 }
-.light-theme {
+.light {
   /*Colors*/
   --primary-color: #a60146;
   --on-primary-color: #fff;

@@ -11,7 +11,7 @@ export default {
 
 export const radio = () => {
   return (
-    <div className={'dark-theme'}>
+    <div className={'dark'}>
       <RadioInput value={'Radio1'} label={'Radio1'} name={'Radios'} />
       <RadioInput value={'Radio2'} label={'Radio2'} name={'Radios'} />
       <RadioInput value={'Radio3'} label={'Radio3'} name={'Radios'} />

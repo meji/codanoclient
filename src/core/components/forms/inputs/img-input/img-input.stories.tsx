@@ -10,7 +10,7 @@ export default {
 }
 
 export const images = () => (
-  <div className={'light-theme'}>
+  <div className={'light'}>
     <p>Una imagen</p>
     <p>
       <ImgInput />

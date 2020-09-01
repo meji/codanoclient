@@ -11,7 +11,7 @@ export default {
 
 const InputLight: React.FC<{ label: string }> = ({ label }) => {
   return (
-    <span className={'light-theme'}>
+    <span className={'light'}>
       <PasswordInput label={label} />
     </span>
   )

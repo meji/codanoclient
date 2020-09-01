@@ -16,7 +16,7 @@ export const select = () => {
     { value: 'option3', text: 'Option 3' }
   ]
   return (
-    <p className={'light-theme'}>
+    <p className={'light'}>
       <Select required={false} options={optionTags} />
     </p>
   )

@@ -11,7 +11,7 @@ export default {
 
 const InputDArk: React.FC<{ label: string }> = ({ label }) => {
   return (
-    <span className={'dark-theme'}>
+    <span className={'dark'}>
       <PasswordInput label={label} />
     </span>
   )

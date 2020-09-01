@@ -11,7 +11,7 @@ export default {
 
 export const checkbox = () => {
   return (
-    <div className={'light-theme'}>
+    <div className={'light'}>
       <CheckInput value={'Check1'} label={'Check1'} name={'Checks'} />
       <CheckInput value={'Check2'} label={'Check2'} name={'Checks'} />
       <CheckInput value={'Check3'} label={'Check3'} name={'Checks'} />

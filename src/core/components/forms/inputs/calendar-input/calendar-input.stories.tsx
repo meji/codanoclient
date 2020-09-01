@@ -11,7 +11,7 @@ export default {
 
 const InputLight: React.FC = () => {
   return (
-    <span className={'light-theme'}>
+    <span className={'light'}>
       <CalendarInput />
     </span>
   )

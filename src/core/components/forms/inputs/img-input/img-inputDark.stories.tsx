@@ -10,7 +10,7 @@ export default {
 }
 
 export const images = () => (
-  <div className={'dark-theme'}>
+  <div className={'dark'}>
     <p>Una imagen</p>
     <p>
       <ImgInput />

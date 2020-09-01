@@ -12,7 +12,7 @@ export default {
 
 export const cardLink = () => {
   return (
-    <div className={'light-theme'} style={{ width: '400px' }}>
+    <div className={'light'} style={{ width: '400px' }}>
       <CardLink card={card} />
     </div>
   )

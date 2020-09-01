@@ -11,7 +11,7 @@ export default {
 
 export const cardNote = () => {
   return (
-    <div className={'light-theme'} style={{ width: '400px' }}>
+    <div className={'light'} style={{ width: '400px' }}>
       <CardNote card={card} />
     </div>
   )

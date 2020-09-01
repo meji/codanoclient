@@ -11,7 +11,7 @@ export default {
 
 const InputDark: React.FC<{ label: string }> = ({ label }) => {
   return (
-    <span className={'dark-theme'}>
+    <span className={'dark'}>
       <EmailInput label={label} />
     </span>
   )

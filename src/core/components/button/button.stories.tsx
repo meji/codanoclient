@@ -12,18 +12,18 @@ export default {
 export const primary = () => (
   <>
     <p>
-      <Button theme={'primary'} className={'light-theme'} size={'s'}>
+      <Button theme={'primary'} className={'light'} size={'s'}>
         {' '}
         Click me
       </Button>
     </p>
     <p>
-      <Button theme={'primary'} className={'light-theme'}>
+      <Button theme={'primary'} className={'light'}>
         Click me
       </Button>
     </p>
     <p>
-      <Button theme={'primary'} className={'light-theme'} size={'l'}>
+      <Button theme={'primary'} className={'light'} size={'l'}>
         Click me
       </Button>
     </p>
@@ -32,17 +32,17 @@ export const primary = () => (
 export const secondary = () => (
   <>
     <p>
-      <Button theme={'secondary'} className={'light-theme'} size={'s'}>
+      <Button theme={'secondary'} className={'light'} size={'s'}>
         Click me
       </Button>
     </p>
     <p>
-      <Button theme={'secondary'} className={'light-theme'}>
+      <Button theme={'secondary'} className={'light'}>
         Click me
       </Button>
     </p>
     <p>
-      <Button theme={'secondary'} className={'light-theme'} size={'l'}>
+      <Button theme={'secondary'} className={'light'} size={'l'}>
         Click me
       </Button>
     </p>

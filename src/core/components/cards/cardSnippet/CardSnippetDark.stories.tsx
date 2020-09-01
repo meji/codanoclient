@@ -12,7 +12,7 @@ export default {
 
 export const cardSnippet = () => {
   return (
-    <div className={'dark-theme'} style={{ width: '400px' }}>
+    <div className={'dark'} style={{ width: '400px' }}>
       <CardSnippet card={card} />
     </div>
   )
