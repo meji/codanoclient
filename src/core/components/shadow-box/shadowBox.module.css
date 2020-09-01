@@ -1,6 +1,6 @@
 .shadow-box {
-  border: var(--rm);
-  padding: var(--m);
+  border-radius: var(--rm);
+  padding: var(--l) var(--m);
   box-shadow: var(--box-shadow);
   display: flex;
   flex-direction: column;
@@ -15,6 +15,11 @@
   max-width: 400px;
   margin: auto;
 }
-.shadow-box.small .btn {
+.shadow-box.small .button {
   width: 100%;
+}
+
+.shadow-box.small form {
+  width: 80%;
+  margin-top: var(--l);
 }

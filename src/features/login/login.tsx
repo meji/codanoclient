@@ -1,23 +1,28 @@
 import React from 'react'
-// import { bind } from '../utils/bind'
-// import styles from './login.module.css'
-import { Button } from '../core/components/button/button'
-import { ShadowBox } from '../core/components/shadow-box/shadowBox'
-import { Header } from '../features/header/header'
-import { Page } from '../core/components/page/page'
+import { bind } from '../../utils/bind'
+import styles from './login.module.css'
+import { Button } from '../../core/components/button/button'
+import { ShadowBox } from '../../core/components/shadow-box/shadowBox'
+import { Header } from '../header/header'
+import { Page } from '../../core/components/page/page'
+import { LoginForm } from './loginForm'
 
-// const cx = bind(styles)
+const cx = bind(styles)
 
 export const Login: React.FC = () => {
   return (
     <>
+      <Header></Header>
       <Page>
-        <Header></Header>
         <ShadowBox className={'small'}>
-          <h1>Login to Codalia</h1>
+          <h1 className={cx('h4')}>
+            Login to <span className={'caveat'}>Codalia</span>
+          </h1>
+          <LoginForm />
           <Button
             theme={'secondary'}
             onClick={() => window.location.assign(process.env.REACT_APP_BACK_URL + 'auth/google')}
+            className={cx('transparent')}
           >
             <img
               src="/img/google-icon.svg"
@@ -30,6 +35,7 @@ export const Login: React.FC = () => {
           </Button>
           <Button
             theme={'secondary'}
+            className={cx('transparent')}
             onClick={() => window.location.assign(process.env.REACT_APP_BACK_URL + 'auth/github')}
           >
             <img

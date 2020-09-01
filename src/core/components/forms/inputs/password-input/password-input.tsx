@@ -6,7 +6,13 @@ import { Icon } from '../../../icon/icon'
 
 const cx = bind(styles)
 
-export const PasswordInput: React.FunctionComponent<Props> = ({ ...rest }) => {
+export const PasswordInput: React.FunctionComponent<Props> = ({
+  onChange,
+  onKeyDown,
+  placeholder,
+  className,
+  ...rest
+}) => {
   const [visible, setVisible] = useState(false)
   const endSlotIcon = (
     <Icon icon={visible ? 'eye' : 'eye-slash'} size={'sm'} onClick={() => setVisible(!visible)} />
@@ -14,7 +20,7 @@ export const PasswordInput: React.FunctionComponent<Props> = ({ ...rest }) => {
   return (
     <BaseInput
       {...rest}
-      className={cx('password')}
+      className={cx('password', className)}
       type={visible ? 'text' : 'password'}
       endSlot={endSlotIcon}
     />

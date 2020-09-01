@@ -15,7 +15,7 @@ export const Header: React.FunctionComponent<Props> = ({ children }) => {
   const { toggleTheme } = useContext(ThemeContext)
   return (
     <header className={cx('header')}>
-      <span className={cx('logo caveat')}>Codalia</span>
+      <span className={cx('logo', 'caveat')}>Codalia</span>
       {children}
       <Button theme={'primary'} onClick={() => toggleTheme()}>
         Cambiar tema

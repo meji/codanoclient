@@ -1,6 +1,10 @@
 header.header {
   display: flex;
-  padding: var(--l);
+  padding: var(--s) var(--l);
   justify-content: space-between;
   align-items: center;
+  margin-bottom: var(--l);
+}
+.header .logo {
+  font-size: var(--font-size-big);
 }

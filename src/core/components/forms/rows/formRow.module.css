@@ -1,0 +1,19 @@
+.form-row {
+  margin-bottom: var(--l);
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  row-gap: var(--m);
+}
+
+.form-row label {
+  width: 100%;
+}
+.form-row.full-button button {
+  width: 100%;
+  justify-content: center;
+}
+
+.form-row label input:not([type='radio']):not([type='checkbox']) {
+  width: 100%;
+}

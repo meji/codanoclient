@@ -16,7 +16,7 @@ export const TextInput: React.FunctionComponent<Props> = ({
       <BaseInput
         onKeyDown={onKeyDown}
         onChange={onChange}
-        className={cx(className)}
+        className={cx(className, 'text-input')}
         placeholder={placeholder}
         type={'text'}
         {...rest}

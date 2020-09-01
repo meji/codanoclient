@@ -38,6 +38,17 @@
   --button-text: var(--primary-color);
   --border-button-color: var(--primary-color);
 }
+
+.button.transparent {
+  --button-background: transparent;
+  --button-text: var(--primary-color);
+  --border-button-color: transparent;
+}
+
+.button.transparent:hover {
+  --button-text: var(--secondary-color);
+}
+
 .button.s {
   font-size: 0.6rem;
   padding: var(--s);
