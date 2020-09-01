@@ -1,18 +1,22 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { routes } from '../routes'
-import { Home } from './home'
-import { Login } from './login'
-import { SaveToken } from './saveToken'
-import { PrivateRoute } from '../private-route'
-import { Boards } from './boards'
-import { Board } from '../features/board/ui/board'
+import { routes } from '../../routes'
+import { Home } from '../../routes/home'
+import { Login } from '../../routes/login'
+import { SaveToken } from '../../routes/saveToken'
+import { PrivateRoute } from '../../private-route'
+import { Boards } from '../../routes/boards'
+import { Board } from '../board/ui/board'
 import React, { Suspense, useContext } from 'react'
-import { ThemeContext } from '../features/contexts/themeProvider'
+import { ThemeContext } from '../contexts/themeProvider'
+import { bind } from '../../utils/bind'
+import styles from './main.module.css'
 
-export const Main: React.FC = () => {
+const cx = bind(styles)
+
+export const Main: React.FC = ({ children }) => {
   const { theme } = useContext(ThemeContext)
   return (
-    <div id="wrapper" className={theme}>
+    <main id="wrapper" className={cx(theme)}>
       <Router>
         <Suspense fallback={<h1>Loading</h1>}>
           <Switch>
@@ -34,6 +38,7 @@ export const Main: React.FC = () => {
           </Switch>
         </Suspense>
       </Router>
-    </div>
+      {children}
+    </main>
   )
 }

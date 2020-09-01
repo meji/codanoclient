@@ -53,6 +53,7 @@
   --form-dark-background: #444;
   --border-form: 1px solid #333;
   --bg-overlay: rgba(255, 255, 255, 0.4);
+  --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .light {
   /*Colors*/
@@ -74,4 +75,5 @@
   --form-dark-background: #ddd;
   --border-form: 1px solid #dddddd;
   --bg-overlay: rgba(0, 0, 0, 0.6);
+  --box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
