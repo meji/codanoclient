@@ -24,6 +24,7 @@ export const PasswordInput: React.FunctionComponent<Props> = ({
       type={visible ? 'text' : 'password'}
       endSlot={endSlotIcon}
       placeholder={placeholder}
+      onChange={onChange}
     />
   )
 }

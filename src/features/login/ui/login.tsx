@@ -1,23 +1,33 @@
-import React from 'react'
-import { ShadowBox } from '../../core/components/shadow-box/shadowBox'
-import { Header } from '../header/header'
-import { Page } from '../../core/components/page/page'
+import React, { useEffect, useState } from 'react'
+import { ShadowBox } from '../../../core/components/shadow-box/shadowBox'
+import { Header } from '../../header/header'
+import { Page } from '../../../core/components/page/page'
 import { LoginForm } from './loginForm'
 import { SignUpForm } from './signUpForm'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
-import { routes } from '../../routes'
-import { Notice } from '../../core/components/notice/notice'
+import { routes } from '../../../routes'
+import { Notice } from '../../../core/components/notice/notice'
 
 export const Login: React.FC = () => {
   const querystring = window.location.search
   const params = new URLSearchParams(querystring)
   const active = params.get('validated')
+  const [noticeContent, setNoticeContent] = useState('')
+  const destroyNotice = () => {
+    setTimeout(() => {
+      setNoticeContent('')
+    }, 6000)
+  }
+  useEffect(() => {
+    setNoticeContent('The email has been validated, please do login')
+    destroyNotice()
+  }, [active])
 
   return (
     <>
       <Header></Header>
       <Page>
-        {active === 'ok' && <Notice>Your email has been validated, please make login</Notice>}
+        {active === 'ok' && <Notice content={noticeContent}></Notice>}
         <ShadowBox className={'small'}>
           <Router>
             <Switch>

@@ -1,4 +1,4 @@
-.notice {
+.notice.active {
   width: 100%;
   padding: var(--m) var(--l);
   background: var(--primary-color);
@@ -13,7 +13,7 @@
   opacity: 0.8;
   box-sizing: border-box;
 }
-.notice.hide {
+.notice.inactive {
   top: -200px;
   opacity: 0;
 }
