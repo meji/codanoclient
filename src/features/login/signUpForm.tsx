@@ -4,11 +4,12 @@ import { FormRow } from '../../core/components/forms/rows/formRow'
 import { Button } from '../../core/components/button/button'
 import { http } from '../../core/http/http'
 import { EmailInput } from '../../core/components/forms/inputs/email-input/email-input'
+import { TextInput } from '../../core/components/forms/inputs/text-input/text-input'
 import { bind } from '../../utils/bind'
 import styles from './login.module.css'
 const cx = bind(styles)
 
-export const LoginForm: React.FC = () => {
+export const SignUpForm: React.FC = () => {
   const [values, setValues] = useState({})
   const handleSubmit = (values: any) => {
     http(process.env.REACT_APP_BACK_URL + 'auth/login', {
@@ -19,9 +20,12 @@ export const LoginForm: React.FC = () => {
   return (
     <>
       <h1 className={cx('h4')}>
-        Login to <span className={'caveat'}>Codalia</span>
+        Sign Up in <span className={'caveat'}>Codalia</span>
       </h1>
       <form onSubmit={() => handleSubmit(values)}>
+        <FormRow>
+          <TextInput placeholder={'Name'} onChange={e => setValues({ ...values, name: e.value })} />
+        </FormRow>
         <FormRow>
           <EmailInput
             placeholder={'Email'}
@@ -36,7 +40,7 @@ export const LoginForm: React.FC = () => {
         </FormRow>
         <FormRow className="full-button">
           <Button submit={true} theme={'primary'} size={'l'}>
-            Login
+            Sign Up
           </Button>
         </FormRow>
       </form>

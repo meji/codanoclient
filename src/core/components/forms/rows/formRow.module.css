@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: stretch;
   row-gap: var(--m);
+  flex-wrap: wrap;
 }
 
 .form-row label {

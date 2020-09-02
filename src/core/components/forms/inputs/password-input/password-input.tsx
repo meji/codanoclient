@@ -23,6 +23,7 @@ export const PasswordInput: React.FunctionComponent<Props> = ({
       className={cx('password', className)}
       type={visible ? 'text' : 'password'}
       endSlot={endSlotIcon}
+      placeholder={placeholder}
     />
   )
 }
