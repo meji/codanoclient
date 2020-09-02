@@ -26,6 +26,9 @@ export const Main: React.FC = ({ children }) => {
             <Route path={routes.login} exact>
               <Login />
             </Route>
+            <Route path={routes.signup} exact>
+              <Login />
+            </Route>
             <Route path={routes.savetoken} exact>
               <SaveToken />
             </Route>

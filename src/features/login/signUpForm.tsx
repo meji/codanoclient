@@ -56,7 +56,7 @@ export const SignUpForm: React.FC = () => {
           width={'20'}
           height={'20'}
         />
-        &nbsp;Login Google
+        &nbsp;Signup Google
       </Button>
       <Button
         theme={'secondary'}
@@ -70,7 +70,7 @@ export const SignUpForm: React.FC = () => {
           width={'20'}
           height={'20'}
         />
-        &nbsp;Login Github
+        &nbsp;Signup Github
       </Button>
     </>
   )

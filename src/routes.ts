@@ -1,5 +1,6 @@
 export const routes = {
-  login: '/login',
+  login: '/auth/login',
+  signup: '/auth/signup',
   boards: '/boards',
   home: '/home',
   savetoken: '/savetoken',

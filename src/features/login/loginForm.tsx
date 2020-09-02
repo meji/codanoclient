@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { PasswordInput } from '../../core/components/forms/inputs/password-input/password-input'
 import { FormRow } from '../../core/components/forms/rows/formRow'
 import { Button } from '../../core/components/button/button'
@@ -10,10 +10,14 @@ const cx = bind(styles)
 
 export const LoginForm: React.FC = () => {
   const [values, setValues] = useState({})
-  const handleSubmit = (values: any) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     http(process.env.REACT_APP_BACK_URL + 'auth/login', {
+      method: 'POST',
       data: { values }
-    }).then(response => console.log(response))
+    })
+      .then(response => console.log(response.data))
+      .catch(error => console.log(error))
     return false
   }
   return (
@@ -21,7 +25,7 @@ export const LoginForm: React.FC = () => {
       <h1 className={cx('h4')}>
         Login to <span className={'caveat'}>Codalia</span>
       </h1>
-      <form onSubmit={() => handleSubmit(values)}>
+      <form onSubmit={e => handleSubmit(e)}>
         <FormRow>
           <EmailInput
             placeholder={'Email'}
