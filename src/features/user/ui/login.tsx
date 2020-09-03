@@ -5,7 +5,7 @@ import { Page } from '../../../core/components/page/page'
 import { LoginForm } from './loginForm'
 import { SignUpForm } from './signUpForm'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
-import { routes } from '../../../routes'
+import { routes } from '../../../routes/routes'
 import { Notice } from '../../../core/components/notice/notice'
 
 export const Login: React.FC = () => {
@@ -40,7 +40,7 @@ export const Login: React.FC = () => {
               <Route path={routes.signup} exact>
                 <SignUpForm />
                 <p>
-                  Do you have an account?, <Link to={'/auth/user'}>Login</Link>
+                  Do you have an account?, <Link to={'/auth/login'}>Login</Link>
                 </p>
               </Route>
             </Switch>

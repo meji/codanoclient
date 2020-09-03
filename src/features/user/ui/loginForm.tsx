@@ -20,11 +20,9 @@ export const LoginForm: React.FC = () => {
   }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    console.log(values)
     userService
       .login(values)
       .then(response => {
-        console.log(response.data)
         return window.location.assign(response.data.redirect)
       })
       .catch(error => {

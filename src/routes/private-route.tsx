@@ -1,5 +1,5 @@
 import React from 'react'
-import { AuthManager } from './features/auth/auth-manager'
+import { AuthManager } from '../features/auth/auth-manager'
 import { Route, Redirect } from 'react-router-dom'
 
 export const PrivateRoute: React.FC<{ path: string; exact: boolean }> = ({
@@ -20,7 +20,7 @@ export const PrivateRoute: React.FC<{ path: string; exact: boolean }> = ({
         ) : (
           <Redirect
             to={{
-              pathname: '/user',
+              pathname: '/auth/login',
               state: { from: location }
             }}
           />

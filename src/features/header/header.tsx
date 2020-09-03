@@ -2,10 +2,10 @@ import React, { useContext } from 'react'
 import { bind } from '../../utils/bind'
 import styles from './header.module.css'
 import { Button } from '../../core/components/button/button'
-import { ThemeContext } from '../contexts/themeProvider'
+import { ThemeContext } from '../providers/themeProvider'
 import { BoardList } from '../board/ui/board-list'
 import { Board } from '../board/domain/board'
-import { UserContext } from '../contexts/userProvider'
+import { UserContext } from '../providers/userProvider'
 
 const cx = bind(styles)
 
