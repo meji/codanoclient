@@ -18,17 +18,18 @@ export const LoginForm: React.FC = () => {
       setNoticeContent('')
     }, 6000)
   }
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    console.log(values)
     loginService
       .login(values)
       .then(response => {
-        const user = JSON.stringify(response.data.user.name)
-        setNoticeContent(`Welcome ${user}, please confirm your email to login`)
-        destroyNotice()
+        console.log(response.data)
+        return window.location.assign(response.data.redirect)
       })
       .catch(error => {
-        setNoticeContent(error.response.data.message)
-        console.log(error.response.data.message)
+        setNoticeContent('Wrong credentials')
+        console.log(error.response)
         destroyNotice()
       })
     e.preventDefault()
@@ -44,13 +45,13 @@ export const LoginForm: React.FC = () => {
         <FormRow>
           <EmailInput
             placeholder={'Email'}
-            onChange={e => setValues({ ...values, email: e.value })}
+            onChange={e => setValues({ ...values, email: e.target.value })}
           />
         </FormRow>
         <FormRow>
           <PasswordInput
             placeholder={'Contraseña'}
-            onChange={e => setValues({ ...values, password: e.value })}
+            onChange={e => setValues({ ...values, password: e.target.value })}
           />
         </FormRow>
         <FormRow className="full-button">

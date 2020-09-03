@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { PasswordInput } from '../../../core/components/forms/inputs/password-input/password-input'
 import { FormRow } from '../../../core/components/forms/rows/formRow'
 import { Button } from '../../../core/components/button/button'
@@ -19,9 +19,6 @@ export const SignUpForm: React.FC = () => {
       setNoticeContent('')
     }, 6000)
   }
-  useEffect(() => {
-    console.log(values)
-  }, [values])
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     console.log('values', values)
