@@ -7,4 +7,22 @@ header.header {
 }
 .header .logo {
   font-size: var(--font-size-big);
+  text-decoration: none;
+  color: var(--text-body-color);
+}
+.header .user {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: Caveat, cursive;
+  margin: 0 var(--l) 0 0;
+  align-items: center;
+  display: inline-flex;
+}
+section {
+  display: flex;
+  justify-content: space-between;
+}
+
+section * {
+  margin-left: var(--s);
 }

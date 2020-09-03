@@ -9,6 +9,9 @@ export interface Props {
   label?: string
   required?: boolean
   className?: string
+  firstItem?: string
+  lastItem?: string
+  size?: 's' | 'l'
   onChange?: (e: any) => void
   errMsg?: string
   options: OptionItem[]
@@ -18,6 +21,9 @@ export const Select: React.FunctionComponent<Props> = ({
   label,
   required,
   className,
+  firstItem,
+  lastItem,
+  size,
   onChange,
   errMsg,
   options
@@ -38,7 +44,7 @@ export const Select: React.FunctionComponent<Props> = ({
   )
   return (
     <>
-      <label className={cx('select-container')}>
+      <label className={size === 's' ? cx('select-container', 'small') : cx('select-container')}>
         {label && labelTag}
         <select
           onChange={e => {
@@ -46,7 +52,10 @@ export const Select: React.FunctionComponent<Props> = ({
           }}
           className={errMsg ? cx(className, 'select', 'error') : cx(className, 'select')}
         >
+          {' '}
+          {firstItem && <option>{firstItem}</option>}
           {optionTags}
+          {lastItem && <option>{lastItem}</option>}
         </select>
       </label>
       {errMsg && errTag}

@@ -1,5 +1,7 @@
-import React from 'react'
-import { Board as boardModel } from '../../board/domain/board'
+import React, { useContext } from 'react'
+import { Page } from '../../../core/components/page/page'
+import { UserContext } from '../../providers/userProvider'
+import { Board as boardModel } from '../domain/board'
 import { Link } from 'react-router-dom'
 
 export const BoardList: React.FC<{
@@ -23,5 +25,16 @@ export const BoardList: React.FC<{
         )
       })}
     </ul>
+  )
+}
+export const Boards: React.FC = () => {
+  const { boards } = useContext(UserContext)
+  return (
+    <>
+      <Page>
+        <h1>Boards</h1>
+        {boards.length && <BoardList boards={boards} />}
+      </Page>
+    </>
   )
 }
