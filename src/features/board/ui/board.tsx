@@ -6,6 +6,7 @@ import { CardList } from '../../list/ui/card-list'
 import { bind } from '../../../utils/bind'
 import styles from './board.module.css'
 import { TextInput } from '../../../core/components/forms/inputs/text-input/text-input'
+import { Header } from '../../header/header'
 const cx = bind(styles)
 
 export const Board: React.FC = () => {
@@ -38,6 +39,7 @@ export const Board: React.FC = () => {
   }
   return (
     <>
+      <Header />
       <h1>{boardName}</h1>
       {lists.length && (
         <ul className={cx('lists-container')}>
