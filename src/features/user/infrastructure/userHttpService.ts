@@ -1,12 +1,15 @@
 import { http } from '../../../core/http/http'
-import { LoginService } from '../domain/loginService'
+import { UserService } from '../domain/userService'
 import { User } from '../domain/user'
 
-export class LoginHttpService implements LoginService {
+export class UserHttpService implements UserService {
   async login(user: User): Promise<{ data: any }> {
-    return await http.post('/auth/login', user)
+    return await http.post('/auth/user', user)
   }
   async signup(user: User): Promise<{ data: any }> {
     return await http.post('/auth/signup', user)
+  }
+  async getUser(): Promise<{ data: any }> {
+    return await http.get('/user')
   }
 }

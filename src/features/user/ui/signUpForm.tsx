@@ -3,15 +3,16 @@ import { PasswordInput } from '../../../core/components/forms/inputs/password-in
 import { FormRow } from '../../../core/components/forms/rows/formRow'
 import { Button } from '../../../core/components/button/button'
 import { EmailInput } from '../../../core/components/forms/inputs/email-input/email-input'
-import { LoginHttpService } from '../infrastructure/loginHttpService'
+import { TextInput } from '../../../core/components/forms/inputs/text-input/text-input'
 import { bind } from '../../../utils/bind'
 import styles from './login.module.css'
+import { UserHttpService } from '../infrastructure/userHttpService'
 import { Notice } from '../../../core/components/notice/notice'
 const cx = bind(styles)
 
-export const LoginForm: React.FC = () => {
-  const loginService = new LoginHttpService()
-  const [values, setValues] = useState({ email: '', password: '' })
+export const SignUpForm: React.FC = () => {
+  const loginService = new UserHttpService()
+  const [values, setValues] = useState({ name: '', email: '', password: '' })
   const [noticeContent, setNoticeContent] = useState('')
   const destroyNotice = () => {
     setTimeout(() => {
@@ -20,28 +21,33 @@ export const LoginForm: React.FC = () => {
   }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    console.log(values)
+    console.log('values', values)
     loginService
-      .login(values)
+      .signup(values)
       .then(response => {
-        console.log(response.data)
-        return window.location.assign(response.data.redirect)
+        const user = JSON.stringify(response.data.user.name)
+        setNoticeContent(`Welcome ${user}, please confirm your email to login`)
+        destroyNotice()
       })
       .catch(error => {
-        setNoticeContent('Wrong credentials')
-        console.log(error.response)
+        setNoticeContent(error.response.data.message)
         destroyNotice()
       })
     e.preventDefault()
   }
   return (
     <>
-      {' '}
       {noticeContent && <Notice content={noticeContent}></Notice>}
       <h1 className={cx('h4')}>
-        Login to <span className={'caveat'}>Codalia</span>
+        Sign Up in <span className={'caveat'}>Codalia</span>
       </h1>
       <form onSubmit={e => handleSubmit(e)}>
+        <FormRow>
+          <TextInput
+            placeholder={'Name'}
+            onChange={e => setValues({ ...values, name: e.target.value })}
+          />
+        </FormRow>
         <FormRow>
           <EmailInput
             placeholder={'Email'}
@@ -56,7 +62,7 @@ export const LoginForm: React.FC = () => {
         </FormRow>
         <FormRow className="full-button">
           <Button submit={true} theme={'primary'} size={'l'}>
-            Login
+            Sign Up
           </Button>
         </FormRow>
       </form>
@@ -72,7 +78,7 @@ export const LoginForm: React.FC = () => {
           width={'20'}
           height={'20'}
         />
-        &nbsp;Login Google
+        &nbsp;Signup Google
       </Button>
       <Button
         theme={'secondary'}
@@ -86,7 +92,7 @@ export const LoginForm: React.FC = () => {
           width={'20'}
           height={'20'}
         />
-        &nbsp;Login Github
+        &nbsp;Signup Github
       </Button>
     </>
   )

@@ -19,7 +19,7 @@ export const Login: React.FC = () => {
     }, 6000)
   }
   useEffect(() => {
-    setNoticeContent('The email has been validated, please do login')
+    setNoticeContent('The email has been validated, please do user')
     destroyNotice()
   }, [active])
 
@@ -40,7 +40,7 @@ export const Login: React.FC = () => {
               <Route path={routes.signup} exact>
                 <SignUpForm />
                 <p>
-                  Do you have an account?, <Link to={'/auth/login'}>Login</Link>
+                  Do you have an account?, <Link to={'/auth/user'}>Login</Link>
                 </p>
               </Route>
             </Switch>

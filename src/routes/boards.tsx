@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { BoardList } from '../features/board/ui/board-list'
 import { BoardRepositoryFactory } from '../features/board/infrastructure/board-repository-factory'
+import { Header } from '../features/header/header'
+import { Page } from '../core/components/page/page'
 
 export const Boards: React.FC = () => {
   const [boards, setBoards] = useState([])
@@ -16,8 +18,11 @@ export const Boards: React.FC = () => {
 
   return (
     <>
-      <h1>Boards</h1>
-      {boards.length && <BoardList boards={boards} />}
+      <Header boards={boards}></Header>
+      <Page>
+        <h1>Boards</h1>
+        {boards.length && <BoardList boards={boards} />}
+      </Page>
     </>
   )
 }

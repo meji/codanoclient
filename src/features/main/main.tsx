@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { routes } from '../../routes'
 import { Home } from '../../routes/home'
-import { Login } from '../login/ui/login'
+import { Login } from '../user/ui/login'
 import { SaveToken } from '../../routes/saveToken'
 import { PrivateRoute } from '../../private-route'
 import { Boards } from '../../routes/boards'
