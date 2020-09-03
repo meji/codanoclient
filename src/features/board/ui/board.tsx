@@ -18,7 +18,7 @@ export const Board: React.FC = () => {
 
   useEffect(() => {
     fetchLists()
-  }, [])
+  }, [inBoard])
 
   const listRepository = ListRepositoryFactory.build()
 

@@ -34,7 +34,7 @@ export const Header: React.FunctionComponent<Props> = ({ className, children }) 
     <header className={cx('header', className)}>
       <span className={cx('logo', 'caveat')}>Codalia</span>
       {children}
-      {boards && (
+      {boards.length > 0 && (
         <Select
           onChange={e => goToBoard(e)}
           options={boards.map(board => {
