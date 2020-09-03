@@ -31,7 +31,7 @@ export const Header: React.FunctionComponent<Props> = ({ className, boards, chil
       <Button theme={'primary'} onClick={() => toggleTheme()}>
         Cambiar tema
       </Button>
-      {user && (
+      {user.email && (
         <Button theme={'primary'} onClick={() => logout()}>
           Logout
         </Button>
