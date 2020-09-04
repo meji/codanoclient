@@ -3,3 +3,21 @@
   margin: 0 auto;
   background: var(--background-color);
 }
+.container.l {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--s);
+  background: var(--background-color);
+}
+
+@media screen and (min-width: 768px) {
+  .container.l {
+    padding: 0 var(--m);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container.l {
+    padding: 0 var(--l);
+  }
+}

@@ -6,6 +6,7 @@ import { CardList } from '../../list/ui/card-list'
 import { bind } from '../../../utils/bind'
 import styles from './board.module.css'
 import { TextInput } from '../../../core/components/forms/inputs/text-input/text-input'
+import { Page } from '../../../core/components/page/page'
 const cx = bind(styles)
 
 export const Board: React.FC = () => {
@@ -42,7 +43,7 @@ export const Board: React.FC = () => {
     }
   }
   return (
-    <>
+    <Page size={'l'}>
       <h1>{boardName}</h1>
       {lists.length && (
         <ul className={cx('lists-container')}>
@@ -54,13 +55,10 @@ export const Board: React.FC = () => {
             )
           })}
           <li>
-            <TextInput
-              placeholder={'Crear Nueva lista'}
-              onKeyDown={e => handleKeyDown(e)}
-            ></TextInput>
+            <TextInput placeholder={'Crear Nueva lista'} onKeyDown={e => handleKeyDown(e)} />
           </li>
         </ul>
       )}
-    </>
+    </Page>
   )
 }

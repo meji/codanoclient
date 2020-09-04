@@ -10,7 +10,7 @@ interface Props {
   icon: IconProp
   size?: SizeProp
   className?: string
-  onClick?(): void
+  onClick?(e: any): void
 }
 
 export const Icon: React.FC<Props> = ({ icon, size, className, onClick }) => {

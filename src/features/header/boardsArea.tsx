@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Board } from '../board/domain/board'
 import { useHistory } from 'react-router-dom'
 import { Select } from '../../core/components/forms/select/select'
@@ -9,12 +9,14 @@ import { TextInput } from '../../core/components/forms/inputs/text-input/text-in
 import { Form } from '../../core/components/forms/forms/form'
 import { Icon } from '../../core/components/icon/icon'
 import { BoardRepositoryFactory } from '../board/infrastructure/board-repository-factory'
+import { UserContext } from '../providers/userProvider'
 const cx = bind(styles)
 
 export const BoardsArea: React.FC<{ boards: Board[] }> = ({ boards }) => {
   const [newBoard, setNewBoard] = useState('')
   const [createBoardVisible, setCreateBoardVisible] = useState(false)
   const history = useHistory()
+  const data = useContext(UserContext)
   const goToBoard = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const boardName = e.target[e.target.selectedIndex].textContent
     if (e.target.selectedIndex > 0) {
@@ -25,11 +27,12 @@ export const BoardsArea: React.FC<{ boards: Board[] }> = ({ boards }) => {
   }
   const boardRepositoryFactory = BoardRepositoryFactory.build()
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    console.log(newBoard)
     boardRepositoryFactory.create(newBoard).then(response => {
+      boardRepositoryFactory.findAll().then(response => data.setBoards(response))
       history.push(`/boards/${response.name}?id=${response.id}`)
     })
     setCreateBoardVisible(false)
+
     e.preventDefault()
   }
   return (

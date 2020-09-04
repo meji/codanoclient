@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { bind } from '../../utils/bind'
 import styles from './header.module.css'
 import { Button } from '../../core/components/button/button'
@@ -20,7 +20,11 @@ export const Header: React.FunctionComponent<Props> = ({ className, children }) 
   const { toggleTheme } = useContext(ThemeContext)
   const data = useContext(UserContext)
   const user = data.user
-  const boards = data.boards
+  const [boards, setBoards] = useState(data.boards)
+
+  useEffect(() => {
+    setBoards(data.boards)
+  }, [data])
 
   const logout = () => {
     window.localStorage.clear()
@@ -32,7 +36,7 @@ export const Header: React.FunctionComponent<Props> = ({ className, children }) 
         Codalia
       </Link>
       {children}
-      {boards.length > 0 && <BoardsArea boards={data.boards} />}
+      {boards.length > 0 && <BoardsArea boards={boards} />}
       <section className={cx('buttons-area')}>
         {user.email && (
           <>

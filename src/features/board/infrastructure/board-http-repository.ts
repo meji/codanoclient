@@ -10,7 +10,7 @@ export class BoardHttpRepository implements BoardRepository {
     private readonly boardDtoToBoardMapper: BoardDtoToBoardMapper // private readonly boardToBoardDtoMapper: BoardToBoardDtoMapper
   ) {}
 
-  async findAll(): Promise<{}> {
+  async findAll(): Promise<Board[]> {
     const response = await http.get<{ boards: boardDto[] }>(`/boards`)
     return response.data.boards.map(boardDto => this.boardDtoToBoardMapper.map(boardDto))
   }
@@ -23,7 +23,7 @@ export class BoardHttpRepository implements BoardRepository {
     await http.post('/boards/update?id=' + board.id + '&&name=' + board.name)
   }
 
-  async delete(board: Board): Promise<void> {
-    await http.post('/boards/delete', board)
+  async delete(id: string): Promise<void> {
+    await http.post('/boards/delete?id=' + id)
   }
 }

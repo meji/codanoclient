@@ -3,9 +3,38 @@ ul.lists-container {
   align-items: flex-start;
   justify-content: space-between;
 }
-ul.lists-container > li {
+ul.lists-container > li,
+ul.board-list li {
   min-width: 300px;
   margin-right: 20px;
   border: var(--border-form);
   padding: var(--m);
+  border-radius: var(--rm);
+}
+
+ul.board-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ul.board-list li {
+  padding: 0;
+}
+
+ul.board-list li a {
+  text-decoration: none;
+  color: var(--text-body-color);
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--m);
+  font-weight: 600;
+}
+
+ul.board-list li a:hover {
+  background: var(--primary-color);
+  color: var(--on-primary-color);
 }
