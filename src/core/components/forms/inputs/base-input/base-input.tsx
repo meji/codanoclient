@@ -12,6 +12,7 @@ export interface Props {
   required?: boolean
   multiple?: boolean
   fileUploaded?: boolean
+  size?: 's' | 'l'
   type?:
     | 'text'
     | 'tel'
@@ -45,6 +46,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
   onKeyDown,
   endSlot,
   className,
+  size,
   errMsg,
   onChange,
   callback
@@ -73,7 +75,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
     <>
       <label className={cx('label-container', type, className)}>
         <input
-          className={cx(className, 'input')}
+          className={size ? cx(className, 'input', size) : cx(className, 'input')}
           onChange={e => {
             setData({ ...data, value: e.target.value })
             onChange && onChange(e)

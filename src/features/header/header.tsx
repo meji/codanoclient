@@ -5,8 +5,8 @@ import { Button } from '../../core/components/button/button'
 import { ThemeContext } from '../providers/themeProvider'
 import { Board } from '../board/domain/board'
 import { UserContext } from '../providers/userProvider'
-import { Select } from '../../core/components/forms/select/select'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { BoardsArea } from './boardsArea'
 
 const cx = bind(styles)
 
@@ -14,34 +14,6 @@ interface Props {
   className?: string
   boards?: Board[]
   onClick?(): void
-}
-
-const BoardsArea: React.FC<{ boards: Board[] }> = ({ boards }) => {
-  const history = useHistory()
-  const newBoard = () => {}
-  const goToBoard = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const boardName = e.target[e.target.selectedIndex].textContent
-    if (e.target.selectedIndex > 0) {
-      history.push(`/boards/${boardName}?id=${e.target.value}`)
-    } else {
-      history.push(`/boards/`)
-    }
-  }
-  return (
-    <section className={cx('boards-area')}>
-      <Select
-        onChange={e => goToBoard(e)}
-        size={'s'}
-        firstItem={'Boards'}
-        options={boards.map(board => {
-          return { text: board.name, value: board.id }
-        })}
-      />
-      <Button size={'s'} onClick={() => newBoard()} theme={'primary'}>
-        New Board
-      </Button>
-    </section>
-  )
 }
 
 export const Header: React.FunctionComponent<Props> = ({ className, children }) => {

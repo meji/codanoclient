@@ -9,6 +9,7 @@ export const TextInput: React.FunctionComponent<Props> = ({
   onKeyDown,
   placeholder,
   className,
+  size,
   ...rest
 }) => {
   return (
@@ -19,6 +20,7 @@ export const TextInput: React.FunctionComponent<Props> = ({
         className={cx(className, 'text-input')}
         placeholder={placeholder}
         type={'text'}
+        size={size}
         {...rest}
       />
     </>

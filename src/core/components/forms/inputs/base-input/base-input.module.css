@@ -14,6 +14,9 @@
   border-radius: var(--rm);
   color: var(--text-form-color);
 }
+.input:not(.no-styles).s {
+  padding: var(--s);
+}
 .input:focus:not(.no-styles) {
   border: var(--border-form-focus);
   box-shadow: none;

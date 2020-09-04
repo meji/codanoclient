@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { ListRepositoryFactory } from '../../list/infrastructure/list-repository-factory'
 import { List as listModel } from '../../list/domain/list'
 import { CardList } from '../../list/ui/card-list'
@@ -9,6 +9,7 @@ import { TextInput } from '../../../core/components/forms/inputs/text-input/text
 const cx = bind(styles)
 
 export const Board: React.FC = () => {
+  const history = useHistory()
   const querystring = window.location.search
   const params = new URLSearchParams(querystring)
   const inBoard: any = params.get('id')
@@ -16,7 +17,11 @@ export const Board: React.FC = () => {
   const [lists, setLists] = useState([])
 
   useEffect(() => {
-    fetchLists()
+    if (!inBoard) {
+      history.push('/404.html')
+    } else {
+      fetchLists()
+    }
   }, [inBoard])
 
   const listRepository = ListRepositoryFactory.build()
