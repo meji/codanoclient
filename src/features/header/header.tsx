@@ -16,12 +16,9 @@ interface Props {
   onClick?(): void
 }
 
-export const Header: React.FunctionComponent<Props> = ({ className, children }) => {
-  const { toggleTheme } = useContext(ThemeContext)
-  const data = useContext(UserContext)
-  const user = data.user
-  const boards = data.boards
+const BoardsArea: React.FC<{ boards: Board[] }> = ({ boards }) => {
   const history = useHistory()
+  const newBoard = () => {}
   const goToBoard = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const boardName = e.target[e.target.selectedIndex].textContent
     if (e.target.selectedIndex > 0) {
@@ -30,32 +27,40 @@ export const Header: React.FunctionComponent<Props> = ({ className, children }) 
       history.push(`/boards/`)
     }
   }
+  return (
+    <section className={cx('boards-area')}>
+      <Select
+        onChange={e => goToBoard(e)}
+        size={'s'}
+        firstItem={'Boards'}
+        options={boards.map(board => {
+          return { text: board.name, value: board.id }
+        })}
+      />
+      <Button size={'s'} onClick={() => newBoard()} theme={'primary'}>
+        New Board
+      </Button>
+    </section>
+  )
+}
+
+export const Header: React.FunctionComponent<Props> = ({ className, children }) => {
+  const { toggleTheme } = useContext(ThemeContext)
+  const data = useContext(UserContext)
+  const user = data.user
+  const boards = data.boards
+
   const logout = () => {
     window.localStorage.clear()
     window.location.assign('/')
   }
-  const newBoard = () => {}
   return (
     <header className={cx('header', className)}>
       <Link className={cx('logo', 'caveat')} to={'/'}>
         Codalia
       </Link>
       {children}
-      {boards.length > 0 && (
-        <section className={cx('boards-area')}>
-          <Select
-            onChange={e => goToBoard(e)}
-            size={'s'}
-            firstItem={'Boards'}
-            options={boards.map(board => {
-              return { text: board.name, value: board.id }
-            })}
-          />
-          <Button size={'s'} onClick={() => newBoard()} theme={'primary'}>
-            New Board
-          </Button>
-        </section>
-      )}
+      {boards.length > 0 && <BoardsArea boards={data.boards} />}
       <section className={cx('buttons-area')}>
         {user.email && (
           <>
