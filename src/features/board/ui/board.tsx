@@ -15,7 +15,8 @@ export const Board: React.FC = () => {
   const params = new URLSearchParams(querystring)
   const inBoard: any = params.get('id')
   const { boardName } = useParams()
-  const [lists, setLists] = useState([])
+  const [newBoardValue, setNewBoarValue] = useState('')
+  const [lists, setLists] = useState([] as listModel[])
 
   useEffect(() => {
     if (!inBoard) {
@@ -28,7 +29,7 @@ export const Board: React.FC = () => {
   const listRepository = ListRepositoryFactory.build()
 
   async function fetchLists() {
-    const lists: any = await listRepository.findAll(inBoard)
+    const lists: listModel[] = await listRepository.findAll(inBoard)
     setLists(lists)
   }
   async function createList(list: string) {
@@ -39,26 +40,31 @@ export const Board: React.FC = () => {
   }
   const handleKeyDown = (e: any) => {
     if (e.key === 'Enter') {
+      setNewBoarValue('')
       createList(e.target.value)
     }
   }
   return (
     <Page size={'l'}>
       <h1>{boardName}</h1>
-      {lists.length && (
-        <ul className={cx('lists-container')}>
-          {lists.map((list: listModel) => {
+      <ul className={cx('lists-container')}>
+        {lists.length > 0 &&
+          lists.map((list: listModel) => {
             return (
               <li key={list.id}>
                 <CardList name={list.name} key={list.id} id={list.id} />
               </li>
             )
           })}
-          <li>
-            <TextInput placeholder={'Crear Nueva lista'} onKeyDown={e => handleKeyDown(e)} />
-          </li>
-        </ul>
-      )}
+        <li>
+          <TextInput
+            placeholder={'Crear Nueva lista'}
+            onKeyDown={e => handleKeyDown(e)}
+            onChange={e => setNewBoarValue(e.value)}
+            value={newBoardValue}
+          />
+        </li>
+      </ul>
     </Page>
   )
 }

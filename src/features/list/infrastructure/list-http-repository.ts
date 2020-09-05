@@ -11,7 +11,7 @@ export class ListHttpRepository implements ListRepository {
     private readonly listToListDtoMapper: ListToListDtoMapper
   ) {}
 
-  async findAll(inBoard: string): Promise<{}> {
+  async findAll(inBoard: string): Promise<List[]> {
     const response = await http.get<{ lists: listDto[] }>('/lists?inBoard=' + inBoard)
     return response.data.lists.map(listDto => this.listDtoToListMapper.map(listDto))
   }

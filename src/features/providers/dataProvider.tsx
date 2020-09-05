@@ -3,6 +3,7 @@ import { User } from '../user/domain/user'
 import { UserHttpService } from '../user/infrastructure/userHttpService'
 import { AuthManager } from '../auth/auth-manager'
 import { Board } from '../board/domain/board'
+import { BoardRepositoryFactory } from '../board/infrastructure/board-repository-factory'
 
 interface IsUserContext {
   boards: Board[]
@@ -19,6 +20,12 @@ export const DataProvider: React.FC = ({ children }) => {
   const [selectedBoard, setSelectedBoard] = useState('')
   const userService = new UserHttpService()
   const authManager = new AuthManager()
+  const boardsRepository = BoardRepositoryFactory.build()
+  useEffect(() => {
+    boardsRepository.findAll().then(response => {
+      setBoards(response)
+    })
+  }, [])
 
   useEffect(() => {
     if (authManager.authToken()) {

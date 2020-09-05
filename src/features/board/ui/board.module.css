@@ -1,7 +1,7 @@
 ul.lists-container {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 ul.lists-container > li,
 ul.board-list li {

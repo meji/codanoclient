@@ -45,22 +45,21 @@ export const CardList: React.FC<{
   name: string
 }> = ({ name, id, children }) => {
   const [hover, setHover] = useState(false)
+  const [cardsIn, setCardsIn] = useState([])
+  useEffect(() => {
+    fetchCards()
+  }, [])
   const cardRepository = CardRepositoryFactory.build()
-
-  const deleteCard = (card: CardD) => {
-    cardRepository.delete(card).then(() => fetchCards())
-  }
   async function fetchCards() {
     if (id) {
       const cards: any = await cardRepository.findAll(id)
       setCardsIn(cards)
     }
   }
+  const deleteCard = (card: CardD) => {
+    cardRepository.delete(card).then(() => fetchCards())
+  }
 
-  const [cardsIn, setCardsIn] = useState([])
-  useEffect(() => {
-    fetchCards()
-  }, [])
   return (
     <>
       <div
