@@ -8,13 +8,15 @@ interface IsUserContext {
   boards: Board[]
   user: User
   setBoards: Dispatch<SetStateAction<Board[]>>
+  setSelectedBoard: Dispatch<SetStateAction<string>>
 }
 
-export const UserContext = React.createContext({} as IsUserContext)
+export const dataContext = React.createContext({} as IsUserContext)
 
-export const UserProvider: React.FC = ({ children }) => {
+export const DataProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState({} as User)
   const [boards, setBoards] = useState<Board[]>([] as Board[])
+  const [selectedBoard, setSelectedBoard] = useState('')
   const userService = new UserHttpService()
   const authManager = new AuthManager()
 
@@ -31,6 +33,6 @@ export const UserProvider: React.FC = ({ children }) => {
         })
     }
   }, [])
-  const value = { user, boards, setBoards }
-  return <UserContext.Provider value={value}>{children}</UserContext.Provider>
+  const value = { user, boards, setBoards, selectedBoard, setSelectedBoard }
+  return <dataContext.Provider value={value}>{children}</dataContext.Provider>
 }

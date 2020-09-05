@@ -9,15 +9,17 @@ import { TextInput } from '../../core/components/forms/inputs/text-input/text-in
 import { Form } from '../../core/components/forms/forms/form'
 import { Icon } from '../../core/components/icon/icon'
 import { BoardRepositoryFactory } from '../board/infrastructure/board-repository-factory'
-import { UserContext } from '../providers/userProvider'
+import { dataContext } from '../providers/dataProvider'
 const cx = bind(styles)
 
 export const BoardsArea: React.FC<{ boards: Board[] }> = ({ boards }) => {
   const [newBoard, setNewBoard] = useState('')
+  // const [selectedBoard, setSelectedBoard] = useState(HTMLOptionElement)
   const [createBoardVisible, setCreateBoardVisible] = useState(false)
   const history = useHistory()
-  const data = useContext(UserContext)
-  const goToBoard = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const data = useContext(dataContext)
+
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const boardName = e.target[e.target.selectedIndex].textContent
     if (e.target.selectedIndex > 0) {
       history.push(`/boards/${boardName}?id=${e.target.value}`)
@@ -25,6 +27,7 @@ export const BoardsArea: React.FC<{ boards: Board[] }> = ({ boards }) => {
       history.push(`/boards/`)
     }
   }
+
   const boardRepositoryFactory = BoardRepositoryFactory.build()
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     boardRepositoryFactory.create(newBoard).then(response => {
@@ -38,7 +41,7 @@ export const BoardsArea: React.FC<{ boards: Board[] }> = ({ boards }) => {
   return (
     <section className={cx('boards-area')}>
       <Select
-        onChange={e => goToBoard(e)}
+        onChange={e => handleChange(e)}
         size={'s'}
         firstItem={'Boards'}
         options={boards.map(board => {

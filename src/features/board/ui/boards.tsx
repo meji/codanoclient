@@ -7,12 +7,12 @@ import styles from './board.module.css'
 import { Icon } from '../../../core/components/icon/icon'
 import { BoardRepositoryFactory } from '../infrastructure/board-repository-factory'
 import { Notice } from '../../../core/components/notice/notice'
-import { UserContext } from '../../providers/userProvider'
+import { dataContext } from '../../providers/dataProvider'
 const cx = bind(styles)
 
 export const Boards: React.FC = () => {
   const boardsRepository = BoardRepositoryFactory.build()
-  const data = useContext(UserContext)
+  const data = useContext(dataContext)
   useEffect(() => {
     boardsRepository.findAll().then(response => {
       data.setBoards(response)
@@ -42,6 +42,7 @@ export const Boards: React.FC = () => {
               <li key={board.id}>
                 <Icon
                   icon={'times-circle'}
+                  className={cx('delete')}
                   onClick={() => deleteBoard({ id: board.id, name: board.name, lists: [] })}
                 />
                 <Link

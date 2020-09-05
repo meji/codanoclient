@@ -4,7 +4,7 @@ import styles from './header.module.css'
 import { Button } from '../../core/components/button/button'
 import { ThemeContext } from '../providers/themeProvider'
 import { Board } from '../board/domain/board'
-import { UserContext } from '../providers/userProvider'
+import { dataContext } from '../providers/dataProvider'
 import { Link } from 'react-router-dom'
 import { BoardsArea } from './boardsArea'
 
@@ -18,7 +18,7 @@ interface Props {
 
 export const Header: React.FunctionComponent<Props> = ({ className, children }) => {
   const { toggleTheme } = useContext(ThemeContext)
-  const data = useContext(UserContext)
+  const data = useContext(dataContext)
   const user = data.user
   const [boards, setBoards] = useState(data.boards)
 

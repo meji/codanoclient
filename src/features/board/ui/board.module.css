@@ -19,6 +19,7 @@ ul.board-list {
 }
 ul.board-list li {
   padding: 0;
+  position: relative;
 }
 
 ul.board-list li a {
@@ -37,4 +38,20 @@ ul.board-list li a {
 ul.board-list li a:hover {
   background: var(--primary-color);
   color: var(--on-primary-color);
+}
+ul.board-list li .delete {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  opacity: 0;
+  transition: var(--transition-fast);
+  color: var(--on-total-color);
+}
+
+ul.board-list li:hover .delete {
+  cursor: pointer;
+  opacity: 0.9;
+}
+ul.board-list li .delete:hover {
+  opacity: 1;
 }

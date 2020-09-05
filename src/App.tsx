@@ -2,14 +2,14 @@ import React from 'react'
 import './App.css'
 import { Main } from './features/main/main'
 import { ThemeProvider } from './features/providers/themeProvider'
-import { UserProvider } from './features/providers/userProvider'
+import { DataProvider } from './features/providers/dataProvider'
 
 export const App: React.FC = () => {
   return (
     <ThemeProvider>
-      <UserProvider>
+      <DataProvider>
         <Main></Main>
-      </UserProvider>
+      </DataProvider>
     </ThemeProvider>
   )
 }
