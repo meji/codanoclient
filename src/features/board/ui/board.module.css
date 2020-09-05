@@ -1,31 +1,21 @@
-ul.lists-container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-ul.lists-container > li,
-ul.board-list li {
-  min-width: 300px;
-  margin-right: 20px;
-  border: var(--border-form);
-  padding: var(--m);
-  border-radius: var(--rm);
-}
-
 ul.board-list {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+}
+ul.board-list {
+  flex-wrap: wrap;
+  margin-left: calc((var(--m) * (-1)));
 }
 ul.board-list li {
-  padding: 0;
   position: relative;
+  padding: 0;
+  margin: var(--m);
 }
 
 ul.board-list li a {
   text-decoration: none;
   color: var(--text-body-color);
-  width: 100%;
   height: 100%;
   box-sizing: border-box;
   display: flex;
@@ -33,25 +23,45 @@ ul.board-list li a {
   align-items: center;
   padding: var(--m);
   font-weight: 600;
+  border: var(--border-form);
+  border-radius: var(--rm);
 }
 
 ul.board-list li a:hover {
   background: var(--primary-color);
   color: var(--on-primary-color);
 }
-ul.board-list li .delete {
+
+ul.lists-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  overflow-x: auto;
+  padding: var(--l) 0;
+}
+ul.lists-container li {
+  position: relative;
+  margin-right: 20px;
+}
+
+ul.board-list li .delete,
+ul.lists-container .delete {
   position: absolute;
-  top: -9px;
-  right: -9px;
+  top: 3px;
+  right: 3px;
   opacity: 0;
   transition: var(--transition-fast);
   color: var(--on-total-color);
+  z-index: 2;
 }
 
-ul.board-list li:hover .delete {
+ul.board-list li:hover .delete,
+ul.lists-container li:hover .delete {
   cursor: pointer;
-  opacity: 0.9;
+  opacity: 0.4;
 }
-ul.board-list li .delete:hover {
+ul.board-list li .delete:hover,
+ul.lists-container li .delete:hover {
   opacity: 1;
 }

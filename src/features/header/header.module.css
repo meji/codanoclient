@@ -27,6 +27,6 @@ section * {
   margin-left: var(--s);
 }
 
-.boards-area form {
+.create-board-form {
   display: flex;
 }

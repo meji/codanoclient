@@ -8,8 +8,11 @@ export const TextInput: React.FunctionComponent<Props> = ({
   onChange,
   onKeyDown,
   placeholder,
+  onBlur,
   className,
+  focus,
   size,
+  value,
   ...rest
 }) => {
   return (
@@ -21,6 +24,9 @@ export const TextInput: React.FunctionComponent<Props> = ({
         placeholder={placeholder}
         type={'text'}
         size={size}
+        onBlur={onBlur}
+        focus={focus}
+        value={value}
         {...rest}
       />
     </>

@@ -32,6 +32,8 @@ export interface Props {
   errMsg?: string
   callback?: (data: any) => void
   onChange?: (e: any) => void
+  onBlur?: (e: any) => void
+  focus?: boolean
 }
 
 export const BaseInput: React.FunctionComponent<Props> = ({
@@ -49,6 +51,8 @@ export const BaseInput: React.FunctionComponent<Props> = ({
   size,
   errMsg,
   onChange,
+  onBlur,
+  focus,
   callback
 }) => {
   const [data, setData] = useState({ value: value, err: errMsg })
@@ -68,14 +72,15 @@ export const BaseInput: React.FunctionComponent<Props> = ({
   }
 
   useEffect(() => {
-    setData({ ...data, err: errMsg })
-  }, [errMsg])
+    setData({ value: value, err: errMsg })
+  }, [errMsg, value])
 
   return (
     <>
       <label className={cx('label-container', type, className)}>
         <input
           className={size ? cx(className, 'input', size) : cx(className, 'input')}
+          autoFocus={focus}
           onChange={e => {
             setData({ ...data, value: e.target.value })
             onChange && onChange(e)
@@ -86,8 +91,9 @@ export const BaseInput: React.FunctionComponent<Props> = ({
           onBlur={e => {
             checkValidity(e.target)
             callback && callback(data)
+            onBlur && onBlur(e)
           }}
-          onKeyDown={onKeyDown}
+          onKeyDown={e => onKeyDown && onKeyDown(e)}
           multiple={multiple}
           required={required}
           name={name}

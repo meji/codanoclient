@@ -9,7 +9,7 @@ const cx = bind(styles)
 interface Props {
   className?: string
   onClick?(): void
-  theme?: 'primary' | 'secondary'
+  theme?: 'primary' | 'secondary' | 'transparent'
   size?: 's' | 'l'
   icon?: IconProp
   submit?: boolean

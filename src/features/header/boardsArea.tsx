@@ -10,24 +10,14 @@ import { Form } from '../../core/components/forms/forms/form'
 import { Icon } from '../../core/components/icon/icon'
 import { BoardRepositoryFactory } from '../board/infrastructure/board-repository-factory'
 import { dataContext } from '../providers/dataProvider'
+
 const cx = bind(styles)
 
-export const BoardsArea: React.FC<{ boards: Board[] }> = ({ boards }) => {
-  const [newBoard, setNewBoard] = useState('')
-  // const [selectedBoard, setSelectedBoard] = useState(HTMLOptionElement)
+export const CreateBoardForm: React.FC = () => {
   const [createBoardVisible, setCreateBoardVisible] = useState(false)
+  const [newBoard, setNewBoard] = useState('')
   const history = useHistory()
   const data = useContext(dataContext)
-
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const boardName = e.target[e.target.selectedIndex].textContent
-    if (e.target.selectedIndex > 0) {
-      history.push(`/boards/${boardName}?id=${e.target.value}`)
-    } else {
-      history.push(`/boards/`)
-    }
-  }
-
   const boardRepositoryFactory = BoardRepositoryFactory.build()
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     boardRepositoryFactory.create(newBoard).then(response => {
@@ -37,6 +27,42 @@ export const BoardsArea: React.FC<{ boards: Board[] }> = ({ boards }) => {
     setCreateBoardVisible(false)
 
     e.preventDefault()
+  }
+
+  return (
+    <>
+      {!createBoardVisible && (
+        <Button size={'s'} onClick={() => setCreateBoardVisible(true)} theme={'primary'}>
+          New Board
+        </Button>
+      )}
+      {createBoardVisible && (
+        <Form onSubmit={e => handleSubmit(e)} className={cx('create-board-form')}>
+          <TextInput
+            size={'s'}
+            placeholder={'Name of the board'}
+            name={'board'}
+            onChange={e => setNewBoard(e.target.value)}
+          />
+          <Button submit={true} theme={'primary'} size={'s'}>
+            Crear
+          </Button>
+          <Icon icon={'times-circle'} onClick={() => setCreateBoardVisible(false)} />
+        </Form>
+      )}
+    </>
+  )
+}
+
+export const BoardsArea: React.FC<{ boards: Board[] }> = ({ boards }) => {
+  const history = useHistory()
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const boardName = e.target[e.target.selectedIndex].textContent
+    if (e.target.selectedIndex > 0) {
+      history.push(`/boards/${boardName}?id=${e.target.value}`)
+    } else {
+      history.push(`/boards/`)
+    }
   }
   return (
     <section className={cx('boards-area')}>
@@ -48,23 +74,7 @@ export const BoardsArea: React.FC<{ boards: Board[] }> = ({ boards }) => {
           return { text: board.name, value: board.id }
         })}
       />
-      <Button size={'s'} onClick={() => setCreateBoardVisible(true)} theme={'primary'}>
-        New Board
-      </Button>
-      {createBoardVisible && (
-        <Form onSubmit={e => handleSubmit(e)}>
-          <TextInput
-            size={'s'}
-            placeholder={'Name of the board'}
-            name={'board'}
-            onChange={e => setNewBoard(e.target.value)}
-          />
-          <Button submit={true} theme={'primary'}>
-            Crear
-          </Button>
-          <Icon icon={'times-circle'} onClick={() => setCreateBoardVisible(false)} />
-        </Form>
-      )}
+      <CreateBoardForm />
     </section>
   )
 }

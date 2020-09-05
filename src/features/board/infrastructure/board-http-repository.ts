@@ -19,8 +19,11 @@ export class BoardHttpRepository implements BoardRepository {
     return this.boardDtoToBoardMapper.map(response.data.board)
   }
 
-  async update(board: Board): Promise<void> {
-    await http.post('/boards/update?id=' + board.id + '&&name=' + board.name)
+  async update(id: string, name: string): Promise<void> {
+    await http
+      .post('/boards/update?id=' + id + '&&name=' + name)
+      .then(() => console.log('Actualizado'))
+      .catch(e => console.log(e))
   }
 
   async delete(id: string): Promise<void> {

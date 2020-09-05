@@ -6,50 +6,29 @@ import styles from './card-list.module.css'
 import { bind } from '../../../utils/bind'
 import { CardRepositoryFactory } from '../../card/infrastructure/card-repository-factory'
 import { Icon } from '../../../core/components/icon/icon'
-import { Button } from '../../../core/components/button/button'
-const cx = bind(styles)
+import { AddNewCard } from './new-card'
+import { ListRepositoryFactory } from '../infrastructure/list-repository-factory'
+import { Editingtitle } from '../../../core/components/forms/editing-title/editingTitle'
 
-const AddNewCard: React.FC<{ visibleContainer: Boolean }> = ({ visibleContainer }) => {
-  const [visible, setVisible] = useState(false)
-  return (
-    <div
-      className={
-        visibleContainer === true
-          ? visible
-            ? cx('new-card-container', 'visible', 'with-buttons')
-            : cx('new-card-container', 'visible')
-          : cx('new-card-container')
-      }
-      onMouseOver={() => setVisible(true)}
-      onMouseLeave={() => setVisible(false)}
-    >
-      {visible && (
-        <>
-          <Button theme={'primary'} icon={'id-card'} />
-          <Button theme={'primary'} icon={'link'} />
-          <Button theme={'primary'} icon={'code'} />
-          <Button theme={'primary'} icon={'sticky-note'} />
-        </>
-      )}
-      {!visible && (
-        <Button className={cx('add-button')} theme={'primary'}>
-          Add Card
-        </Button>
-      )}
-    </div>
-  )
-}
+const cx = bind(styles)
 
 export const CardList: React.FC<{
   id?: Id
   name: string
-}> = ({ name, id, children }) => {
+  inBoard: string
+}> = ({ name, id, inBoard, children }) => {
   const [hover, setHover] = useState(false)
+  const [cardName, setCardName] = useState(name)
   const [cardsIn, setCardsIn] = useState([])
   useEffect(() => {
     fetchCards()
   }, [])
+  useEffect(() => {
+    setCardName(name)
+  }, [name])
   const cardRepository = CardRepositoryFactory.build()
+  const listRepository = ListRepositoryFactory.build()
+
   async function fetchCards() {
     if (id) {
       const cards: any = await cardRepository.findAll(id)
@@ -60,14 +39,24 @@ export const CardList: React.FC<{
     cardRepository.delete(card).then(() => fetchCards())
   }
 
+  const handleKeydown = (e: any) => {
+    if (e.key === 'Enter') {
+      listRepository.update({ id: id, name: e.target.value, cards: cardsIn, inBoard: inBoard })
+      setCardName(e.target.value)
+    }
+  }
   return (
     <>
       <div
-        className={cx('card-list-conainer')}
-        onMouseOver={() => setHover(true)}
+        className={cx('card-list-container')}
+        onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
-        <p>{name}</p>
+        <p className={cx('list-title')}>
+          {' '}
+          <Editingtitle handleKeydown={e => handleKeydown(e)} value={cardName} size={'s'} />
+        </p>
+
         <ul className={cx('cards')}>
           {cardsIn &&
             cardsIn.map((card: CardD) => {

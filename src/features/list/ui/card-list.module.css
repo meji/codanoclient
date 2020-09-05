@@ -1,3 +1,11 @@
+.card-list-container {
+  width: 340px;
+  border: var(--border-form);
+  padding: var(--m);
+  border-radius: var(--rm);
+  position: relative;
+}
+
 ul.cards > li {
   margin-bottom: var(--m);
   position: relative;
@@ -16,13 +24,13 @@ ul.cards > li:hover > svg {
   opacity: 1;
 }
 
-.card-list-conainer .new-card-container {
+.new-card-container {
   opacity: 0;
   transition: var(--transition-fast);
   width: 100%;
 }
 
-.card-list-conainer .new-card-container.visible {
+.new-card-container.visible {
   opacity: 1;
   transition: var(--transition-fast);
 }
@@ -30,11 +38,23 @@ ul.cards > li:hover > svg {
 .add-button {
   width: 100%;
 }
-.card-list-conainer .new-card-container.visible.with-buttons {
+.new-card-container.with-buttons {
   display: flex;
   justify-content: space-between;
 }
 
-.card-list-conainer .new-card-container.visible.with-buttons .button {
+.new-card-container.with-buttons .button {
   border: none;
+}
+
+.new-card-container .add-button {
+  font-weight: bold;
+  margin-bottom: 0;
+  color: var(--primary-color);
+  height: 31px;
+}
+.list-title {
+  font-weight: 600;
+  margin-bottom: var(--l);
+  text-align: center;
 }

@@ -24,7 +24,6 @@ export const Header: React.FunctionComponent<Props> = ({ className, children }) 
 
   useEffect(() => {
     setBoards(data.boards)
-    console.log(data.boards)
   }, [data])
 
   const logout = () => {
