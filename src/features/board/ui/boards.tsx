@@ -8,6 +8,7 @@ import { Icon } from '../../../core/components/icon/icon'
 import { BoardRepositoryFactory } from '../infrastructure/board-repository-factory'
 import { Notice } from '../../../core/components/notice/notice'
 import { dataContext } from '../../providers/dataProvider'
+import { CreateBoardForm } from '../../header/boardsArea'
 const cx = bind(styles)
 
 export const Boards: React.FC = () => {
@@ -23,7 +24,7 @@ export const Boards: React.FC = () => {
   const [notice, setNotice] = useState('')
   const boardRepositoryFactory = BoardRepositoryFactory.build()
   const deleteBoard = (board: boardModel) => {
-    if (window.confirm('Are you sure you want to delete the board' + board.name)) {
+    if (window.confirm('Board ' + board.name + ' will be deleted')) {
       boardRepositoryFactory.delete(board.id).then(() => setNotice('Board deleted'))
     }
     boardsRepository.findAll().then(response => {
@@ -59,6 +60,7 @@ export const Boards: React.FC = () => {
           })}
         </ul>
       )}
+      <CreateBoardForm />
     </Page>
   )
 }
