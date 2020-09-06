@@ -48,9 +48,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
 
   const close = (data: Card) => {
     setUnfold(false)
-    if (onClose) {
-      onClose(data)
-    }
+    onClose && onClose(data)
   }
   const initialText = data.description
     ? data.description

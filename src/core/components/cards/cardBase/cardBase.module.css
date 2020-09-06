@@ -36,6 +36,7 @@
   align-items: center;
   flex-direction: column;
   z-index: 10;
+  transition: 0s;
 }
 
 .card.unfold .inner-container {
@@ -45,6 +46,7 @@
   padding: var(--m);
   border-radius: var(--rl);
   max-height: 80vh;
+  transition: 0s;
 }
 
 .card.unfold .inner-container .content {

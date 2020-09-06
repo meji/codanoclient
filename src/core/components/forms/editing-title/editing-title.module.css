@@ -5,11 +5,11 @@
   flex-wrap: nowrap;
 }
 
-.container p {
+.container .title {
   margin: 0 !important;
 }
 
-.container p:hover {
+.container .title:hover {
   color: var(--primary-color);
   cursor: pointer;
 }

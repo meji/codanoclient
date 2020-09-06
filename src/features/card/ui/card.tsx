@@ -19,19 +19,9 @@ export const Card: React.FC<{
       .newImg(card.imageFile, card.id)
       .then(response => {
         console.log('trayendo foto', response)
-        updateCard({ ...card, img: response })
+        saveCard({ ...card, img: response })
       })
       .catch(error => console.log('error al traer imagen', error))
-  }
-  const updateCard = (card: CardData) => {
-    console.log('card a actualizar', card)
-    cardRepositoryFactory
-      .update(card)
-      .then(response => {
-        setData(response)
-        console.log('Actualizado en base', card)
-      })
-      .catch(e => console.log('error actualizando', e))
   }
 
   useEffect(() => {
@@ -50,7 +40,7 @@ export const Card: React.FC<{
       onClose={card => saveCard(card)}
       onChange={card => {
         card.imageFile && savePicture(card)
-        updateCard(card)
+        saveCard(card)
       }}
     />
   )

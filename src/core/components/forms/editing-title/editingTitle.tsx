@@ -21,7 +21,11 @@ export const Editingtitle: React.FC<{
   }, [value])
   return (
     <span className={cx(className, 'container')}>
-      {!isEditingTitle && <span onClick={() => setIsEditingTitle(true)}>{value}</span>}
+      {!isEditingTitle && (
+        <span className={cx('title')} onClick={() => setIsEditingTitle(true)}>
+          {value}
+        </span>
+      )}
       {isEditingTitle && (
         <TextInput
           size={size}
