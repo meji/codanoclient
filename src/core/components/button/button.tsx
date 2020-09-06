@@ -28,7 +28,7 @@ export const Button: React.FunctionComponent<Props> = ({
     <button
       type={submit ? 'submit' : 'button'}
       onClick={onClick}
-      className={cx('button', theme, size, className)}
+      className={cx('button', theme, size, className, icon && 'with-icon')}
     >
       {icon && <Icon icon={icon} className={cx('button-icon')} />}
       {children}

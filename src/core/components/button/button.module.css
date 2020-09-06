@@ -23,6 +23,7 @@
 .button .button-icon {
   color: var(--button-text);
   fill: var(--button-text);
+  margin-right: var(--s);
 }
 .primary,
 .secondary:hover {

@@ -1,6 +1,6 @@
 header.header {
   display: flex;
-  padding: var(--s) var(--l);
+  padding: var(--s) 0;
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--l);
@@ -29,4 +29,8 @@ section * {
 
 .create-board-form {
   display: flex;
+}
+
+.logo-area * {
+  margin: 0;
 }

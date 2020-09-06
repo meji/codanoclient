@@ -1,13 +1,16 @@
 .card-list-container {
-  width: 340px;
-  border: var(--border-form);
-  padding: var(--m);
+  width: 300px;
+  padding: calc(var(--l) - var(--s));
   border-radius: var(--rm);
   position: relative;
 }
 
+.card-list-container:hover {
+  box-shadow: var(--box-shadow);
+}
+
 ul.cards > li {
-  margin-bottom: var(--m);
+  margin-bottom: var(--s);
   position: relative;
 }
 ul.cards > li > svg {
@@ -55,6 +58,5 @@ ul.cards > li:hover > svg {
 }
 .list-title {
   font-weight: 600;
-  margin-bottom: var(--l);
-  text-align: center;
+  margin-bottom: var(--m);
 }

@@ -2,8 +2,6 @@ ul.board-list {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-}
-ul.board-list {
   flex-wrap: wrap;
   margin-left: calc((var(--m) * (-1)));
 }
@@ -38,9 +36,10 @@ ul.lists-container {
   justify-content: flex-start;
   width: 100%;
   overflow-x: auto;
-  padding: var(--l) 0;
+  padding: var(--s) var(--l);
+  margin-left: calc((var(--l) * (-1)));
 }
-ul.lists-container li {
+ul.lists-container > li {
   position: relative;
   margin-right: 20px;
 }

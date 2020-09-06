@@ -79,7 +79,7 @@ export const AddNewCard: React.FC<{
       {visibleNameInputForm && (
         <Editingtitle
           handleKeydown={e => createNewCard(e)}
-          placeHolder={'Title of the card'}
+          placeHolder={'Title of the new card'}
           value={''}
           inputVisible={true}
           size={'s'}

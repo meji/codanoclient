@@ -1,10 +1,10 @@
 .card {
-  padding: calc(var(--l) / 2) var(--m);
-  border: var(--border-form);
+  padding: calc(var(--l) / 4) var(--s);
   display: block;
   background: var(--form-background-color);
   border-radius: var(--rm);
   color: var(--text-body-color);
+  margin-left: calc(var(--s) * -1);
 }
 .card:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

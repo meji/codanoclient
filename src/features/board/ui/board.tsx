@@ -92,7 +92,7 @@ export const Board: React.FC = () => {
           })}
         <li>
           <TextInput
-            placeholder={'Create a new list'}
+            placeholder={'+ Add list'}
             onKeyDown={e => handleKeyDown(e)}
             onChange={e => setNewListValue(e.value)}
             value={newListValue}

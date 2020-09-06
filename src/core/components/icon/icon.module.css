@@ -2,3 +2,8 @@
   fill: var(--primary-color);
   color: var(--primary-color);
 }
+.icon.linkable:hover {
+  cursor: pointer;
+  fill: var(--secondary-color);
+  color: var(--secondary-color);
+}

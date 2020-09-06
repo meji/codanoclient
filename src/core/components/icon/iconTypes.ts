@@ -20,7 +20,12 @@ import {
   faAngleUp,
   faStickyNote,
   faTimes,
-  faTimesCircle
+  faTimesCircle,
+  faUser,
+  faPencilAlt,
+  faSignOutAlt,
+  faMoon,
+  faSun
 } from '@fortawesome/free-solid-svg-icons'
 export type { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core'
 library.add(
@@ -44,5 +49,10 @@ library.add(
   faAngleUp,
   faStickyNote,
   faTimes,
-  faTimesCircle
+  faTimesCircle,
+  faUser,
+  faPencilAlt,
+  faSignOutAlt,
+  faMoon,
+  faSun
 )
