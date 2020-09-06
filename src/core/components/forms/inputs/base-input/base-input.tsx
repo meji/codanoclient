@@ -75,6 +75,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
 
   useEffect(() => {
     setData({ value: value, err: errMsg })
+    callback && callback(data)
   }, [errMsg, value])
 
   return (
@@ -83,7 +84,9 @@ export const BaseInput: React.FunctionComponent<Props> = ({
         <input
           className={size ? cx(className, 'input', size) : cx(className, 'input')}
           autoFocus={focus}
-          onMouseLeave={() => onMouseLeave && onMouseLeave()}
+          onMouseLeave={() => {
+            onMouseLeave && onMouseLeave()
+          }}
           onChange={e => {
             setData({ ...data, value: e.target.value })
             onChange && onChange(e)

@@ -8,5 +8,6 @@ export interface CardRepository {
   update(card: Card): Promise<Card>
   delete(card: Card): Promise<void>
   newImg(imageFile: any, id?: Id): Promise<string>
+  deleteImg(id: Id): Promise<{}>
   // img(name: String): Promise<void>
 }

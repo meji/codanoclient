@@ -7,6 +7,7 @@ import { ImgInput } from '../../forms/inputs/img-input/img-input'
 import { Editingtitle } from '../../forms/editing-title/editingTitle'
 import { Card } from '../../../../features/card/domain/card'
 import { useOutsideClick } from '../../../../features/hooks/use-outside-click'
+import { Button } from '../../button/button'
 
 const cx = bind(styles)
 
@@ -15,19 +16,21 @@ interface Props {
   onBlur?: () => void
   onChange?: (card: Card) => void
   onClose?: (card: Card) => void
-  callback?: (data: any) => void
+  callBack?: (data: any) => void
+  saveImg?: (data: Card) => void
 }
 
 export const CardBase: React.FunctionComponent<Props> = ({
   card,
-  callback,
+  callBack,
   onBlur,
-  onChange,
   onClose,
-  children
+  children,
+  saveImg
 }) => {
   const [unfold, setUnfold] = useState(false)
   const [data, setData] = useState<Card>(card)
+  const [key, setKey] = useState(0)
   const iconType =
     data.type === 'Image'
       ? 'id-card'
@@ -38,9 +41,6 @@ export const CardBase: React.FunctionComponent<Props> = ({
       : data.type === 'Snippet'
       ? 'code'
       : 'sticky-note'
-  useEffect(() => {
-    callback && callback(data)
-  }, [data])
 
   useEffect(() => {
     setData(card)
@@ -114,15 +114,27 @@ export const CardBase: React.FunctionComponent<Props> = ({
             }}
           />
           {!data.img && (
-            <ImgInput
-              // className={cx('no-styles')}
-              onChange={e => {
-                console.log('se manda:', e.target.files)
-                onChange && onChange({ ...data, imageFile: e.target.files })
-                setData({ ...data, imageFile: '' })
-              }}
-              size={'s'}
-            />
+            <>
+              <ImgInput
+                // className={cx('no-styles')}
+                onBlur={e => {
+                  setData({ ...data, imageFile: e.target.files })
+                }}
+                size={'s'}
+                key={key}
+              />
+              <Button
+                theme={'primary'}
+                onClick={() => {
+                  setKey(Math.floor(Math.random() * 1000))
+                  saveImg && saveImg(data)
+                  console.log(data.imageFile)
+                  setData({ ...data, imageFile: '' })
+                }}
+              >
+                Save Image
+              </Button>
+            </>
           )}
           {data.img && (
             <div className={cx('img-container')}>
@@ -135,8 +147,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
                 icon={'times-circle'}
                 className={cx('delete')}
                 onClick={() => {
-                  setData({ ...data, img: '' })
-                  onChange && onChange({ ...card, img: '', imageFile: '' })
+                  callBack && callBack(data)
                 }}
               />
             </div>

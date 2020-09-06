@@ -11,18 +11,20 @@ export const ImgInput: React.FunctionComponent<{
   size?: 's' | 'l'
   onBlur?: (e: any) => void
   onChange?: (e: any) => void
-}> = ({ onChange, multiple = false, className, size, onBlur }) => {
+  callBack?: (e: any) => void
+}> = ({ onChange, multiple = false, className, size, onBlur, callBack }) => {
   const endSlotIcon = <Icon icon={multiple ? 'images' : 'image'} size={'sm'} />
   return (
     <>
       <BaseInput
-        onChange={onChange}
+        onChange={() => onChange}
         onBlur={onBlur}
         className={cx(className)}
         type={'file'}
         multiple={multiple}
         endSlot={endSlotIcon}
         size={size}
+        callback={e => callBack && callBack(e)}
       />
     </>
   )

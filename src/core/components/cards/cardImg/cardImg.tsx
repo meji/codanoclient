@@ -7,15 +7,13 @@ export const CardImg: React.FC<{
   onBlur?: () => void
   onChange?: () => void
   onClose?: () => void
-  callback?: (data: any) => void
-}> = ({ card, onBlur, onChange, onClose, callback, children }) => {
+}> = ({ card, onBlur, onChange, onClose, children }) => {
   return (
     <CardBase
       card={{ ...card, type: 'Image' }}
       onBlur={onBlur}
       onChange={onChange}
       onClose={onClose}
-      callback={(data: any) => callback && callback(data)}
     >
       {children}
     </CardBase>

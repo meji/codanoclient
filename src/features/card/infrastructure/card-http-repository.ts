@@ -42,8 +42,11 @@ export class CardHttpRepository implements CardRepository {
     return response.data.path
   }
 
-  // async img(name: string): Promise<any> {
-  //   const response = await http.get<any>(`/cards/img/${name})`)
-  //   return response.data
-  // }
+  async img(name: string): Promise<any> {
+    const response = await http.get<any>(`/cards/img/${name})`)
+    return response.data
+  }
+  async deleteImg(id: Id): Promise<{}> {
+    return await http.post(`/cards/deleteImg?id=${id}`)
+  }
 }

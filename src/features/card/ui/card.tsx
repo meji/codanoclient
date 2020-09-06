@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Card as CardData } from '../domain/card'
 import { CardRepositoryFactory } from '../infrastructure/card-repository-factory'
 import { CardBase } from '../../../core/components/cards/cardBase/cardBase'
+import { Id } from '../../../core/components/cards/cardBase/id'
 
 export const Card: React.FC<{
   card: CardData
@@ -19,11 +20,23 @@ export const Card: React.FC<{
       .newImg(card.imageFile, card.id)
       .then(response => {
         console.log('trayendo foto', response)
-        saveCard({ ...card, img: response })
+        updateCard({ ...card, img: response })
       })
       .catch(error => console.log('error al traer imagen', error))
   }
-
+  const updateCard = (card: CardData) => {
+    console.log('card a actualizar', card)
+    cardRepositoryFactory
+      .update(card)
+      .then(response => {
+        setData(response)
+        console.log('Actualizado en base', card)
+      })
+      .catch(e => console.log('error actualizando', e))
+  }
+  const deleteImg = (id: Id) => {
+    cardRepositoryFactory.deleteImg(id)
+  }
   useEffect(() => {
     if (cardData.name && cardData.id) {
       cardRepositoryFactory.update(cardData)
@@ -38,10 +51,8 @@ export const Card: React.FC<{
     <CardBase
       card={card}
       onClose={card => saveCard(card)}
-      onChange={card => {
-        card.imageFile && savePicture(card)
-        saveCard(card)
-      }}
+      saveImg={card => savePicture(card)}
+      callBack={card => deleteImg(card.id)}
     />
   )
 }
