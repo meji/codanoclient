@@ -6,7 +6,7 @@ import { MyMdEditor } from '../../forms/md-editor/myMdEditor'
 import { ImgInput } from '../../forms/inputs/img-input/img-input'
 import { Editingtitle } from '../../forms/editing-title/editingTitle'
 import { Card } from '../../../../features/card/domain/card'
-import { useOutsideClick } from '../../../utils/use-outside-click'
+import { useOutsideClick } from '../../../../features/hooks/use-outside-click'
 
 const cx = bind(styles)
 
@@ -83,7 +83,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
       onChange={() => onChange}
     >
       <div className={cx('inner-container')} ref={divRef}>
-        <div className={cx('title-container')} onBlur={onBlur}>
+        <section className={cx('title-container')} onBlur={onBlur}>
           <Icon icon={iconType} className={cx('icon')} />
           {unfold && (
             <Editingtitle
@@ -106,7 +106,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
               className={cx('folder')}
             />
           )}
-        </div>
+        </section>
         <div className={unfold ? cx('content', 'unfold') : cx('content')}>
           <MyMdEditor
             card={card}
