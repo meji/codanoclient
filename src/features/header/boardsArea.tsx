@@ -5,28 +5,23 @@ import { Select } from '../../core/components/forms/select/select'
 import { Button } from '../../core/components/button/button'
 import { bind } from '../../utils/bind'
 import styles from './header.module.css'
-import { TextInput } from '../../core/components/forms/inputs/text-input/text-input'
-import { Form } from '../../core/components/forms/forms/form'
-import { Icon } from '../../core/components/icon/icon'
 import { BoardRepositoryFactory } from '../board/infrastructure/board-repository-factory'
 import { dataContext } from '../providers/dataProvider'
+import { Editingtitle } from '../../core/components/forms/editing-title/editingTitle'
 
 const cx = bind(styles)
 
 export const CreateBoardForm: React.FC = () => {
   const [createBoardVisible, setCreateBoardVisible] = useState(false)
-  const [newBoard, setNewBoard] = useState('')
   const history = useHistory()
   const data = useContext(dataContext)
   const boardRepositoryFactory = BoardRepositoryFactory.build()
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    boardRepositoryFactory.create(newBoard).then(response => {
+  const handleSubmit = (e: any) => {
+    boardRepositoryFactory.create(e.target.value).then(response => {
       boardRepositoryFactory.findAll().then(response => data.setBoards(response))
       history.push(`/boards/${response.name}?id=${response.id}`)
     })
     setCreateBoardVisible(false)
-
-    e.preventDefault()
   }
 
   return (
@@ -37,18 +32,13 @@ export const CreateBoardForm: React.FC = () => {
         </Button>
       )}
       {createBoardVisible && (
-        <Form onSubmit={e => handleSubmit(e)} className={cx('create-board-form')}>
-          <TextInput
-            size={'s'}
-            placeholder={'Name of the board'}
-            name={'board'}
-            onChange={e => setNewBoard(e.target.value)}
-          />
-          <Button submit={true} theme={'primary'} size={'s'}>
-            Crear
-          </Button>
-          <Icon icon={'times-circle'} onClick={() => setCreateBoardVisible(false)} />
-        </Form>
+        <Editingtitle
+          size={'s'}
+          inputVisible={true}
+          handleKeydown={e => handleSubmit(e)}
+          placeHolder={'Name of the board'}
+          value={''}
+        />
       )}
     </>
   )
