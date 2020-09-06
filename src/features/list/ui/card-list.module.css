@@ -2,15 +2,17 @@
   width: 300px;
   padding: calc(var(--l) - var(--s));
   border-radius: var(--rm);
+  border: var(--border-box);
   position: relative;
 }
 
 .card-list-container:hover {
   box-shadow: var(--box-shadow);
+  background: var(--form-background-color);
 }
 
 ul.cards > li {
-  margin-bottom: var(--s);
+  margin-bottom: var(--m);
   position: relative;
 }
 ul.cards > li > svg {
@@ -31,6 +33,7 @@ ul.cards > li:hover > svg {
   opacity: 0;
   transition: var(--transition-fast);
   width: 100%;
+  margin-top: var(--m);
 }
 
 .new-card-container.visible {

@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.container p {
+  margin: 0;
+}
+
+.container p:hover {
+  color: var(--primary-color);
+  cursor: pointer;
+}

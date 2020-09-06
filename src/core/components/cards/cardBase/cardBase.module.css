@@ -4,7 +4,6 @@
   background: var(--form-background-color);
   border-radius: var(--rm);
   color: var(--text-body-color);
-  margin-left: calc(var(--s) * -1);
 }
 .card:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -72,8 +71,8 @@
   border: none;
   background: transparent;
   vertical-align: text-top;
-  line-height: 1;
   width: calc(100% - 42px);
+  margin-bottom: 0;
 }
 
 .card input {
@@ -91,6 +90,9 @@
 
 .card.fold:hover .title {
   color: var(--on-primary-color);
+}
+.card.fold .icon {
+  color: var(--icon-color);
 }
 .card.fold:hover svg,
 .card.fold:hover .icon {

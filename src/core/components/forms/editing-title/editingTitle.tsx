@@ -11,15 +11,17 @@ export const Editingtitle: React.FC<{
   size?: 's' | 'l'
   inputVisible?: boolean
   placeHolder?: string
-}> = ({ handleKeydown, value, size, inputVisible, placeHolder }) => {
+  className?: string
+  onBlur?: () => void
+}> = ({ handleKeydown, value, size, inputVisible, placeHolder, className, onBlur }) => {
   const [editingTitle, setEditingTitle] = useState(inputVisible)
   const [nameIn, setNameIn] = useState(value)
   useEffect(() => {
     setNameIn(value)
   }, [value])
   return (
-    <>
-      {!editingTitle && <span onDoubleClick={() => setEditingTitle(true)}>{value}</span>}
+    <span className={cx(className, 'container')}>
+      {!editingTitle && <p onClick={() => setEditingTitle(true)}>{value}</p>}
       {editingTitle && (
         <TextInput
           size={size}
@@ -33,12 +35,13 @@ export const Editingtitle: React.FC<{
           }}
           onBlur={() => {
             setEditingTitle(false)
+            onBlur && onBlur()
           }}
           placeholder={placeHolder ? placeHolder : nameIn}
           value={nameIn}
           focus={editingTitle && true}
         />
       )}
-    </>
+    </span>
   )
 }

@@ -83,6 +83,9 @@ export const AddNewCard: React.FC<{
           value={''}
           inputVisible={true}
           size={'s'}
+          onBlur={() => {
+            setVisibleNameInputForm(false)
+          }}
         />
       )}
     </div>

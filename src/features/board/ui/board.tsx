@@ -5,7 +5,6 @@ import { List, List as listModel } from '../../list/domain/list'
 import { CardList } from '../../list/ui/card-list'
 import { bind } from '../../../utils/bind'
 import styles from './board.module.css'
-import { TextInput } from '../../../core/components/forms/inputs/text-input/text-input'
 import { Page } from '../../../core/components/page/page'
 import { Icon } from '../../../core/components/icon/icon'
 import { Notice } from '../../../core/components/notice/notice'
@@ -21,7 +20,6 @@ export const Board: React.FC = () => {
   const inBoard: any = params.get('id')
   const { boardName } = useParams()
   const [boardTitle, setBoardTitle] = useState(boardName)
-  const [newListValue, setNewListValue] = useState('')
   const [lists, setLists] = useState([] as listModel[])
   const [notice, setNotice] = useState('')
 
@@ -50,9 +48,8 @@ export const Board: React.FC = () => {
       await listRepository.create(newList).then(() => fetchLists())
     }
   }
-  const handleKeyDown = (e: any) => {
+  const handleKeyDownNewList = (e: any) => {
     if (e.key === 'Enter') {
-      setNewListValue('')
       createList(e.target.value)
     }
   }
@@ -91,11 +88,10 @@ export const Board: React.FC = () => {
             )
           })}
         <li>
-          <TextInput
-            placeholder={'+ Add list'}
-            onKeyDown={e => handleKeyDown(e)}
-            onChange={e => setNewListValue(e.value)}
-            value={newListValue}
+          <Editingtitle
+            className={cx('new-list')}
+            handleKeydown={e => handleKeyDownNewList(e)}
+            value={'+ Add list'}
           />
         </li>
       </ul>

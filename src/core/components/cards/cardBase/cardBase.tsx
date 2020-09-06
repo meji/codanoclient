@@ -1,35 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { Id } from './id'
-import { cardType, imgType, linkType } from './cardTypes'
 import { bind } from '../../../../utils/bind'
 import styles from './cardBase.module.css'
 import { Icon } from '../../icon/icon'
-import { UrlInput } from '../../forms/inputs/url-input/url-input'
-import { TextInput } from '../../forms/inputs/text-input/text-input'
 import { Mdeditor } from '../../forms/md-editor/mdeditor'
 import { ImgInput } from '../../forms/inputs/img-input/img-input'
+import { Editingtitle } from '../../forms/editing-title/editingTitle'
+import { Card } from '../../../../features/card/domain/card'
 const cx = bind(styles)
 
 interface Props {
-  id?: Id
-  type: cardType
-  description?: string
-  name?: string
-  img?: string
-  imageFile?: any
+  card: Card
   onBlur?: () => void
   onChange?: () => void
-  onClose?: () => void
+  onClose?: (card: Card) => void
   callback?: (data: any) => void
 }
 
 export const CardBase: React.FunctionComponent<Props> = ({
-  id,
-  type,
-  name,
-  description,
-  img,
-  imageFile,
+  card,
   callback,
   onBlur,
   onChange,
@@ -37,70 +25,55 @@ export const CardBase: React.FunctionComponent<Props> = ({
   children
 }) => {
   const [unfold, setUnfold] = useState(false)
-  const [editingTitle, setEditingTitle] = useState(false)
-  const [data, setData] = useState({
-    id: id,
-    name: name,
-    description: description,
-    img: img,
-    imageFile: imageFile,
-    extra: '',
-    err: ''
-  })
+  const [data, setData] = useState<Card>(card)
+  const iconType =
+    data.type === 'Image'
+      ? 'id-card'
+      : data.type === 'Link'
+      ? 'link'
+      : data.type === 'Note'
+      ? 'sticky-note'
+      : data.type === 'Snippet'
+      ? 'code'
+      : 'sticky-note'
   useEffect(() => {
     callback && callback(data)
   }, [data])
 
-  const fold = () => {
+  const close = () => {
     setUnfold(false)
     if (onClose) {
-      onClose()
+      onClose(data)
     }
   }
 
-  const titleContainer = editingTitle ? (
-    type === linkType ? (
-      <UrlInput
-        onChange={e => {
-          setData({ ...data, name: e.target.value, err: e.target.validationMessage })
-        }}
-        className={cx('no-styles')}
-        required={true}
-        placeholder={'Escribe la Url'}
-      />
-    ) : (
-      <TextInput
-        className={cx('no-styles')}
-        onChange={e => {
-          setData({ ...data, name: e.target.value, err: e.target.validationMessage })
-        }}
-        placeholder={'Escribe el título'}
-      />
-    )
-  ) : (
-    <span className={cx('title')} onDoubleClick={() => setEditingTitle(true)}>
-      {data.name}
-      {data.err && <p className={cx('error')}>{data.err}</p>}
-    </span>
-  )
-
   return (
     <div
-      data-id={id}
+      data-id={data.id}
       className={unfold ? cx('card', 'unfold') : cx('card', 'fold')}
       onClick={() => !unfold && setUnfold(true)}
-      onBlur={() => setEditingTitle(false)}
       onChange={onChange}
     >
       <div className={cx('inner-container')}>
         <div className={cx('title-container')} onBlur={onBlur}>
-          <Icon icon={type.icon} className={cx('icon')} />
-          {titleContainer}
+          <Icon icon={iconType} className={cx('icon')} />
+          {unfold && (
+            <Editingtitle
+              handleKeydown={e => {
+                setData({ ...data, name: e.target.value })
+              }}
+              value={data.name ? data.name : 'Card Title'}
+              className={cx('title')}
+              size={'s'}
+            />
+          )}
+          {!unfold && <p className={cx('title')}>{data.name}</p>}
+
           {unfold && (
             <Icon
               icon={'times'}
               onClick={() => {
-                fold()
+                close()
               }}
               className={cx('folder')}
             />
@@ -113,15 +86,16 @@ export const CardBase: React.FunctionComponent<Props> = ({
               setData({ ...data, description: content.text })
             }}
           />
-          {type === imgType && !data.img && (
+          {!data.img && (
             <ImgInput
               // className={cx('no-styles')}
               onChange={(e: any) => {
                 setData({ ...data, imageFile: e.target.files })
               }}
+              size={'s'}
             />
           )}
-          {type === imgType && data.img && (
+          {data.img && (
             <div className="img-container">
               <img
                 src={process.env.REACT_APP_BACK_URL + 'cards/img/' + data.img}

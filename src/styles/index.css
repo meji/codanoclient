@@ -10,6 +10,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: var(--background-color);
   font-size: var(--base-font-size);
+  line-height: var(--line-height);
 }
 #wrapper {
   background: var(--background-color);
@@ -20,6 +21,7 @@ body {
 }
 p {
   color: var(--text-body-color);
+  line-height: var(--line-height-l);
 }
 a,
 .link {
@@ -33,4 +35,8 @@ a:hover,
 }
 *:focus {
   outline: transparent;
+}
+
+* {
+  transition: var(--transition-ultra-fast);
 }

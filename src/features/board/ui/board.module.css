@@ -23,6 +23,7 @@ ul.board-list li a {
   font-weight: 600;
   border: var(--border-form);
   border-radius: var(--rm);
+  background: var(--form-background-color);
 }
 
 ul.board-list li a:hover {
@@ -63,4 +64,13 @@ ul.lists-container li:hover .delete {
 ul.board-list li .delete:hover,
 ul.lists-container li .delete:hover {
   opacity: 1;
+}
+
+.new-list {
+  margin-top: var(--l);
+}
+.new-list p {
+  display: block;
+  min-width: 150px;
+  font-weight: bold;
 }

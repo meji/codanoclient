@@ -18,7 +18,7 @@
   padding: var(--s);
 }
 .input:focus:not(.no-styles) {
-  border: var(--border-form-focus);
+  border: var(--border-form-focus) !important;
   box-shadow: none;
   outline: none;
 }

@@ -5,11 +5,11 @@
   --base-font-size: 14px;
   --font-size-small: 0.8rem;
   --font-size-big: 2rem;
-  --line-height: 1.6;
+  --line-height: 1.4;
 
   /*Padding*/
   --base-p: 0.25rem;
-  --s: calc(var(--base-p) * 2);
+  --s: calc(var(--base-p) * 2.5);
   --m: calc(var(--base-p) * 4);
   --l: calc(var(--base-p) * 8);
 
@@ -30,6 +30,7 @@
   --transition: 0.5s;
   --transition-slow: 1s;
   --transition-fast: 0.25s;
+  --transition-ultra-fast: 0.1s;
 
   /*Box shadow*/
   --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -47,14 +48,16 @@
   --text-notice-color: #333;
   --label-color: var(--text-notice-color);
   --label-focused-color: #ccc;
-  --form-background-color: #46001d;
-  --background-color: #000;
+  --form-background-color: #333;
+  --background-color: #111;
   --text-error: #ff0000;
   --form-md-background: #333;
   --form-dark-background: #444;
   --border-form: 1px solid #333;
+  --border-box: 1px solid #222;
   --bg-overlay: rgba(255, 255, 255, 0.4);
   --box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  --icon-color: var(--primary-color);
 }
 .light {
   /*Colors*/
@@ -71,10 +74,12 @@
   --label-color: var(--text-notice-color);
   --label-focused-color: #aaa;
   --form-background-color: #fff;
-  --background-color: #fff;
+  --background-color: #f0f0f0;
   --form-md-background: #fcfcfc;
   --form-dark-background: #ddd;
   --border-form: 1px solid #dddddd;
+  --border-box: 1px solid #efefef;
   --bg-overlay: rgba(0, 0, 0, 0.6);
   --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  --icon-color: var(--primary-color);
 }
