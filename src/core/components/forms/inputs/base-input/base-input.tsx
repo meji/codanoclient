@@ -33,6 +33,7 @@ export interface Props {
   callback?: (data: any) => void
   onChange?: (e: any) => void
   onBlur?: (e: any) => void
+  onMouseLeave?: () => void
   focus?: boolean
 }
 
@@ -52,6 +53,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
   errMsg,
   onChange,
   onBlur,
+  onMouseLeave,
   focus,
   callback
 }) => {
@@ -81,6 +83,7 @@ export const BaseInput: React.FunctionComponent<Props> = ({
         <input
           className={size ? cx(className, 'input', size) : cx(className, 'input')}
           autoFocus={focus}
+          onMouseLeave={() => onMouseLeave && onMouseLeave()}
           onChange={e => {
             setData({ ...data, value: e.target.value })
             onChange && onChange(e)

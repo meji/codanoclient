@@ -53,7 +53,7 @@
   opacity: 1;
   height: auto;
   transition: 0.3s;
-  margin-top: var(--l);
+  margin-top: var(--m);
 }
 
 .card.unfold .inner-container label {
@@ -113,4 +113,32 @@
 p.error {
   font-size: 0.6rem;
   color: var(--text-error);
+}
+
+.card.unfold .img-container {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  top: 0;
+  right: 0;
+  height: 50vh;
+  width: 50vw;
+  padding: var(--l);
+  background: var(--background-color);
+  z-index: 5;
+}
+.card.unfold .img-container h5 {
+  margin-top: 0;
+}
+
+.card.unfold .img-container img {
+  max-width: 90%;
+  max-height: 90%;
+}
+.card.unfold .img-container .delete {
+  position: absolute;
+  top: var(--m);
+  right: var(--m);
 }

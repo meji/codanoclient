@@ -9,6 +9,7 @@ import hljs from 'highlight.js'
 import ReactHtmlParser from 'react-html-parser'
 import { bind } from '../../../../utils/bind'
 import styles from './myMdEditor.module.css'
+import { Card } from '../../../../features/card/domain/card'
 const cx = bind(styles)
 
 // Initialize a markdown parser
@@ -30,7 +31,8 @@ export const MyMdEditor: React.FC<{
   initialText?: string
   callback?: (content: any) => void
   showContent?: boolean
-}> = ({ initialText, showContent, callback }) => {
+  card?: Card
+}> = ({ initialText, showContent, callback, card }) => {
   const divRef = useRef<HTMLDivElement>(null)
   const myPlugins = ['header', 'fonts', 'link', 'clear', 'logger']
   const [content, setContent] = useState({ text: initialText, html: '' })
@@ -72,7 +74,7 @@ export const MyMdEditor: React.FC<{
         in this editor
       </p>
       {showContentIn && (
-        <div className={cx('prev-container')}>
+        <div className={cx('prev-container', card && card.type, card && card.img && 'image')}>
           {content.text && ReactHtmlParser(mdParser.render(content.text))}
         </div>
       )}
