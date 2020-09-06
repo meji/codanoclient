@@ -46,7 +46,7 @@ export const CardList: React.FC<{
     }
   }
   const addNewCardInList = (card: CardD) => {
-    card = { ...card, inList: id, description: 'Mark it Down' }
+    card = { ...card, inList: id }
     cardRepository.create(card).then(() => fetchCards())
   }
   return (

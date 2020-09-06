@@ -39,4 +39,5 @@ a:hover,
 
 * {
   transition: var(--transition-ultra-fast);
+  box-sizing: border-box;
 }

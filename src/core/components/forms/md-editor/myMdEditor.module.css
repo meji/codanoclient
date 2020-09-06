@@ -1,0 +1,17 @@
+.unfolded .prev-container {
+  color: var(--text-body-color);
+  padding: var(--l);
+  background: var(--form-background-color);
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 50vw;
+}
+.prev-container:first-child {
+  min-height: 38vh;
+}
+.notice {
+  font-size: var(--font-size-small);
+  text-align: right;
+}

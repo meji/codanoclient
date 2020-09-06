@@ -1,18 +1,18 @@
 import React from 'react'
-import { Mdeditor } from './mdeditor'
+import { MyMdEditor } from './myMdEditor'
 
 export default {
   title: 'Dark/Forms/MdEditor',
   parameters: {
     backgrounds: [{ name: 'dark', value: '#000000', default: true }]
   },
-  component: Mdeditor
+  component: MyMdEditor
 }
 
 export const Editor = () => {
   return (
     <div className={'dark'}>
-      <Mdeditor initialText={'Iniciar edición de texto'} />
+      <MyMdEditor initialText={'Iniciar edición de texto'} />
     </div>
   )
 }

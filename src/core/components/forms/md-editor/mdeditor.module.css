@@ -1,7 +1,0 @@
-.prev-container {
-  color: var(--text-body-color);
-  padding: var(--m);
-}
-.prev-container:first-child {
-  min-height: 38vh;
-}

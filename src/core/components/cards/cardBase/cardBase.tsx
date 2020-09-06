@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { bind } from '../../../../utils/bind'
 import styles from './cardBase.module.css'
 import { Icon } from '../../icon/icon'
-import { Mdeditor } from '../../forms/md-editor/mdeditor'
+import { MyMdEditor } from '../../forms/md-editor/myMdEditor'
 import { ImgInput } from '../../forms/inputs/img-input/img-input'
 import { Editingtitle } from '../../forms/editing-title/editingTitle'
 import { Card } from '../../../../features/card/domain/card'
+import { useOutsideClick } from '../../../utils/use-outside-click'
+
 const cx = bind(styles)
 
 interface Props {
@@ -40,12 +42,16 @@ export const CardBase: React.FunctionComponent<Props> = ({
     callback && callback(data)
   }, [data])
 
-  const close = () => {
+  const close = (data: Card) => {
     setUnfold(false)
     if (onClose) {
       onClose(data)
     }
   }
+  const divRef = useRef<HTMLDivElement>(null)
+  useOutsideClick(divRef, () => {
+    close(data)
+  })
 
   return (
     <div
@@ -54,7 +60,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
       onClick={() => !unfold && setUnfold(true)}
       onChange={onChange}
     >
-      <div className={cx('inner-container')}>
+      <div className={cx('inner-container')} ref={divRef}>
         <div className={cx('title-container')} onBlur={onBlur}>
           <Icon icon={iconType} className={cx('icon')} />
           {unfold && (
@@ -73,15 +79,34 @@ export const CardBase: React.FunctionComponent<Props> = ({
             <Icon
               icon={'times'}
               onClick={() => {
-                close()
+                close(data)
               }}
               className={cx('folder')}
             />
           )}
         </div>
         <div className={unfold ? cx('content', 'unfold') : cx('content')}>
-          <Mdeditor
-            initialText={data.description}
+          <MyMdEditor
+            initialText={
+              data.description
+                ? data.description
+                : card.type == 'Snippet'
+                ? '# Write here any code\n' +
+                  'Write the code language with **```language** in this markDown Editor\n' +
+                  '\n' +
+                  '```html\n' +
+                  '\n' +
+                  '<h1>Example:</h1> \n' +
+                  '\n' +
+                  '<div class="container">This is a div</div>\n' +
+                  ' If you want to change the language change the html tag in the markDown Editor'
+                : card.type == 'Note'
+                ? '# Write here your note in MarkDown notation'
+                : card.type === 'Link'
+                ? '# Write here the description of the website in MarkDown notation'
+                : '# Write here the description of the image in MardDown notation'
+            }
+            showContent={unfold}
             callback={(content: any) => {
               setData({ ...data, description: content.text })
             }}
