@@ -9,8 +9,10 @@ export const Editingtitle: React.FC<{
   handleKeydown: (e: any) => void
   value: string
   size?: 's' | 'l'
-}> = ({ handleKeydown, value, size }) => {
-  const [editingTitle, setEditingTitle] = useState(false)
+  inputVisible?: boolean
+  placeHolder?: string
+}> = ({ handleKeydown, value, size, inputVisible, placeHolder }) => {
+  const [editingTitle, setEditingTitle] = useState(inputVisible)
   const [nameIn, setNameIn] = useState(value)
   useEffect(() => {
     setNameIn(value)
@@ -32,7 +34,7 @@ export const Editingtitle: React.FC<{
           onBlur={() => {
             setEditingTitle(false)
           }}
-          placeholder={nameIn}
+          placeholder={placeHolder ? placeHolder : nameIn}
           value={nameIn}
           focus={editingTitle && true}
         />

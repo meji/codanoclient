@@ -45,6 +45,10 @@ export const CardList: React.FC<{
       setCardName(e.target.value)
     }
   }
+  const addNewCardInList = (card: CardD) => {
+    card = { ...card, inList: id, description: 'Mark it Down' }
+    cardRepository.create(card).then(() => fetchCards())
+  }
   return (
     <>
       <div
@@ -68,7 +72,7 @@ export const CardList: React.FC<{
               )
             })}
         </ul>
-        <AddNewCard visibleContainer={hover} />
+        <AddNewCard visibleContainer={hover} cardCreated={card => addNewCardInList(card)} />
       </div>
       {children}
     </>
