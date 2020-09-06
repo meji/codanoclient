@@ -5,9 +5,8 @@ import { CardBase } from '../../../core/components/cards/cardBase/cardBase'
 
 export const Card: React.FC<{
   card: CardData
-  onChange?: () => void
   onClose?: () => void
-}> = ({ card, onChange, onClose }): any => {
+}> = ({ card, onClose }): any => {
   const [cardData, setData] = useState(card)
   const cardRepositoryFactory = CardRepositoryFactory.build()
   const saveCard = (card: CardData) => {
@@ -15,14 +14,24 @@ export const Card: React.FC<{
     onClose && onClose()
   }
   const savePicture = (card: CardData) => {
+    console.log('Guardando imagen', card)
     cardRepositoryFactory
       .newImg(card.imageFile, card.id)
-      .then(response => updateCard({ ...card, img: response }))
+      .then(response => {
+        console.log('trayendo foto', response)
+        updateCard({ ...card, img: response })
+      })
+      .catch(error => console.log('error al traer imagen', error))
   }
   const updateCard = (card: CardData) => {
-    cardRepositoryFactory.update(card).then(response => {
-      setData(response)
-    })
+    console.log('card a actualizar', card)
+    cardRepositoryFactory
+      .update(card)
+      .then(response => {
+        setData(response)
+        console.log('Actualizado en base', card)
+      })
+      .catch(e => console.log('error actualizando', e))
   }
 
   useEffect(() => {
@@ -40,7 +49,6 @@ export const Card: React.FC<{
       card={card}
       onClose={card => saveCard(card)}
       onChange={card => {
-        onChange && onChange()
         card.imageFile && savePicture(card)
         updateCard(card)
       }}

@@ -14,32 +14,32 @@ export const Editingtitle: React.FC<{
   className?: string
   onBlur?: () => void
 }> = ({ handleKeydown, value, size, inputVisible, placeHolder, className, onBlur }) => {
-  const [editingTitle, setEditingTitle] = useState(inputVisible)
+  const [isEditingTitle, setIsEditingTitle] = useState(inputVisible)
   const [nameIn, setNameIn] = useState(value)
   useEffect(() => {
     setNameIn(value)
   }, [value])
   return (
     <span className={cx(className, 'container')}>
-      {!editingTitle && <p onClick={() => setEditingTitle(true)}>{value}</p>}
-      {editingTitle && (
+      {!isEditingTitle && <span onClick={() => setIsEditingTitle(true)}>{value}</span>}
+      {isEditingTitle && (
         <TextInput
           size={size}
           className={cx('no-styles')}
           onKeyDown={e => {
             setNameIn(e.value)
             if (e.key === 'Enter') {
-              setEditingTitle(false)
+              setIsEditingTitle(false)
               handleKeydown(e)
             }
           }}
           onBlur={() => {
-            setEditingTitle(false)
+            setIsEditingTitle(false)
             onBlur && onBlur()
           }}
           placeholder={placeHolder ? placeHolder : nameIn}
           value={nameIn}
-          focus={editingTitle && true}
+          focus={isEditingTitle && true}
         />
       )}
     </span>

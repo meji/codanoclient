@@ -2,7 +2,9 @@ import { useEffect } from 'react'
 
 export const useOutsideClick = (ref: any, callback: any) => {
   const handleClick = (e: { target: any }) => {
-    if (ref.current && !ref.current.contains(e.target) && e.target.querySelector('div')) {
+    // const validate = ref.current && !ref.current.contains(e.target) && e.target.querySelector('div')
+    const validate = ref.current && !ref.current.contains(e.target)
+    if (validate) {
       callback()
     }
   }

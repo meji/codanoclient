@@ -80,10 +80,9 @@ export const CardBase: React.FunctionComponent<Props> = ({
       data-id={data.id}
       className={unfold ? cx('card', 'unfold') : cx('card', 'fold')}
       onClick={() => !unfold && setUnfold(true)}
-      onChange={() => onChange}
     >
       <div className={cx('inner-container')} ref={divRef}>
-        <section className={cx('title-container')} onBlur={onBlur}>
+        <div className={cx('title-container')} onBlur={onBlur}>
           <Icon icon={iconType} className={cx('icon')} />
           {unfold && (
             <Editingtitle
@@ -106,7 +105,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
               className={cx('folder')}
             />
           )}
-        </section>
+        </div>
         <div className={unfold ? cx('content', 'unfold') : cx('content')}>
           <MyMdEditor
             card={card}
@@ -120,6 +119,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
             <ImgInput
               // className={cx('no-styles')}
               onChange={e => {
+                console.log('se manda:', e.target.files)
                 onChange && onChange({ ...data, imageFile: e.target.files })
                 setData({ ...data, imageFile: '' })
               }}
