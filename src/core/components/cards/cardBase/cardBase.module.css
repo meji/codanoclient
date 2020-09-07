@@ -150,3 +150,18 @@ p.error {
   align-items: center;
   justify-content: space-between;
 }
+
+.url-box {
+  display: inline-flex;
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin: 0 0 var(--l);
+  padding: calc(var(--s) / 2) var(--s);
+  background: var(--form-background-color);
+  border-radius: var(--rm);
+  align-items: center;
+  justify-content: center;
+}
+.url-box img {
+  margin-right: var(--s);
+}

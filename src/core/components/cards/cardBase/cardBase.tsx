@@ -134,7 +134,11 @@ export const CardBase: React.FunctionComponent<Props> = ({
           {data.url && (
             <div className={cx('url-box')}>
               <Icon image={'http://www.google.com/s2/favicons?domain=' + setUrlDomain(data.url)} />
-              <p>{data.url}</p>
+              <Editingtitle
+                handleKeydown={e => setData({ ...data, url: e.target.value })}
+                value={data.url}
+                size={'s'}
+              />
             </div>
           )}
           <MyMdEditor
