@@ -30,7 +30,6 @@ export const Card: React.FC<{
   }
   const updateCard = () => {
     cardData.id &&
-      cardData.name &&
       cardRepositoryFactory.getById(cardData.id).then(response => {
         setData(response)
       })
