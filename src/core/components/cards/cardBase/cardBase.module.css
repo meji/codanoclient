@@ -165,3 +165,8 @@ p.error {
 .url-box img {
   margin-right: var(--s);
 }
+
+.external-link {
+  margin-left: var(--s);
+  vertical-align: top;
+}

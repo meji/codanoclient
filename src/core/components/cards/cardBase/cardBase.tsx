@@ -132,14 +132,21 @@ export const CardBase: React.FunctionComponent<Props> = ({
         </div>
         <div className={unfold ? cx('content', 'unfold') : cx('content')}>
           {data.url && (
-            <div className={cx('url-box')}>
-              <Icon image={'http://www.google.com/s2/favicons?domain=' + setUrlDomain(data.url)} />
-              <Editingtitle
-                handleKeydown={e => setData({ ...data, url: e.target.value })}
-                value={data.url}
-                size={'s'}
-              />
-            </div>
+            <>
+              <div className={cx('url-box')}>
+                <Icon
+                  image={'http://www.google.com/s2/favicons?domain=' + setUrlDomain(data.url)}
+                />
+                <Editingtitle
+                  handleKeydown={e => setData({ ...data, url: e.target.value })}
+                  value={data.url}
+                  size={'s'}
+                />
+              </div>
+              <a href={data.url} target={'_blank'} rel={'noopener noreferrer'}>
+                <Icon icon={'external-link-alt'} className={cx('external-link')} />
+              </a>
+            </>
           )}
           <MyMdEditor
             card={card}
