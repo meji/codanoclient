@@ -8,7 +8,7 @@ import { Editingtitle } from '../../forms/editing-title/editingTitle'
 import { Card } from '../../../../features/card/domain/card'
 import { useOutsideClick } from '../../../../features/hooks/use-outside-click'
 import { Button } from '../../button/button'
-import { isValidUrl } from '../../utils/isUrl'
+import { setUrlDomain } from '../../utils/isUrl'
 
 const cx = bind(styles)
 
@@ -33,7 +33,6 @@ export const CardBase: React.FunctionComponent<Props> = ({
 }) => {
   const [unfold, setUnfold] = useState(false)
   const [data, setData] = useState<Card>(card)
-  const [url, setUrl] = useState<string>('')
   const iconType =
     data.type === 'Image'
       ? 'id-card'
@@ -76,10 +75,6 @@ export const CardBase: React.FunctionComponent<Props> = ({
     close(data)
   })
 
-  const putLink = (url: string) => {
-    setUrl(url)
-  }
-
   return (
     <div
       data-id={data.id}
@@ -88,24 +83,43 @@ export const CardBase: React.FunctionComponent<Props> = ({
     >
       <div className={cx('inner-container')} ref={divRef}>
         <div className={cx('title-container')} onBlur={onBlur}>
-          {url ? (
-            <img src={'http://www.google.com/s2/favicons?domain=' + url} />
-          ) : (
-            <Icon icon={iconType} className={cx('icon')} />
-          )}
           {unfold && (
-            <Editingtitle
-              handleKeydown={e => {
-                setData({ ...data, name: e.target.value })
-                isValidUrl(e.target.value) && putLink(e.target.value)
-              }}
-              value={data.name ? data.name : 'Card Title'}
-              className={cx('title')}
-              size={'s'}
-            />
-          )}
-          {!unfold && <p className={cx('title')}>{data.name}</p>}
+            <>
+              <Icon icon={iconType} className={cx('icon')} />
 
+              <Editingtitle
+                handleKeydown={e => {
+                  setData({
+                    ...data,
+                    name: data.url
+                      ? e.target.value
+                      : setUrlDomain(e.target.value)
+                      ? ''
+                      : e.target.value,
+                    url: setUrlDomain(e.target.value) ? e.target.value : data.url ? data.url : ''
+                  })
+                }}
+                value={data.name ? data.name : 'Card Title'}
+                className={cx('title')}
+                size={'s'}
+              />
+            </>
+          )}
+
+          {!unfold && (
+            <>
+              {data.url ? (
+                <Icon
+                  image={'http://www.google.com/s2/favicons?domain=' + setUrlDomain(data.url)}
+                />
+              ) : (
+                <Icon icon={iconType} className={cx('icon')} />
+              )}
+              <p className={cx('title')}>
+                {data.name ? data.name : data.url ? data.url : 'Card Title'}
+              </p>
+            </>
+          )}
           {unfold && (
             <Icon
               icon={'times'}
@@ -117,6 +131,12 @@ export const CardBase: React.FunctionComponent<Props> = ({
           )}
         </div>
         <div className={unfold ? cx('content', 'unfold') : cx('content')}>
+          {data.url && (
+            <div className={cx('url-box')}>
+              <Icon image={'http://www.google.com/s2/favicons?domain=' + setUrlDomain(data.url)} />
+              <p>{data.url}</p>
+            </div>
+          )}
           <MyMdEditor
             card={card}
             initialText={initialText}
