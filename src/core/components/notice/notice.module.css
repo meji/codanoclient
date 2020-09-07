@@ -16,4 +16,6 @@
 .notice.inactive {
   top: -200px;
   opacity: 0;
+  display: flex;
+  margin: 0;
 }

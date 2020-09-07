@@ -1,31 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { ShadowBox } from '../../../core/components/shadow-box/shadowBox'
 import { Page } from '../../../core/components/page/page'
 import { LoginForm } from './loginForm'
 import { SignUpForm } from './signUpForm'
 import { Link, Route, Switch } from 'react-router-dom'
 import { routes } from '../../../routes/routes'
-import { Notice } from '../../../core/components/notice/notice'
+import { dataContext } from '../../providers/dataProvider'
 
 export const Login: React.FC = () => {
   const querystring = window.location.search
   const params = new URLSearchParams(querystring)
   const active = params.get('validated')
-  const [noticeContent, setNoticeContent] = useState('')
-  const destroyNotice = () => {
-    setTimeout(() => {
-      setNoticeContent('')
-    }, 6000)
-  }
+  const { setNotice } = useContext(dataContext)
+
   useEffect(() => {
-    setNoticeContent('The email has been validated, please do user')
-    destroyNotice()
+    setNotice('The email has been validated, please do user')
   }, [active])
 
   return (
     <>
       <Page>
-        {active === 'ok' && <Notice content={noticeContent}></Notice>}
         <ShadowBox className={'small'}>
           <Switch>
             <Route path={routes.login} exact>

@@ -7,19 +7,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const cx = bind(styles)
 
 interface Props {
-  icon: IconProp
+  icon?: IconProp
   size?: SizeProp
   className?: string
+  image?: string
   onClick?(e: any): void
 }
 
-export const Icon: React.FC<Props> = ({ icon, size, className, onClick }) => {
+export const Icon: React.FC<Props> = ({ icon, size, className, onClick, image }) => {
   return (
-    <FontAwesomeIcon
-      icon={icon}
-      size={size}
-      className={cx(className, 'icon', onClick && 'linkable')}
-      onClick={onClick}
-    />
+    <>
+      {icon && !image && (
+        <FontAwesomeIcon
+          icon={icon}
+          size={size}
+          className={cx(className, 'icon', onClick && 'linkable')}
+          onClick={onClick}
+        />
+      )}
+      {image && !icon && (
+        <img src={image} className={cx(className, 'icon', onClick && 'linkable')} />
+      )}
+    </>
   )
 }

@@ -31,7 +31,7 @@ export const Editingtitle: React.FC<{
           size={size}
           className={cx('no-styles')}
           onKeyDown={e => {
-            setNameIn(e.value)
+            e.value && setNameIn(e.value)
             if (e.key === 'Enter') {
               setIsEditingTitle(false)
               handleKeydown(e)

@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useContext, useState } from 'react'
 import { PasswordInput } from '../../../core/components/forms/inputs/password-input/password-input'
 import { FormRow } from '../../../core/components/forms/rows/formRow'
 import { Button } from '../../../core/components/button/button'
@@ -6,18 +6,13 @@ import { EmailInput } from '../../../core/components/forms/inputs/email-input/em
 import { UserHttpService } from '../infrastructure/userHttpService'
 import { bind } from '../../../utils/bind'
 import styles from './login.module.css'
-import { Notice } from '../../../core/components/notice/notice'
+import { dataContext } from '../../providers/dataProvider'
 const cx = bind(styles)
 
 export const LoginForm: React.FC = () => {
   const userService = new UserHttpService()
   const [values, setValues] = useState({ email: '', password: '' })
-  const [noticeContent, setNoticeContent] = useState('')
-  const destroyNotice = () => {
-    setTimeout(() => {
-      setNoticeContent('')
-    }, 6000)
-  }
+  const { setNotice } = useContext(dataContext)
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     userService
@@ -26,16 +21,14 @@ export const LoginForm: React.FC = () => {
         return window.location.assign(response.data.redirect)
       })
       .catch(error => {
-        setNoticeContent('Wrong credentials')
+        setNotice('Wrong credentials')
         console.log(error.response)
-        destroyNotice()
       })
     e.preventDefault()
   }
   return (
     <>
       {' '}
-      {noticeContent && <Notice content={noticeContent}></Notice>}
       <h1 className={cx('h4')}>
         Login to <span className={'caveat'}>Codalia</span>
       </h1>

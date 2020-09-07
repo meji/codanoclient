@@ -7,10 +7,10 @@
   color: var(--button-text);
   padding: var(--s) var(--m);
   border-radius: var(--rm);
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   font-weight: 600;
-  letter-spacing: 1px;
-  font-size: 0.8rem;
+  /*letter-spacing: 1px;*/
+  font-size: 0.9rem;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -53,6 +53,8 @@
 .button.s {
   font-size: 0.6rem;
   padding: var(--s);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 .button.l {
   font-size: 1rem;

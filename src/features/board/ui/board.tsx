@@ -7,7 +7,6 @@ import { bind } from '../../../utils/bind'
 import styles from './board.module.css'
 import { Page } from '../../../core/components/page/page'
 import { Icon } from '../../../core/components/icon/icon'
-import { Notice } from '../../../core/components/notice/notice'
 import { Editingtitle } from '../../../core/components/forms/editing-title/editingTitle'
 import { BoardRepositoryFactory } from '../infrastructure/board-repository-factory'
 import { dataContext } from '../../providers/dataProvider'
@@ -21,7 +20,6 @@ export const Board: React.FC = () => {
   const { boardName } = useParams()
   const [boardTitle, setBoardTitle] = useState(boardName)
   const [lists, setLists] = useState([] as listModel[])
-  const [notice, setNotice] = useState('')
 
   useEffect(() => {
     if (!inBoard) {
@@ -53,7 +51,7 @@ export const Board: React.FC = () => {
       createList(e.target.value)
     }
   }
-  const { setBoards } = useContext(dataContext)
+  const { setBoards, setNotice } = useContext(dataContext)
   const handleKeyDownBoardTitle = (e: any) => {
     boardRepository.update(inBoard, e.target.value)
     boardRepository.findAll().then(response => setBoards(response))
@@ -69,7 +67,6 @@ export const Board: React.FC = () => {
   }
   return (
     <Page size={'l'}>
-      <Notice content={notice} />
       <h1>
         <Editingtitle handleKeydown={e => handleKeyDownBoardTitle(e)} value={boardTitle} />
       </h1>

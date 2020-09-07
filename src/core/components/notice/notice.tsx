@@ -14,7 +14,7 @@ export const Notice: React.FC<{ className?: string; content: string }> = ({
     setContentIn(content)
     setTimeout(function () {
       setContentIn('')
-    }, 5000)
+    }, 1000)
   }, [content])
   return (
     <p

@@ -6,7 +6,6 @@ import { bind } from '../../../utils/bind'
 import styles from './board.module.css'
 import { Icon } from '../../../core/components/icon/icon'
 import { BoardRepositoryFactory } from '../infrastructure/board-repository-factory'
-import { Notice } from '../../../core/components/notice/notice'
 import { dataContext } from '../../providers/dataProvider'
 import { CreateBoardForm } from '../../header/boardsArea'
 const cx = bind(styles)
@@ -21,11 +20,10 @@ export const Boards: React.FC = () => {
     })
   }, [])
   const [boards, setBoardsIn] = useState(data.boards)
-  const [notice, setNotice] = useState('')
   const boardRepositoryFactory = BoardRepositoryFactory.build()
   const deleteBoard = (board: boardModel) => {
     if (window.confirm('Board ' + board.name + ' will be deleted')) {
-      boardRepositoryFactory.delete(board.id).then(() => setNotice('Board deleted'))
+      boardRepositoryFactory.delete(board.id).then(() => data.setNotice('Board deleted'))
     }
     boardsRepository.findAll().then(response => {
       data.setBoards(response)
@@ -34,7 +32,6 @@ export const Boards: React.FC = () => {
   }
   return (
     <Page size={'l'}>
-      <Notice content={notice} />
       <h1>Boards</h1>
       {boards.length && (
         <ul className={cx('board-list')}>

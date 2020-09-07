@@ -8,8 +8,10 @@ import { BoardRepositoryFactory } from '../board/infrastructure/board-repository
 interface DataContext {
   boards: Board[]
   user: User
+  notice: string
   setBoards: Dispatch<SetStateAction<Board[]>>
   setSelectedBoard: Dispatch<SetStateAction<string>>
+  setNotice: Dispatch<SetStateAction<string>>
 }
 
 export const dataContext = React.createContext({} as DataContext)
@@ -17,6 +19,7 @@ export const dataContext = React.createContext({} as DataContext)
 export const DataProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState({} as User)
   const [boards, setBoards] = useState<Board[]>([] as Board[])
+  const [notice, setNotice] = useState<string>('')
   const [selectedBoard, setSelectedBoard] = useState('')
   const userService = new UserHttpService()
   const authManager = new AuthManager()
@@ -38,6 +41,14 @@ export const DataProvider: React.FC = ({ children }) => {
       })
     }
   }, [])
-  const value = { user, boards, setBoards, selectedBoard, setSelectedBoard }
+  const value = {
+    user,
+    boards,
+    setBoards,
+    selectedBoard,
+    setSelectedBoard,
+    notice,
+    setNotice
+  }
   return <dataContext.Provider value={value}>{children}</dataContext.Provider>
 }

@@ -46,7 +46,7 @@ export const ImgInput: React.FunctionComponent<{
               setKey(randomNum)
             }}
           >
-            Save
+            Save Picture
           </Button>
         </div>
       )}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Card } from '../../card/ui/card'
 import { Card as CardD } from '../../card/domain/card'
 import { Id } from '../domain/id'
@@ -9,6 +9,7 @@ import { Icon } from '../../../core/components/icon/icon'
 import { AddNewCard } from './new-card'
 import { ListRepositoryFactory } from '../infrastructure/list-repository-factory'
 import { Editingtitle } from '../../../core/components/forms/editing-title/editingTitle'
+import { dataContext } from '../../providers/dataProvider'
 
 const cx = bind(styles)
 
@@ -20,6 +21,7 @@ export const CardList: React.FC<{
   const [hover, setHover] = useState(false)
   const [cardName, setCardName] = useState(name)
   const [cardsIn, setCardsIn] = useState([])
+  const { setNotice } = useContext(dataContext)
   useEffect(() => {
     fetchCards()
   }, [])
@@ -36,7 +38,12 @@ export const CardList: React.FC<{
     }
   }
   const deleteCard = (card: CardD) => {
-    cardRepository.delete(card).then(() => fetchCards())
+    if (window.confirm('Do you want to delete the card ' + card.name)) {
+      cardRepository.delete(card).then(() => {
+        setNotice('Card deleted')
+        fetchCards()
+      })
+    }
   }
 
   const handleKeydown = (e: any) => {
@@ -66,7 +73,7 @@ export const CardList: React.FC<{
             cardsIn.map((card: CardD) => {
               return (
                 <li key={card.id}>
-                  <Card card={card} onClose={fetchCards} />
+                  <Card card={card} onClose={fetchCards} deleteCard={() => deleteCard(card)} />
                   <Icon icon={'times-circle'} onClick={() => deleteCard(card)} />
                 </li>
               )

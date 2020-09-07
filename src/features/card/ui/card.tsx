@@ -6,8 +6,9 @@ import { Id } from '../../../core/components/cards/cardBase/id'
 
 export const Card: React.FC<{
   card: CardData
+  deleteCard?: () => void
   onClose?: () => void
-}> = ({ card, onClose }): any => {
+}> = ({ card, onClose, deleteCard }): any => {
   const [cardData, setData] = useState(card)
   const cardRepositoryFactory = CardRepositoryFactory.build()
   const closeCard = (card: CardData) => {
@@ -41,6 +42,7 @@ export const Card: React.FC<{
       onClose={card => closeCard(card)}
       saveImg={e => savePicture(e)}
       callBack={card => deleteImg(card.id)}
+      deleteCard={() => deleteCard && deleteCard()}
     />
   )
 }

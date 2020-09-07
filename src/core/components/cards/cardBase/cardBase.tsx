@@ -7,6 +7,8 @@ import { ImgInput } from '../../forms/inputs/img-input/img-input'
 import { Editingtitle } from '../../forms/editing-title/editingTitle'
 import { Card } from '../../../../features/card/domain/card'
 import { useOutsideClick } from '../../../../features/hooks/use-outside-click'
+import { Button } from '../../button/button'
+import { isValidUrl } from '../../utils/isUrl'
 
 const cx = bind(styles)
 
@@ -16,6 +18,7 @@ interface Props {
   onChange?: (card: Card) => void
   onClose?: (card: Card) => void
   callBack?: (data: any) => void
+  deleteCard?: () => void
   saveImg?: (e: any) => void
 }
 
@@ -25,10 +28,12 @@ export const CardBase: React.FunctionComponent<Props> = ({
   onBlur,
   onClose,
   children,
-  saveImg
+  saveImg,
+  deleteCard
 }) => {
   const [unfold, setUnfold] = useState(false)
   const [data, setData] = useState<Card>(card)
+  const [url, setUrl] = useState<string>('')
   const iconType =
     data.type === 'Image'
       ? 'id-card'
@@ -71,6 +76,10 @@ export const CardBase: React.FunctionComponent<Props> = ({
     close(data)
   })
 
+  const putLink = (url: string) => {
+    setUrl(url)
+  }
+
   return (
     <div
       data-id={data.id}
@@ -79,11 +88,16 @@ export const CardBase: React.FunctionComponent<Props> = ({
     >
       <div className={cx('inner-container')} ref={divRef}>
         <div className={cx('title-container')} onBlur={onBlur}>
-          <Icon icon={iconType} className={cx('icon')} />
+          {url ? (
+            <img src={'http://www.google.com/s2/favicons?domain=' + url} />
+          ) : (
+            <Icon icon={iconType} className={cx('icon')} />
+          )}
           {unfold && (
             <Editingtitle
               handleKeydown={e => {
                 setData({ ...data, name: e.target.value })
+                isValidUrl(e.target.value) && putLink(e.target.value)
               }}
               value={data.name ? data.name : 'Card Title'}
               className={cx('title')}
@@ -121,6 +135,14 @@ export const CardBase: React.FunctionComponent<Props> = ({
               }}
             />
           )}
+          <div className={cx('button-container')}>
+            <Button icon={'times'} onClick={() => deleteCard && deleteCard()} theme={'secondary'}>
+              Delete Card
+            </Button>
+            <Button onClick={() => close(data)} theme={'secondary'}>
+              Save and close
+            </Button>
+          </div>
           {data.img && (
             <div className={cx('img-container')}>
               <img
