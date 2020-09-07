@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Card as CardData } from '../domain/card'
 import { CardRepositoryFactory } from '../infrastructure/card-repository-factory'
 import { CardBase } from '../../../core/components/cards/cardBase/cardBase'
@@ -10,48 +10,36 @@ export const Card: React.FC<{
 }> = ({ card, onClose }): any => {
   const [cardData, setData] = useState(card)
   const cardRepositoryFactory = CardRepositoryFactory.build()
-  const saveCard = (card: CardData) => {
-    cardRepositoryFactory.update(card)
+  const closeCard = (card: CardData) => {
+    cardRepositoryFactory.update(card).then(() => updateCard())
     onClose && onClose()
   }
-  const savePicture = (card: CardData) => {
-    console.log('Guardando imagen', card)
+  const savePicture = (e: any) => {
     cardRepositoryFactory
-      .newImg(card.imageFile, card.id)
+      .newImg(e, card.id)
       .then(response => {
-        console.log('trayendo foto', response)
-        updateCard({ ...card, img: response })
+        cardRepositoryFactory.update({ ...card, img: response }).then(response => setData(response))
       })
+      .then(() => updateCard())
       .catch(error => console.log('error al traer imagen', error))
   }
-  const updateCard = (card: CardData) => {
-    console.log('card a actualizar', card)
-    cardRepositoryFactory
-      .update(card)
-      .then(response => {
-        setData(response)
-        console.log('Actualizado en base', card)
-      })
-      .catch(e => console.log('error actualizando', e))
-  }
+
   const deleteImg = (id: Id) => {
-    cardRepositoryFactory.deleteImg(id)
+    cardRepositoryFactory.deleteImg(id).then(() => updateCard())
   }
-  useEffect(() => {
-    if (cardData.name && cardData.id) {
-      cardRepositoryFactory.update(cardData)
-      if (cardData.imageFile && cardData.imageFile.length > 0) {
-        cardRepositoryFactory.newImg(cardData.imageFile, cardData.id).then(response => {
-          setData({ ...cardData, imageFile: undefined, img: response })
-        })
-      }
-    }
-  }, [cardData])
+  const updateCard = () => {
+    cardData.id &&
+      cardData.name &&
+      cardRepositoryFactory.getById(cardData.id).then(response => {
+        setData(response)
+      })
+  }
+
   return (
     <CardBase
-      card={card}
-      onClose={card => saveCard(card)}
-      saveImg={card => savePicture(card)}
+      card={cardData}
+      onClose={card => closeCard(card)}
+      saveImg={e => savePicture(e)}
       callBack={card => deleteImg(card.id)}
     />
   )

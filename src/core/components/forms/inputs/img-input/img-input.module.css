@@ -4,3 +4,32 @@
 input {
   padding-right: var(--l);
 }
+
+.image-uploader {
+  margin: var(--l) 0;
+  max-width: 350px;
+}
+.clear-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.preview-area {
+  position: relative;
+  max-width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--m);
+  flex-direction: column;
+}
+.preview-area button {
+  margin: var(--s) 0 0;
+  align-self: flex-end;
+  margin-left: 0;
+}
+.preview-area img {
+  max-width: 100%;
+}

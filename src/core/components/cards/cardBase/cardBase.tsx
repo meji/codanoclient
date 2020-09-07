@@ -7,7 +7,6 @@ import { ImgInput } from '../../forms/inputs/img-input/img-input'
 import { Editingtitle } from '../../forms/editing-title/editingTitle'
 import { Card } from '../../../../features/card/domain/card'
 import { useOutsideClick } from '../../../../features/hooks/use-outside-click'
-import { Button } from '../../button/button'
 
 const cx = bind(styles)
 
@@ -17,7 +16,7 @@ interface Props {
   onChange?: (card: Card) => void
   onClose?: (card: Card) => void
   callBack?: (data: any) => void
-  saveImg?: (data: Card) => void
+  saveImg?: (e: any) => void
 }
 
 export const CardBase: React.FunctionComponent<Props> = ({
@@ -30,7 +29,6 @@ export const CardBase: React.FunctionComponent<Props> = ({
 }) => {
   const [unfold, setUnfold] = useState(false)
   const [data, setData] = useState<Card>(card)
-  const [key, setKey] = useState(0)
   const iconType =
     data.type === 'Image'
       ? 'id-card'
@@ -114,27 +112,14 @@ export const CardBase: React.FunctionComponent<Props> = ({
             }}
           />
           {!data.img && (
-            <>
-              <ImgInput
-                // className={cx('no-styles')}
-                onBlur={e => {
-                  setData({ ...data, imageFile: e.target.files })
-                }}
-                size={'s'}
-                key={key}
-              />
-              <Button
-                theme={'primary'}
-                onClick={() => {
-                  setKey(Math.floor(Math.random() * 1000))
-                  saveImg && saveImg(data)
-                  console.log(data.imageFile)
-                  setData({ ...data, imageFile: '' })
-                }}
-              >
-                Save Image
-              </Button>
-            </>
+            <ImgInput
+              callBack={e => {
+                setData({ ...data, imageFile: e })
+                setTimeout(() => {
+                  saveImg && saveImg(e)
+                }, 300)
+              }}
+            />
           )}
           {data.img && (
             <div className={cx('img-container')}>

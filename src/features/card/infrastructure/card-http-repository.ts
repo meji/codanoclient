@@ -17,8 +17,8 @@ export class CardHttpRepository implements CardRepository {
     return response.data.cards.map(cardDto => this.cardDtoToCardMapper.map(cardDto))
   }
   async getById(id: Id): Promise<Card> {
-    const response = await http.get<CardDto>(`/cards/getById/${id}`)
-    return this.cardDtoToCardMapper.map(response.data)
+    const response = await http.get(`/cards/getById/${id}`)
+    return this.cardDtoToCardMapper.map(response.data.card)
   }
 
   async create(card: Card): Promise<Card> {
@@ -37,7 +37,7 @@ export class CardHttpRepository implements CardRepository {
 
   async newImg(imageFile: any, id: Id): Promise<string> {
     const formData = new FormData()
-    formData.append('imageFile', imageFile[0])
+    formData.append('imageFile', imageFile)
     const response = await httpForm.post(`/cards/newImg?id=${id}`, formData)
     return response.data.path
   }
