@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 import { BoardsArea } from './boardsArea'
 import { Icon } from '../../core/components/icon/icon'
 import { Page } from '../../core/components/page/page'
-import { Notice } from '../../core/components/notice/notice'
+import { Notice } from '../notice/notice'
 
 const cx = bind(styles)
 
@@ -35,7 +35,7 @@ export const Header: React.FunctionComponent<Props> = ({ className, children }) 
   }
   return (
     <Page size={'l'}>
-      {data.notice && <Notice content={data.notice} />}
+      <Notice />
       <header className={cx('header', className)}>
         <section className={cx('logo-area')}>
           <Link className={cx('logo', 'caveat')} to={'/'}>

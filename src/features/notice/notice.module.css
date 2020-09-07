@@ -13,7 +13,7 @@
   opacity: 0.8;
   box-sizing: border-box;
 }
-.notice.inactive {
+.notice {
   top: -200px;
   opacity: 0;
   display: flex;

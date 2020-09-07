@@ -26,7 +26,6 @@ export const DataProvider: React.FC = ({ children }) => {
   const boardsRepository = BoardRepositoryFactory.build()
   useEffect(() => {
     if (authManager.authToken()) {
-      console.log('con token')
       userService
         .getUser()
         .then(response => {
@@ -41,6 +40,7 @@ export const DataProvider: React.FC = ({ children }) => {
       })
     }
   }, [])
+
   const value = {
     user,
     boards,
