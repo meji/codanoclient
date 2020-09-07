@@ -64,8 +64,7 @@
   display: block;
 }
 
-.card .title,
-.card label {
+.card .title {
   margin-left: 6px;
   font-weight: 700;
   color: var(--text-body-color);
@@ -76,7 +75,9 @@
   width: calc(100% - 42px);
   margin-bottom: 0;
 }
-
+.card.unfold .title {
+  font-size: var(--body-font);
+}
 .card input {
   font-weight: 500;
   border-bottom: var(--border-form) !important ;
@@ -154,9 +155,9 @@ p.error {
 .url-box {
   display: inline-flex;
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   margin: 0 0 var(--l);
-  padding: calc(var(--s) / 2) var(--s);
+  padding: calc(var(--s) / 1.5) var(--s);
   background: var(--form-background-color);
   border-radius: var(--rm);
   align-items: center;
@@ -167,6 +168,6 @@ p.error {
 }
 
 .external-link {
-  margin-left: var(--s);
+  margin-left: calc(var(--s) / 2);
   vertical-align: top;
 }

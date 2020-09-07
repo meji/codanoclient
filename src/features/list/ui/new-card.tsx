@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button } from '../../../core/components/button/button'
 import styles from './card-list.module.css'
 import { bind } from '../../../utils/bind'
@@ -11,18 +11,30 @@ import {
 } from '../../../core/components/cards/cardBase/cardTypes'
 import { Editingtitle } from '../../../core/components/forms/editing-title/editingTitle'
 import { Card } from '../../card/domain/card'
+import { setUrlDomain } from '../../../core/components/utils/isUrl'
+import { dataContext } from '../../providers/dataProvider'
+
 const cx = bind(styles)
 
 export const AddNewCard: React.FC<{
   visibleContainer: Boolean
   cardCreated: (card: Card) => void
 }> = ({ visibleContainer, cardCreated }) => {
+  const { setNotice } = useContext(dataContext)
   const [visibleTypeButtons, setVisibleTypeButtons] = useState(false)
   const [visibleNameInputForm, setVisibleNameInputForm] = useState(false)
   const [cardTypeSelected, setCardTypeSelected] = useState<cardType>(noteType)
   const createNewCard = (e: any) => {
-    const card: Card = { name: e.target.value, type: cardTypeSelected.type }
-    cardCreated(card)
+    if (cardTypeSelected === linkType && !setUrlDomain(e.target.value)) {
+      setNotice('This is not a valid url')
+    } else {
+      const card: Card = {
+        name: e.target.value,
+        type: cardTypeSelected.type,
+        url: cardTypeSelected === linkType && setUrlDomain(e.target.value) ? e.target.value : ''
+      }
+      cardCreated(card)
+    }
     setVisibleNameInputForm(false)
   }
   return (
@@ -79,7 +91,7 @@ export const AddNewCard: React.FC<{
       {visibleNameInputForm && (
         <Editingtitle
           handleKeydown={e => createNewCard(e)}
-          placeHolder={'Title of the new card'}
+          placeHolder={cardTypeSelected === linkType ? 'URL' : 'Title of the new card'}
           value={''}
           inputVisible={true}
           size={'s'}

@@ -39,6 +39,9 @@ export const DataProvider: React.FC = ({ children }) => {
         setBoards(response)
       })
     }
+    setTimeout(() => {
+      setNotice('')
+    }, 1000)
   }, [])
 
   const value = {

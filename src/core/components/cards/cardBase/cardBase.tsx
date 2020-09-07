@@ -144,7 +144,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
                 />
               </div>
               <a href={data.url} target={'_blank'} rel={'noopener noreferrer'}>
-                <Icon icon={'external-link-alt'} className={cx('external-link')} />
+                <Icon icon={'external-link-alt'} className={cx('external-link')} size={'xs'} />
               </a>
             </>
           )}

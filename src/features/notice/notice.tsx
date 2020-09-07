@@ -8,19 +8,22 @@ const cx = bind(styles)
 export const Notice: React.FC<{ className?: string }> = ({ className, children }) => {
   const { notice } = useContext(dataContext)
   const [active, setActive] = useState(false)
+  const [content, setContent] = useState('')
 
   useEffect(() => {
-    if (notice) {
+    if (notice !== '') {
+      setContent(notice)
       setActive(true)
       setTimeout(function () {
         setActive(false)
+        setContent('')
       }, 1000)
     }
   }, [notice])
   return (
     <p id="notice" className={cx('notice', active && 'active', className)}>
       {' '}
-      {notice}
+      {content}
       {children}
     </p>
   )
