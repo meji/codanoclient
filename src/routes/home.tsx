@@ -6,7 +6,8 @@ import { dataContext } from '../features/providers/dataProvider'
 export const Home: React.FC = () => {
   const history = useHistory()
   const { user } = useContext(dataContext)
-  if (user) {
+  if (user.name) {
+    console.log(user)
     history.push(routes.boards)
   }
   return (
