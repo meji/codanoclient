@@ -12,4 +12,7 @@ export class UserHttpService implements UserService {
   async getUser(): Promise<{ data: any }> {
     return await http.get('/user')
   }
+  async upDateUser(user: User): Promise<{ user: User }> {
+    return await http.post('/user/update', user)
+  }
 }

@@ -28,8 +28,7 @@ export const LoginForm: React.FC = () => {
   }
   return (
     <>
-      {' '}
-      <h1 className={cx('h4')}>
+      <h1>
         Login to <span className={'caveat'}>Codalia</span>
       </h1>
       <form onSubmit={e => handleSubmit(e)}>

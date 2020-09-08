@@ -37,6 +37,7 @@ h1.h5 {
 }
 p {
   margin-bottom: 1.15rem;
+  transition: 0s;
 }
 
 h1,
@@ -50,9 +51,9 @@ h5,
 .h4,
 .h5 {
   margin: 2.75rem 0 1.05rem;
-  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   line-height: 1.15;
+  transition: 0s;
 }
 
 h1,

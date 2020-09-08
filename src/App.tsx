@@ -6,10 +6,10 @@ import { DataProvider } from './features/providers/dataProvider'
 
 export const App: React.FC = () => {
   return (
-    <ThemeProvider>
-      <DataProvider>
+    <DataProvider>
+      <ThemeProvider>
         <Main></Main>
-      </DataProvider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </DataProvider>
   )
 }

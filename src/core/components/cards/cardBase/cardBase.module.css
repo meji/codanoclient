@@ -76,7 +76,7 @@
   margin-bottom: 0;
 }
 .card.unfold .title {
-  font-size: var(--body-font);
+  font-size: var(--base-font-size);
 }
 .card input {
   font-weight: 500;

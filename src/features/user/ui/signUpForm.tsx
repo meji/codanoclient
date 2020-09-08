@@ -8,17 +8,19 @@ import { bind } from '../../../utils/bind'
 import styles from './login.module.css'
 import { UserHttpService } from '../infrastructure/userHttpService'
 import { dataContext } from '../../providers/dataProvider'
+import { ThemeContext } from '../../providers/themeProvider'
+import { User } from '../domain/user'
 const cx = bind(styles)
 
 export const SignUpForm: React.FC = () => {
   const loginService = new UserHttpService()
-  const [values, setValues] = useState({ name: '', email: '', password: '' })
+  const [values, setValues] = useState<User>({} as User)
   const { setNotice } = useContext(dataContext)
+  const { theme } = useContext(ThemeContext)
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    console.log('values', values)
     loginService
-      .signup(values)
+      .signup({ ...values, theme: theme })
       .then(response => {
         const user = JSON.stringify(response.data.user.name)
         setNotice(`Welcome ${user}, please confirm your email to login`)
@@ -30,7 +32,7 @@ export const SignUpForm: React.FC = () => {
   }
   return (
     <>
-      <h1 className={cx('h4')}>
+      <h1>
         Sign Up in <span className={'caveat'}>Codalia</span>
       </h1>
       <form onSubmit={e => handleSubmit(e)}>
@@ -38,6 +40,12 @@ export const SignUpForm: React.FC = () => {
           <TextInput
             placeholder={'Name'}
             onChange={e => setValues({ ...values, name: e.target.value })}
+          />
+        </FormRow>
+        <FormRow>
+          <TextInput
+            placeholder={'Second Name'}
+            onChange={e => setValues({ ...values, secondName: e.target.value })}
           />
         </FormRow>
         <FormRow>

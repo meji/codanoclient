@@ -11,6 +11,8 @@ import { Icon } from '../../core/components/icon/icon'
 import { Page } from '../../core/components/page/page'
 import { Notice } from '../notice/notice'
 import { routes } from '../../routes/routes'
+import { UserHttpService } from '../user/infrastructure/userHttpService'
+import { User } from '../user/domain/user'
 
 const cx = bind(styles)
 
@@ -26,14 +28,21 @@ export const Header: React.FunctionComponent<Props> = ({ className, children }) 
   const user = data.user
   const [boards, setBoards] = useState(data.boards)
   const history = useHistory()
+  const userService = new UserHttpService()
 
   useEffect(() => {
     setBoards(data.boards)
   }, [data])
 
   const logout = () => {
-    window.localStorage.clear()
-    window.location.assign('/')
+    userService
+      .upDateUser({ ...user, theme: theme })
+      .then(() => {
+        window.localStorage.clear()
+        data.setBoards([])
+        data.setUser({} as User)
+      })
+      .then(() => history.push('/'))
   }
   return (
     <Page size={'l'}>
@@ -45,7 +54,9 @@ export const Header: React.FunctionComponent<Props> = ({ className, children }) 
           </Link>
           <Icon
             icon={theme === 'light' ? 'sun' : 'moon'}
-            onClick={() => toggleTheme()}
+            onClick={() => {
+              toggleTheme()
+            }}
             size={'lg'}
           />
         </section>

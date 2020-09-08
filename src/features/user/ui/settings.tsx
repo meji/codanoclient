@@ -8,18 +8,41 @@ import { bind } from '../../../utils/bind'
 import styles from '../../header/header.module.css'
 import { Button } from '../../../core/components/button/button'
 import { Form } from '../../../core/components/forms/forms/form'
-import { TextInput } from '../../../core/components/forms/inputs/text-input/text-input'
 import { FormRow } from '../../../core/components/forms/rows/formRow'
+import { PasswordInput } from '../../../core/components/forms/inputs/password-input/password-input'
+import { UserHttpService } from '../infrastructure/userHttpService'
 const cx = bind(styles)
 
 export const Settings: React.FC = () => {
   const userData = useContext(dataContext)
-  const [changePassword, setChangePassword] = useState(false)
+  const userService = new UserHttpService()
+
+  const initialPasswordData = {
+    editing: false,
+    password1: '',
+    password2: ''
+    // oldPassword: ''
+  }
+  const [passwordData, setPasswordData] = useState(initialPasswordData)
   const changeName = (e: any) => {
     console.log(e.target.value)
   }
   const changeEmail = (e: any) => {
     console.log(e.target.value)
+  }
+  const changeSecondName = (e: any) => {
+    console.log(e.target.value)
+  }
+  const changePassword = (e: React.FormEvent<HTMLFormElement>) => {
+    if (passwordData.password1 !== passwordData.password2) {
+      userData.setNotice("Passwords doesn't match")
+    } else {
+      userService.upDateUser({ ...userData.user, password: passwordData.password2 }).then(() => {
+        userData.setNotice('Password Changed')
+        setPasswordData(initialPasswordData)
+      })
+    }
+    e.preventDefault()
   }
   return (
     <>
@@ -31,42 +54,69 @@ export const Settings: React.FC = () => {
           <div className={cx('data')}>
             <p>
               <strong>Name:</strong>{' '}
-              {userData.user.name && (
-                <Editingtitle handleKeydown={e => changeName(e)} value={userData.user.name} />
-              )}
+              <Editingtitle
+                handleKeydown={e => changeName(e)}
+                value={userData.user.name ? userData.user.name : 'Click to enter your name'}
+              />
             </p>
             <p>
-              {userData.user.email && (
-                <>
-                  <span>
-                    <strong>Email</strong> ({userData.user.status}):
-                  </span>
-                  <Editingtitle handleKeydown={e => changeEmail(e)} value={userData.user.email} />
-                </>
-              )}
+              <strong>Second Name:</strong>{' '}
+              <Editingtitle
+                handleKeydown={e => changeSecondName(e)}
+                value={
+                  userData.user.secondName
+                    ? userData.user.secondName
+                    : 'Click to enter you second name'
+                }
+              />
             </p>
-            {!changePassword && (
-              <Button theme={'primary'} onClick={() => setChangePassword(true)}>
+            <p>
+              <>
+                <span>
+                  <strong>Email</strong> ({userData.user.status}):
+                </span>
+                <Editingtitle
+                  handleKeydown={e => changeEmail(e)}
+                  value={userData.user.email ? userData.user.email : 'Click to enter your email'}
+                />
+              </>
+            </p>
+            {!passwordData.editing && (
+              <Button
+                theme={'primary'}
+                onClick={() => setPasswordData({ ...initialPasswordData, editing: true })}
+              >
                 Change Password
               </Button>
             )}
-            {changePassword && (
-              <Form>
+            {passwordData.editing && (
+              <Form onSubmit={e => changePassword(e)}>
                 <h3 className={cx('mtno')}>Change Password</h3>
+                {/*<FormRow>*/}
+                {/*  <PasswordInput*/}
+                {/*    placeholder={'Old Password'}*/}
+                {/*    onChange={e =>*/}
+                {/*      setPasswordData({ ...passwordData, oldPassword: e.target.value })*/}
+                {/*    }*/}
+                {/*  />*/}
+                {/*</FormRow>*/}
                 <FormRow>
-                  <TextInput placeholder={'Old Password'} />
+                  <PasswordInput
+                    placeholder={'New Password'}
+                    onChange={e => setPasswordData({ ...passwordData, password1: e.target.value })}
+                  />
                 </FormRow>
                 <FormRow>
-                  <TextInput placeholder={'New Password'} />
-                </FormRow>
-                <FormRow>
-                  <TextInput placeholder={'Repeat new Password'} />
+                  <PasswordInput
+                    placeholder={'Repeat new Password'}
+                    onChange={e => setPasswordData({ ...passwordData, password2: e.target.value })}
+                  />
                 </FormRow>
                 <FormRow>
                   <Button theme={'primary'} submit={true}>
                     Save
                   </Button>
-                  <Button theme={'primary'} onClick={() => setChangePassword(false)}>
+                  <Button theme={'primary'} onClick={() => setPasswordData(initialPasswordData)}>
                     Cancel
                   </Button>
                 </FormRow>

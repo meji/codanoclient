@@ -38,6 +38,6 @@ p.error {
 }
 
 .small .select {
-  padding: var(--s);
+  padding: var(--s) var(--l) var(--s) var(--s);
   background-position: right var(--s) top 47%;
 }

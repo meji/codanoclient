@@ -33,7 +33,7 @@ export const Boards: React.FC = () => {
   return (
     <Page size={'l'}>
       <h1>Boards</h1>
-      {boards.length && (
+      {boards.length > 0 && (
         <ul className={cx('board-list')}>
           {boards.map(board => {
             return (

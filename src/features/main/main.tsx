@@ -45,7 +45,9 @@ export const Main: React.FC = ({ children }) => {
             <PrivateRoute path={routes.settings} exact>
               <Settings />
             </PrivateRoute>
-            <MissingPage />
+            <Route>
+              <MissingPage />
+            </Route>
           </Switch>
         </Suspense>
       </Router>

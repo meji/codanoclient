@@ -12,6 +12,7 @@ interface DataContext {
   setBoards: Dispatch<SetStateAction<Board[]>>
   setSelectedBoard: Dispatch<SetStateAction<string>>
   setNotice: Dispatch<SetStateAction<string>>
+  setUser: Dispatch<SetStateAction<User>>
 }
 
 export const dataContext = React.createContext({} as DataContext)
@@ -53,7 +54,8 @@ export const DataProvider: React.FC = ({ children }) => {
     selectedBoard,
     setSelectedBoard,
     notice,
-    setNotice
+    setNotice,
+    setUser
   }
   return <dataContext.Provider value={value}>{children}</dataContext.Provider>
 }

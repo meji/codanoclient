@@ -38,6 +38,7 @@ export const CreateBoardForm: React.FC = () => {
           handleKeydown={e => handleSubmit(e)}
           placeHolder={'Name of the board'}
           value={''}
+          onBlur={() => setCreateBoardVisible(false)}
         />
       )}
     </>

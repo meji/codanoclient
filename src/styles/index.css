@@ -39,7 +39,13 @@ a:hover,
 }
 
 * {
-  transition: var(--transition-ultra-fast);
   box-sizing: border-box;
   word-break: break-all;
+}
+
+div,
+button,
+a,
+section {
+  transition: var(--transition-ultra-fast);
 }
