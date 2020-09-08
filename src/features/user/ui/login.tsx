@@ -14,13 +14,13 @@ export const Login: React.FC = () => {
   const { setNotice } = useContext(dataContext)
 
   useEffect(() => {
-    setNotice('The email has been validated, please do user')
+    active && setNotice('The email has been validated, login to enter')
   }, [active])
 
   return (
     <>
       <Page flex={'center'} size={'l'}>
-        <ShadowBox className={'small'}>
+        <ShadowBox size={'small'}>
           <Switch>
             <Route path={routes.login} exact>
               <LoginForm />

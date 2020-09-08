@@ -34,3 +34,17 @@ section * {
 .logo-area * {
   margin: 0;
 }
+
+h2.mtno {
+  margin-top: 0;
+}
+
+.data {
+  padding: var(--l);
+  width: 100%;
+}
+.data p {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

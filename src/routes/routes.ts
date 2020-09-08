@@ -5,5 +5,6 @@ export const routes = {
   home: '/',
   savetoken: '/savetoken',
   board: '/boards/:boardName',
-  missingPage: '/404.html'
+  missingPage: '/404.html',
+  settings: '/settings'
 }

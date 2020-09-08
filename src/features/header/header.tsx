@@ -5,11 +5,12 @@ import { Button } from '../../core/components/button/button'
 import { ThemeContext } from '../providers/themeProvider'
 import { Board } from '../board/domain/board'
 import { dataContext } from '../providers/dataProvider'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { BoardsArea } from './boardsArea'
 import { Icon } from '../../core/components/icon/icon'
 import { Page } from '../../core/components/page/page'
 import { Notice } from '../notice/notice'
+import { routes } from '../../routes/routes'
 
 const cx = bind(styles)
 
@@ -24,6 +25,7 @@ export const Header: React.FunctionComponent<Props> = ({ className, children }) 
   const data = useContext(dataContext)
   const user = data.user
   const [boards, setBoards] = useState(data.boards)
+  const history = useHistory()
 
   useEffect(() => {
     setBoards(data.boards)
@@ -53,6 +55,7 @@ export const Header: React.FunctionComponent<Props> = ({ className, children }) 
           {user.email && (
             <>
               <p className={cx('user')}>{user.name}</p>
+              <Icon icon={'users-cog'} onClick={() => history.push(routes.settings)} size={'lg'} />
               <Icon icon={'sign-out-alt'} onClick={() => logout()} size={'lg'} />
             </>
           )}
