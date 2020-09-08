@@ -8,12 +8,13 @@ body {
   color: var(--text-body-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--background-color);
+  background: transparent;
   font-size: var(--base-font-size);
   line-height: var(--line-height);
 }
 #wrapper {
-  background: var(--background-color);
+  background: var(--background-wrapper);
+  background-size: var(--background-wrapper-size);
   color: var(--text-body-color);
   min-width: 100%;
   min-height: 100vh;
@@ -21,7 +22,7 @@ body {
 }
 p {
   color: var(--text-body-color);
-  line-height: var(--line-height-l);
+  line-height: var(--line-height);
 }
 a,
 .link {

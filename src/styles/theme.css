@@ -34,6 +34,12 @@
 
   /*Box shadow*/
   --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  /*Background-wrapper*/
+  --background-wrapper-size: var(--dot-space) var(--dot-space);
+  --dot-size: 1px;
+  --dot-space: 18px;
+  --dot-difference: calc(var(--dot-space) - var(--dot-size));
 }
 
 .dark {
@@ -48,16 +54,23 @@
   --text-notice-color: #333;
   --label-color: var(--text-notice-color);
   --label-focused-color: #ccc;
-  --form-background-color: #333;
-  --background-color: #111;
+  --form-background-color: #000;
+  --background-color: #222;
   --text-error: #ff0000;
   --form-md-background: #333;
   --form-dark-background: #444;
   --border-form: 1px solid #333;
   --border-box: 1px solid #222;
   --bg-overlay: rgba(255, 255, 255, 0.4);
-  --box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  --box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
   --icon-color: var(--primary-color);
+  --background-wrapper: linear-gradient(
+        90deg,
+        var(--background-color) var(--dot-difference),
+        transparent 1%
+      )
+      center,
+    linear-gradient(var(--background-color) var(--dot-difference), transparent 1%) center, #666666;
 }
 .light {
   /*Colors*/
@@ -82,4 +95,11 @@
   --bg-overlay: rgba(0, 0, 0, 0.6);
   --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   --icon-color: var(--primary-color);
+  --background-wrapper: linear-gradient(
+        90deg,
+        var(--background-color) var(--dot-difference),
+        transparent 1%
+      )
+      center,
+    linear-gradient(var(--background-color) var(--dot-difference), transparent 1%) center, #bbbbbb;
 }
