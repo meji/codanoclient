@@ -4,10 +4,11 @@ import styles from './page.module.css'
 
 const cx = bind(styles)
 
-export const Page: React.FC<{ className?: string; size?: 's' | 'l' }> = ({
+export const Page: React.FC<{ className?: string; size?: 's' | 'l'; flex?: 'center' | 'end' }> = ({
   className,
   size,
+  flex,
   children
 }) => {
-  return <div className={cx('container', className, size)}>{children}</div>
+  return <div className={cx('container', className, size, flex)}>{children}</div>
 }

@@ -19,7 +19,7 @@ export const Login: React.FC = () => {
 
   return (
     <>
-      <Page>
+      <Page flex={'center'} size={'l'}>
         <ShadowBox className={'small'}>
           <Switch>
             <Route path={routes.login} exact>

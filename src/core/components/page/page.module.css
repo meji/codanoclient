@@ -8,6 +8,13 @@
   margin: 0 auto;
   padding: 0 var(--s);
 }
+.container.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+}
 
 @media screen and (min-width: 768px) {
   .container.l {

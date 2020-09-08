@@ -5,14 +5,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: var(--form-background-color);
+  max-width: 90%;
 }
 
 .shadow-box.medium {
-  max-width: 600px;
+  min-width: 600px;
   margin: auto;
 }
 .shadow-box.small {
-  max-width: 400px;
+  min-width: 400px;
   margin: auto;
 }
 .shadow-box.small .button {

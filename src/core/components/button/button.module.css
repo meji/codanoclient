@@ -47,7 +47,7 @@
 
 .button.transparent:hover {
   --button-text: var(--secondary-color);
-  box-shadow: var(--box-shadow);
+  /*box-shadow: var(--box-shadow);*/
 }
 
 .button.s {
