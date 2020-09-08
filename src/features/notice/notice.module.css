@@ -1,21 +1,20 @@
 .notice.active {
-  width: 100%;
-  padding: var(--m) var(--l);
-  background: var(--primary-color);
-  color: var(--on-primary-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  transition: var(--transition-slow);
   opacity: 0.8;
-  box-sizing: border-box;
+  top: 0;
 }
 .notice {
   top: -200px;
   opacity: 0;
   display: flex;
   margin: 0;
+  position: fixed;
+  width: 100%;
+  padding: var(--m) var(--l);
+  background: var(--primary-color);
+  color: var(--on-primary-color);
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-slow);
+  left: 0;
+  box-sizing: border-box;
 }

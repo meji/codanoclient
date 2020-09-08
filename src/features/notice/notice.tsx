@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useMemo, useState } from 'react'
 import { bind } from '../../utils/bind'
 import styles from './notice.module.css'
 import { dataContext } from '../providers/dataProvider'
@@ -10,14 +10,14 @@ export const Notice: React.FC<{ className?: string }> = ({ className, children }
   const [active, setActive] = useState(false)
   const [content, setContent] = useState('')
 
-  useEffect(() => {
+  useMemo(() => {
     if (notice !== '') {
       setContent(notice)
       setActive(true)
       setTimeout(function () {
         setActive(false)
         setContent('')
-      }, 1000)
+      }, 2000)
     }
   }, [notice])
   return (

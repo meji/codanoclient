@@ -39,10 +39,12 @@ export const DataProvider: React.FC = ({ children }) => {
         setBoards(response)
       })
     }
+  }, [])
+  useEffect(() => {
     setTimeout(() => {
       setNotice('')
-    }, 1000)
-  }, [])
+    }, 2200)
+  }, [notice])
 
   const value = {
     user,
