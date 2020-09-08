@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
-import { routes } from './routes'
-import { dataContext } from '../features/providers/dataProvider'
+import { routes } from '../../routes/routes'
+import { dataContext } from '../providers/dataProvider'
 
 export const Home: React.FC = () => {
   const history = useHistory()

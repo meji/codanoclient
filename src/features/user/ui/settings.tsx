@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ShadowBox } from '../../../core/components/shadow-box/shadowBox'
 import { Page } from '../../../core/components/page/page'
 import { Notice } from '../../notice/notice'
@@ -11,28 +11,29 @@ import { Form } from '../../../core/components/forms/forms/form'
 import { FormRow } from '../../../core/components/forms/rows/formRow'
 import { PasswordInput } from '../../../core/components/forms/inputs/password-input/password-input'
 import { UserHttpService } from '../infrastructure/userHttpService'
+import { User } from '../domain/user'
+import { Icon } from '../../../core/components/icon/icon'
+import { GithubIcon } from '../../../core/components/icon/githubIcon'
 const cx = bind(styles)
 
 export const Settings: React.FC = () => {
-  const userData = useContext(dataContext)
-  const userService = new UserHttpService()
-
   const initialPasswordData = {
     editing: false,
     password1: '',
     password2: ''
-    // oldPassword: ''
   }
+  const userData = useContext(dataContext)
+  const [user, setUser] = useState<User>(userData.user)
+  const userService = new UserHttpService()
   const [passwordData, setPasswordData] = useState(initialPasswordData)
-  const changeName = (e: any) => {
-    console.log(e.target.value)
-  }
-  const changeEmail = (e: any) => {
-    console.log(e.target.value)
-  }
-  const changeSecondName = (e: any) => {
-    console.log(e.target.value)
-  }
+  useEffect(() => {
+    user !== userData.user &&
+      userService.upDateUser(user).then(() => userData.setNotice('Settings updated'))
+  }, [user])
+  useEffect(() => {
+    setUser(userData.user)
+  }, [userData.user])
+
   const changePassword = (e: React.FormEvent<HTMLFormElement>) => {
     if (passwordData.password1 !== passwordData.password2) {
       userData.setNotice("Passwords doesn't match")
@@ -55,30 +56,29 @@ export const Settings: React.FC = () => {
             <p>
               <strong>Name:</strong>{' '}
               <Editingtitle
-                handleKeydown={e => changeName(e)}
-                value={userData.user.name ? userData.user.name : 'Click to enter your name'}
+                handleKeydown={e => setUser({ ...user, name: e.target.value })}
+                value={user.name ? user.name : 'Click to enter your name'}
               />
             </p>
             <p>
               <strong>Second Name:</strong>{' '}
               <Editingtitle
-                handleKeydown={e => changeSecondName(e)}
-                value={
-                  userData.user.secondName
-                    ? userData.user.secondName
-                    : 'Click to enter you second name'
-                }
+                handleKeydown={e => setUser({ ...user, secondName: e.target.value })}
+                value={user.secondName ? user.secondName : 'Click to enter you second name'}
               />
             </p>
             <p>
               <>
                 <span>
-                  <strong>Email</strong> ({userData.user.status}):
+                  <strong>Email</strong> ({user.status}):
                 </span>
-                <Editingtitle
-                  handleKeydown={e => changeEmail(e)}
-                  value={userData.user.email ? userData.user.email : 'Click to enter your email'}
-                />
+                {(user.googleId || user.gitHubId) && <span>{user.email}</span>}
+                {!user.googleId && !user.gitHubId && (
+                  <Editingtitle
+                    handleKeydown={e => setUser({ ...user, email: e.target.value })}
+                    value={user.email ? user.email : 'Click to enter your email'}
+                  />
+                )}
               </>
             </p>
             {!passwordData.editing && (
@@ -86,7 +86,7 @@ export const Settings: React.FC = () => {
                 theme={'primary'}
                 onClick={() => setPasswordData({ ...initialPasswordData, editing: true })}
               >
-                Change Password
+                {user.password ? 'Change Password' : 'Add Password'}
               </Button>
             )}
             {passwordData.editing && (
@@ -122,6 +122,30 @@ export const Settings: React.FC = () => {
                 </FormRow>
               </Form>
             )}
+            <p className={cx('external-login')}>
+              Linked login Accounts:{' '}
+              {user.googleId ? (
+                <Icon image={'/img/google-icon.svg'} />
+              ) : (
+                <a
+                  href={process.env.REACT_APP_BACK_URL + 'auth/google'}
+                  title={'link google account'}
+                >
+                  <Icon image={'/img/google-icon.svg'} />
+                </a>
+              )}{' '}
+              {user.gitHubId ? (
+                <GithubIcon />
+              ) : (
+                <a
+                  href={process.env.REACT_APP_BACK_URL + 'auth/gitHub'}
+                  title={'link gitHub account'}
+                >
+                  {' '}
+                  <GithubIcon />
+                </a>
+              )}
+            </p>
           </div>
         </ShadowBox>
       </Page>

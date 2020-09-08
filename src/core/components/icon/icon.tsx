@@ -11,10 +11,11 @@ interface Props {
   size?: SizeProp
   className?: string
   image?: string
+  svg?: boolean
   onClick?(e: any): void
 }
 
-export const Icon: React.FC<Props> = ({ icon, size, className, onClick, image }) => {
+export const Icon: React.FC<Props> = ({ icon, size, className, onClick, image, svg, children }) => {
   return (
     <>
       {icon && !image && (
@@ -26,7 +27,10 @@ export const Icon: React.FC<Props> = ({ icon, size, className, onClick, image })
         />
       )}
       {image && !icon && (
-        <img src={image} className={cx(className, 'icon', onClick && 'linkable')} />
+        <img src={image} className={cx(className, 'image', 'icon', onClick && 'linkable')} />
+      )}
+      {svg && !icon && !image && (
+        <span className={cx(className, 'icon', onClick && 'linkable')}> {children}</span>
       )}
     </>
   )

@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { routes } from '../../routes/routes'
-import { Home } from '../../routes/home'
+import { Home } from '../home/home'
 import { Login } from '../user/ui/login'
 import { SaveToken } from '../../routes/saveToken'
 import { PrivateRoute } from '../../routes/private-route'
@@ -33,7 +33,7 @@ export const Main: React.FC = ({ children }) => {
             <Route path={routes.signup} exact>
               <Login />
             </Route>
-            <Route path={routes.savetoken} exact>
+            <Route path={routes.saveToken} exact>
               <SaveToken />
             </Route>
             <PrivateRoute path={routes.boards} exact>

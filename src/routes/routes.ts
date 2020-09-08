@@ -3,7 +3,7 @@ export const routes = {
   signup: '/auth/signup',
   boards: '/boards',
   home: '/',
-  savetoken: '/savetoken',
+  saveToken: '/saveToken',
   board: '/boards/:boardName',
   missingPage: '/404.html',
   settings: '/settings'

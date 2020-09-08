@@ -7,3 +7,11 @@
   fill: var(--secondary-color);
   color: var(--secondary-color);
 }
+.icon.image,
+.icon svg {
+  max-width: 24px;
+}
+
+.icon svg path {
+  fill: var(--text-body-color);
+}

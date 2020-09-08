@@ -7,6 +7,7 @@ import { UserHttpService } from '../infrastructure/userHttpService'
 import { bind } from '../../../utils/bind'
 import styles from './login.module.css'
 import { dataContext } from '../../providers/dataProvider'
+import { GithubIcon } from '../../../core/components/icon/githubIcon'
 const cx = bind(styles)
 
 export const LoginForm: React.FC = () => {
@@ -69,13 +70,7 @@ export const LoginForm: React.FC = () => {
         className={cx('transparent')}
         onClick={() => window.location.assign(process.env.REACT_APP_BACK_URL + 'auth/github')}
       >
-        <img
-          src="/img/github-icon.svg"
-          alt={'Login with Github'}
-          title={'Login with Github'}
-          width={'20'}
-          height={'20'}
-        />
+        <GithubIcon />
         &nbsp;Login Github
       </Button>
     </>

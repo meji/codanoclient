@@ -6,4 +6,7 @@ export interface User {
   theme?: 'light' | 'dark'
   status?: 'Pending' | 'Active'
   password: string
+  id?: string
+  gitHubId?: string
+  googleId?: string
 }
