@@ -20,21 +20,23 @@ export const Board: React.FC = () => {
   const { boardName } = useParams()
   const [boardTitle, setBoardTitle] = useState(boardName)
   const [lists, setLists] = useState([] as listModel[])
-
+  const listRepository = ListRepositoryFactory.build()
+  const boardRepository = BoardRepositoryFactory.build()
   useEffect(() => {
-    if (!inBoard) {
-      history.push('/404.html')
-    } else {
-      fetchLists()
-    }
-  }, [inBoard])
+    boardRepository
+      .getById(inBoard)
+      .then(response => {
+        !inBoard || response.name !== boardName ? history.push('/404.html') : fetchLists()
+      })
+      .catch(error => {
+        history.push('/404.html')
+        setNotice(error.message)
+      })
+  }, [inBoard, boardName])
 
   useEffect(() => {
     setBoardTitle(boardName)
   }, [boardName])
-
-  const listRepository = ListRepositoryFactory.build()
-  const boardRepository = BoardRepositoryFactory.build()
 
   async function fetchLists() {
     const lists: listModel[] = await listRepository.findAll(inBoard)

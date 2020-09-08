@@ -11,6 +11,7 @@ import { ThemeContext } from '../providers/themeProvider'
 import { bind } from '../../utils/bind'
 import styles from './main.module.css'
 import { Header } from '../header/header'
+import { MissingPage } from '../../core/components/staticPages/missingPage'
 
 const cx = bind(styles)
 
@@ -40,6 +41,9 @@ export const Main: React.FC = ({ children }) => {
             <PrivateRoute path={routes.board} exact>
               <Board />
             </PrivateRoute>
+            <Route path={routes.missingPage} exact>
+              <MissingPage />
+            </Route>
           </Switch>
         </Suspense>
       </Router>

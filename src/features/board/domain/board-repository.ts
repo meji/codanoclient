@@ -5,4 +5,5 @@ export interface BoardRepository {
   create(name: string): Promise<Board>
   update(id: string, name: string): Promise<void>
   delete(id: string): Promise<void>
+  getById(id: string): Promise<Board>
 }

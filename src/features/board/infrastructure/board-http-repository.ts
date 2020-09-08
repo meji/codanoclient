@@ -29,4 +29,9 @@ export class BoardHttpRepository implements BoardRepository {
   async delete(id: string): Promise<void> {
     await http.post('/boards/delete?id=' + id)
   }
+
+  async getById(id: string): Promise<Board> {
+    const response = await http.get('/boards/getById?id=' + id)
+    return this.boardDtoToBoardMapper.map(response.data.board)
+  }
 }
