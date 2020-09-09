@@ -4,7 +4,7 @@ import '../src/styles/storybook.css'
 
 export const decorators = [
   Story => (
-    <div style={{ margin: '3em' }}>
+    <div style={{ margin: '1em' }}>
       <Story />
     </div>
   )
