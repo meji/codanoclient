@@ -13,7 +13,7 @@ export default {
 export const cardImg = () => {
   return (
     <div className={'light'} style={{ width: '400px' }}>
-      <CardImg card={card} />
+      <CardImg card={{ ...card, type: 'Image' }} />
     </div>
   )
 }

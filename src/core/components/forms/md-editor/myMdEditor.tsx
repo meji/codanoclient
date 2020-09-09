@@ -56,13 +56,13 @@ export const MyMdEditor: React.FC<{
             menu: true,
             md: true,
             html: false,
-            fullScreen: false,
+            fullScreen: true,
             hideMenu: false
           }
         }}
       />
       <p className={cx('notice')}>
-        This is a
+        This is a&nbsp;
         <a
           href={'https://www.markdownguide.org/getting-started/'}
           title={'link to MarkDown documentation'}
@@ -71,7 +71,7 @@ export const MyMdEditor: React.FC<{
         >
           Markdown
         </a>
-        in this editor
+        &nbsp;Editor wysiwyg
       </p>
       {showContentIn && (
         <div className={cx('prev-container', card && card.type, card && card.img && 'image')}>

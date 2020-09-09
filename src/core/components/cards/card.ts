@@ -1,9 +1,8 @@
 import { Card } from '../../../features/card/domain/card'
 
 export const card: Card = {
-  name: 'Note title',
-  description: 'Mark it Down',
+  name: 'Title of the card',
+  description: 'Description of the card',
   id: '1',
-  type: 'Note',
-  url: 'http://meji.es'
+  type: 'Note'
 }
