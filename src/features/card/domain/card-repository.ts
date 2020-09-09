@@ -4,6 +4,7 @@ import { Id } from './id'
 export interface CardRepository {
   findAll(inList: string): Promise<Card[]>
   getById(id: Id): Promise<Card>
+  getByName(name: string): Promise<Card>
   create(card: NewCard): Promise<Card>
   update(card: Card): Promise<Card>
   delete(card: Card): Promise<void>

@@ -21,17 +21,17 @@ export class BoardHttpRepository implements BoardRepository {
 
   async update(id: string, name: string): Promise<void> {
     await http
-      .post('/boards/update?id=' + id + '&&name=' + name)
+      .put('/boards/update?id=' + id + '&&name=' + name)
       .then(() => console.log('Actualizado'))
       .catch(e => console.log(e))
   }
 
   async delete(id: string): Promise<void> {
-    await http.post('/boards/delete?id=' + id)
+    await http.delete('/boards/delete?id=' + id)
   }
 
   async getById(id: string): Promise<Board> {
-    const response = await http.get('/boards/getById?id=' + id)
+    const response = await http.get('/boards/getById/' + id)
     return this.boardDtoToBoardMapper.map(response.data.board)
   }
 }

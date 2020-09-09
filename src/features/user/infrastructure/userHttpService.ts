@@ -13,6 +13,6 @@ export class UserHttpService implements UserService {
     return await http.get('/user')
   }
   async upDateUser(user: User): Promise<{ user: User }> {
-    return await http.post('/user/update', user)
+    return await http.put('/user/update', user)
   }
 }

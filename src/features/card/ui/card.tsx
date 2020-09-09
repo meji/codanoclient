@@ -14,7 +14,6 @@ export const Card: React.FC<{
   const closeCard = (card: CardData) => {
     cardRepositoryFactory.update(card).then(() => {
       updateCard()
-      console.log('actualizado')
     })
     onClose && onClose()
   }

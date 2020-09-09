@@ -16,6 +16,10 @@ export class CardHttpRepository implements CardRepository {
     const response = await http.get(`/cards/getById/${id}`)
     return this.cardDtoToCardMapper.map(response.data.card)
   }
+  async getByName(name: string): Promise<Card> {
+    const response = await http.get(`/cards/getByName/${name}`)
+    return this.cardDtoToCardMapper.map(response.data.card)
+  }
 
   async create(card: NewCard): Promise<Card> {
     const response = await http.post('/cards/new', card)
@@ -23,13 +27,12 @@ export class CardHttpRepository implements CardRepository {
   }
 
   async update(card: Card): Promise<Card> {
-    console.log(card)
-    const response = await http.post('/cards/update', card)
+    const response = await http.put('/cards/update', card)
     return response.data
   }
 
   async delete(card: Card): Promise<void> {
-    await http.post('/cards/delete', card)
+    await http.delete('/cards/delete', card)
   }
 
   async newImg(imageFile: any, id: Id): Promise<string> {
@@ -44,6 +47,6 @@ export class CardHttpRepository implements CardRepository {
     return response.data
   }
   async deleteImg(id: Id): Promise<{}> {
-    return await http.post(`/cards/deleteImg?id=${id}`)
+    return await http.delete(`/cards/deleteImg/${id}`)
   }
 }

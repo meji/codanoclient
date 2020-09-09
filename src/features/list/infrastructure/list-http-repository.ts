@@ -8,7 +8,7 @@ export class ListHttpRepository implements ListRepository {
   constructor(private readonly listDtoToListMapper: ListDtoToListMapper) {}
 
   async findAll(inBoard: string): Promise<List[]> {
-    const response = await http.get<{ lists: listDto[] }>('/lists?inBoard=' + inBoard)
+    const response = await http.get<{ lists: listDto[] }>('/lists/' + inBoard)
     return response.data.lists.map(listDto => this.listDtoToListMapper.map(listDto))
   }
   async create(newlist: NewList): Promise<List> {
@@ -19,10 +19,10 @@ export class ListHttpRepository implements ListRepository {
   }
 
   async update(list: List): Promise<void> {
-    await http.post('/lists/update', list)
+    await http.put('/lists/update', list)
   }
 
   async delete(list: List): Promise<void> {
-    await http.post('/lists/delete', list)
+    await http.delete('/lists/delete/' + list.id)
   }
 }
