@@ -12,7 +12,10 @@ export const Card: React.FC<{
   const [cardData, setData] = useState(card)
   const cardRepositoryFactory = CardRepositoryFactory.build()
   const closeCard = (card: CardData) => {
-    cardRepositoryFactory.update(card).then(() => updateCard())
+    cardRepositoryFactory.update(card).then(() => {
+      updateCard()
+      console.log('actualizado')
+    })
     onClose && onClose()
   }
   const savePicture = (e: any) => {

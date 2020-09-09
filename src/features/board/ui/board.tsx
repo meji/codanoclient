@@ -82,6 +82,7 @@ export const Board: React.FC = () => {
     newCardIds.splice(source.index, 1)
     newCardIds.splice(destination.index, 0, draggableId)
     const newColumn: List = { ...column, cards: newCardIds }
+    console.log(newColumn.cards!.map(card => card.name))
     setLists([...lists.map(list => (list.id === newColumn.id ? newColumn : list))])
   }
   return (

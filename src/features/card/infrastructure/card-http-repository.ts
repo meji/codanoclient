@@ -3,14 +3,10 @@ import { Card, NewCard } from '../domain/card'
 import { http, httpForm } from '../../../core/http/http'
 import { CardDtoToCardMapper } from './card-dto-to-card-mapper'
 import { CardDto } from './card-dto'
-import { CardToCardDtoMapper } from './card-to-card-dto-mapper'
 import { Id } from '../domain/id'
 
 export class CardHttpRepository implements CardRepository {
-  constructor(
-    private readonly cardDtoToCardMapper: CardDtoToCardMapper,
-    private readonly cardToCardDtoMapper: CardToCardDtoMapper
-  ) {}
+  constructor(private readonly cardDtoToCardMapper: CardDtoToCardMapper) {}
 
   async findAll(inList: string): Promise<Card[]> {
     const response = await http.get<{ cards: CardDto[] }>(`/cards/${inList}`)
@@ -27,7 +23,8 @@ export class CardHttpRepository implements CardRepository {
   }
 
   async update(card: Card): Promise<Card> {
-    const response = await http.post('/cards/update', this.cardToCardDtoMapper.map(card))
+    console.log(card)
+    const response = await http.post('/cards/update', card)
     return response.data
   }
 
