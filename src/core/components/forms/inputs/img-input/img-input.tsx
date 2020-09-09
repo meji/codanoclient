@@ -34,7 +34,7 @@ export const ImgInput: React.FunctionComponent<{
               setPreviewUrl('')
             }}
           />
-          <img src={previewUrl} />
+          <img src={previewUrl} alt={previewUrl} />
           <Button
             theme={'secondary'}
             size={'s'}

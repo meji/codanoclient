@@ -15,7 +15,7 @@ export const Login: React.FC = () => {
 
   useEffect(() => {
     active && setNotice('The email has been validated, login to enter')
-  }, [active])
+  }, [active, setNotice])
 
   return (
     <>

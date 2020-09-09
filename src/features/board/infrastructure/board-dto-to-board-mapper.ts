@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { boardDto } from './board-dto'
 import { Board } from '../domain/board'
 

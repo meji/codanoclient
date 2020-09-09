@@ -1,7 +1,7 @@
 import { Id } from './id'
 
 export interface Card {
-  id?: Id
+  id: Id
   name?: string
   type: 'Snippet' | 'Note' | 'Image' | 'Link'
   description?: string | undefined
@@ -10,4 +10,11 @@ export interface Card {
   imageFile?: any
   inList?: string
   createdBy?: string
+}
+
+export interface NewCard {
+  name?: string
+  type: 'Snippet' | 'Note' | 'Image' | 'Link'
+  inList?: string
+  url?: string
 }

@@ -1,8 +1,8 @@
-import { List } from './list'
+import { List, NewList } from './list'
 
 export interface ListRepository {
   findAll(inBoard: string): Promise<List[]>
-  create(list: List): Promise<List>
+  create(newList: NewList): Promise<List>
   update(list: List): Promise<void>
   delete(list: List): Promise<void>
 }

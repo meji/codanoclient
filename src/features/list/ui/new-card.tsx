@@ -10,7 +10,7 @@ import {
   linkType
 } from '../../../core/components/cards/cardBase/cardTypes'
 import { Editingtitle } from '../../../core/components/forms/editing-title/editingTitle'
-import { Card } from '../../card/domain/card'
+import { NewCard } from '../../card/domain/card'
 import { setUrlDomain } from '../../../core/components/utils/isUrl'
 import { dataContext } from '../../providers/dataProvider'
 
@@ -18,7 +18,7 @@ const cx = bind(styles)
 
 export const AddNewCard: React.FC<{
   visibleContainer: Boolean
-  cardCreated: (card: Card) => void
+  cardCreated: (card: NewCard) => void
 }> = ({ visibleContainer, cardCreated }) => {
   const { setNotice } = useContext(dataContext)
   const [visibleTypeButtons, setVisibleTypeButtons] = useState(false)
@@ -28,7 +28,7 @@ export const AddNewCard: React.FC<{
     if (cardTypeSelected === linkType && !setUrlDomain(e.target.value)) {
       setNotice('This is not a valid url')
     } else {
-      const card: Card = {
+      const card: NewCard = {
         name: e.target.value,
         type: cardTypeSelected.type,
         url: cardTypeSelected === linkType && setUrlDomain(e.target.value) ? e.target.value : ''

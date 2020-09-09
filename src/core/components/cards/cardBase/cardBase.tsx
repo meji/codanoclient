@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
+// import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { bind } from '../../../../utils/bind'
 import styles from './cardBase.module.css'
 import { Icon } from '../../icon/icon'
@@ -6,7 +7,7 @@ import { MyMdEditor } from '../../forms/md-editor/myMdEditor'
 import { ImgInput } from '../../forms/inputs/img-input/img-input'
 import { Editingtitle } from '../../forms/editing-title/editingTitle'
 import { Card } from '../../../../features/card/domain/card'
-import { useOutsideClick } from '../../../../features/hooks/use-outside-click'
+// import { useOutsideClick } from '../../../../features/hooks/use-outside-click'
 import { Button } from '../../button/button'
 import { setUrlDomain } from '../../utils/isUrl'
 
@@ -54,7 +55,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
   }
   const initialText = data.description
     ? data.description
-    : card.type == 'Snippet'
+    : card.type === 'Snippet'
     ? '# Write here any code\n' +
       'Write the code language with **```language** in this markDown Editor\n' +
       '\n' +
@@ -64,16 +65,16 @@ export const CardBase: React.FunctionComponent<Props> = ({
       '\n' +
       '<div class="container">This is a div</div>\n' +
       ' If you want to change the language change the html tag in the markDown Editor'
-    : card.type == 'Note'
+    : card.type === 'Note'
     ? '# Write here your note in MarkDown notation\n You can clear this example text making click on the litter button'
     : card.type === 'Link'
     ? '# Write here the description of the website in MarkDown notation\n You can clear this example text making click on the litter button'
     : '# Write here the description of the image in MarkDown notation\n You can clear this example text making click on the litter button'
 
-  const divRef = useRef<HTMLDivElement>(null)
-  useOutsideClick(divRef, () => {
-    close(data)
-  })
+  // const divRef = useRef<HTMLDivElement>(null)
+  // useOutsideClick(divRef, () => {
+  //   close(data)
+  // })
 
   return (
     <div
@@ -81,7 +82,8 @@ export const CardBase: React.FunctionComponent<Props> = ({
       className={unfold ? cx('card', 'unfold') : cx('card', 'fold')}
       onClick={() => !unfold && setUnfold(true)}
     >
-      <div className={cx('inner-container')} ref={divRef}>
+      {/*<div className={cx('inner-container')} ref={divRef}>*/}
+      <div className={cx('inner-container')}>
         <div className={cx('title-container')} onBlur={onBlur}>
           {unfold && (
             <>

@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { listDto } from './list-dto'
 import { List } from '../domain/list'
 

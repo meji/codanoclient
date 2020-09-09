@@ -1,5 +1,5 @@
 import { CardRepository } from '../domain/card-repository'
-import { Card } from '../domain/card'
+import { Card, NewCard } from '../domain/card'
 import { http, httpForm } from '../../../core/http/http'
 import { CardDtoToCardMapper } from './card-dto-to-card-mapper'
 import { CardDto } from './card-dto'
@@ -21,13 +21,13 @@ export class CardHttpRepository implements CardRepository {
     return this.cardDtoToCardMapper.map(response.data.card)
   }
 
-  async create(card: Card): Promise<Card> {
-    const response = await http.post('/cards/new', this.cardToCardDtoMapper.map(card))
+  async create(card: NewCard): Promise<Card> {
+    const response = await http.post('/cards/new', card)
     return this.cardDtoToCardMapper.map(response.data.card)
   }
 
   async update(card: Card): Promise<Card> {
-    const response = await http.post('/cards/update', card)
+    const response = await http.post('/cards/update', this.cardToCardDtoMapper.map(card))
     return response.data
   }
 

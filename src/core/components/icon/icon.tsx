@@ -27,7 +27,11 @@ export const Icon: React.FC<Props> = ({ icon, size, className, onClick, image, s
         />
       )}
       {image && !icon && (
-        <img src={image} className={cx(className, 'image', 'icon', onClick && 'linkable')} />
+        <img
+          src={image}
+          className={cx(className, 'image', 'icon', onClick && 'linkable')}
+          alt={''}
+        />
       )}
       {svg && !icon && !image && (
         <span className={cx(className, 'icon', onClick && 'linkable')}> {children}</span>

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Card } from '../../card/ui/card'
-import { Card as CardD } from '../../card/domain/card'
-import { Id } from '../domain/id'
+import { Card as CardD, NewCard } from '../../card/domain/card'
 import styles from './card-list.module.css'
 import { bind } from '../../../utils/bind'
 import { CardRepositoryFactory } from '../../card/infrastructure/card-repository-factory'
@@ -10,32 +9,26 @@ import { AddNewCard } from './new-card'
 import { ListRepositoryFactory } from '../infrastructure/list-repository-factory'
 import { Editingtitle } from '../../../core/components/forms/editing-title/editingTitle'
 import { dataContext } from '../../providers/dataProvider'
+import { Droppable, Draggable } from 'react-beautiful-dnd'
+import { List } from '../domain/list'
 
 const cx = bind(styles)
 
-export const CardList: React.FC<{
-  id?: Id
-  name: string
-  inBoard: string
-}> = ({ name, id, inBoard, children }) => {
+export const CardList: React.FC<{ list: List }> = ({ list, children }) => {
   const [hover, setHover] = useState(false)
-  const [cardName, setCardName] = useState(name)
-  const [cardsIn, setCardsIn] = useState([])
+  const [listName, setListName] = useState(list.name)
+  const [cardsIn, setCardsIn] = useState<CardD[]>([] as CardD[])
   const { setNotice } = useContext(dataContext)
+
   useEffect(() => {
+    setListName(list.name)
     fetchCards()
-  }, [])
-  useEffect(() => {
-    setCardName(name)
-  }, [name])
+  }, [list])
   const cardRepository = CardRepositoryFactory.build()
   const listRepository = ListRepositoryFactory.build()
 
   async function fetchCards() {
-    if (id) {
-      const cards: any = await cardRepository.findAll(id)
-      setCardsIn(cards)
-    }
+    await cardRepository.findAll(list.id).then(response => setCardsIn(response))
   }
   const deleteCard = (card: CardD) => {
     if (window.confirm('Do you want to delete the card ' + card.name)) {
@@ -45,42 +38,70 @@ export const CardList: React.FC<{
       })
     }
   }
-
   const handleKeydown = (e: any) => {
     if (e.key === 'Enter') {
-      listRepository.update({ id: id, name: e.target.value, cards: cardsIn, inBoard: inBoard })
-      setCardName(e.target.value)
+      listRepository
+        .update({
+          ...list,
+          name: e.target.value
+        })
+        .then(fetchCards)
     }
   }
-  const addNewCardInList = (card: CardD) => {
-    card = { ...card, inList: id }
+  const addNewCardInList = (card: NewCard) => {
+    card = { ...card, inList: list.id }
     cardRepository.create(card).then(() => fetchCards())
   }
   return (
     <>
-      <div
-        className={cx('card-list-container')}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-      >
-        <p className={cx('list-title')}>
-          {' '}
-          <Editingtitle handleKeydown={e => handleKeydown(e)} value={cardName} size={'s'} />
-        </p>
+      <Droppable droppableId={list.id}>
+        {provided => (
+          <div
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+            className={cx('card-list-container')}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+          >
+            <p className={cx('list-title')}>
+              {' '}
+              <Editingtitle handleKeydown={e => handleKeydown(e)} value={listName} size={'s'} />
+            </p>
 
-        <ul className={cx('cards')}>
-          {cardsIn &&
-            cardsIn.map((card: CardD) => {
-              return (
-                <li key={card.id}>
-                  <Card card={card} onClose={fetchCards} deleteCard={() => deleteCard(card)} />
-                  <Icon icon={'times-circle'} onClick={() => deleteCard(card)} />
-                </li>
-              )
-            })}
-        </ul>
-        <AddNewCard visibleContainer={hover} cardCreated={card => addNewCardInList(card)} />
-      </div>
+            <ul className={cx('cards')}>
+              {cardsIn &&
+                cardsIn.map((card: CardD, index) => {
+                  return (
+                    <Draggable draggableId={card.id} index={index} key={card.id + 'draggable'}>
+                      {provided => (
+                        <li
+                          key={card.id + 'li'}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          ref={provided.innerRef}
+                        >
+                          <Card
+                            key={card.id + 'card'}
+                            card={card}
+                            onClose={() => fetchCards}
+                            deleteCard={() => deleteCard(card)}
+                          />
+                          <Icon
+                            key={card.id + 'link'}
+                            icon={'times-circle'}
+                            onClick={() => deleteCard(card)}
+                          />
+                        </li>
+                      )}
+                    </Draggable>
+                  )
+                })}
+              {provided.placeholder}
+            </ul>
+            <AddNewCard visibleContainer={hover} cardCreated={card => addNewCardInList(card)} />
+          </div>
+        )}
+      </Droppable>
       {children}
     </>
   )
