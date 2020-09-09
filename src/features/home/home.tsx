@@ -7,7 +7,6 @@ export const Home: React.FC = () => {
   const history = useHistory()
   const { user } = useContext(dataContext)
   if (user.name) {
-    console.log(user)
     history.push(routes.boards)
   }
   return (

@@ -23,6 +23,6 @@ export class ListHttpRepository implements ListRepository {
   }
 
   async delete(list: List): Promise<void> {
-    await http.delete('/lists/delete/' + list.id)
+    await http.delete('/lists/delete/' + list.id + '?inBoard=' + list.inBoard)
   }
 }

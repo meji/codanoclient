@@ -33,12 +33,14 @@ ul.board-list li a:hover {
 
 ul.lists-container {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
+  height: calc(100vh - 200px);
   width: 100%;
-  /*overflow-x: auto;*/
+  overflow-x: auto;
   padding: var(--s) var(--l);
   margin-left: calc((var(--l) * (-1)));
+  min-height: 40vh;
 }
 ul.lists-container > li {
   position: relative;
@@ -69,8 +71,16 @@ ul.lists-container li .delete:hover {
 .new-list {
   margin-top: var(--l);
 }
-.new-list p {
+.new-list span {
   display: block;
   min-width: 150px;
   font-weight: bold;
+  word-break: keep-all;
+}
+
+@media screen and (min-width: 768px) {
+  ul.lists-container {
+    align-items: flex-start;
+    height: auto;
+  }
 }

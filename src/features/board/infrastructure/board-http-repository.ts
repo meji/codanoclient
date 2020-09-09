@@ -27,7 +27,7 @@ export class BoardHttpRepository implements BoardRepository {
   }
 
   async delete(id: string): Promise<void> {
-    await http.delete('/boards/delete?id=' + id)
+    await http.delete('/boards/delete/' + id)
   }
 
   async getById(id: string): Promise<Board> {

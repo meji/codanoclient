@@ -41,8 +41,9 @@ export const Board: React.FC = () => {
   }, [boardName])
 
   async function fetchLists() {
-    const lists: listModel[] = await listRepository.findAll(inBoard)
-    setLists(lists)
+    await listRepository.findAll(inBoard).then(response => {
+      setLists(response)
+    })
   }
   async function createList(list: string) {
     if (inBoard) {

@@ -40,12 +40,11 @@ export const CardList: React.FC<{ list: List }> = ({ list, children }) => {
   }
   const handleKeydown = (e: any) => {
     if (e.key === 'Enter') {
-      listRepository
-        .update({
-          ...list,
-          name: e.target.value
-        })
-        .then(fetchCards)
+      listRepository.update({
+        ...list,
+        name: e.target.value
+      })
+      setListName(e.target.value)
     }
   }
   const addNewCardInList = (card: NewCard) => {
@@ -65,7 +64,12 @@ export const CardList: React.FC<{ list: List }> = ({ list, children }) => {
           >
             <p className={cx('list-title')}>
               {' '}
-              <Editingtitle handleKeydown={e => handleKeydown(e)} value={listName} size={'s'} />
+              <Editingtitle
+                handleKeydown={e => handleKeydown(e)}
+                value={listName}
+                placeHolder={'List Name'}
+                size={'s'}
+              />
             </p>
 
             <ul className={cx('cards')}>

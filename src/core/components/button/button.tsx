@@ -31,7 +31,7 @@ export const Button: React.FunctionComponent<Props> = ({
       className={cx('button', theme, size, className, icon && 'with-icon')}
     >
       {icon && <Icon icon={icon} className={cx('button-icon')} />}
-      {children}
+      <span>{children}</span>
     </button>
   )
 }

@@ -36,7 +36,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
   const [data, setData] = useState<Card>(card)
   const iconType =
     data.type === 'Image'
-      ? 'id-card'
+      ? 'image'
       : data.type === 'Link'
       ? 'link'
       : data.type === 'Note'

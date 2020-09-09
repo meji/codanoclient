@@ -25,7 +25,7 @@ export const CreateBoardForm: React.FC = () => {
   }
 
   return (
-    <>
+    <div className={cx('new-board-zone')}>
       {!createBoardVisible && (
         <Button size={'s'} onClick={() => setCreateBoardVisible(true)} theme={'primary'}>
           New Board
@@ -41,7 +41,7 @@ export const CreateBoardForm: React.FC = () => {
           onBlur={() => setCreateBoardVisible(false)}
         />
       )}
-    </>
+    </div>
   )
 }
 

@@ -34,7 +34,9 @@ section * {
 .logo-area * {
   margin: 0;
 }
-
+.logo-area svg {
+  margin-left: var(--s);
+}
 h2.mtno {
   margin-top: 0;
 }
@@ -65,4 +67,34 @@ h2.mtno {
 .data .external-login a:hover {
   filter: saturate(100%);
   opacity: 1;
+}
+
+button span {
+  margin-left: 0;
+}
+
+.buttons-area button {
+  padding: 0;
+}
+
+.buttons-area button span {
+  display: none;
+}
+.new-board-zone {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .buttons-area button span {
+    display: flex;
+    margin-left: 0;
+  }
+  .new-board-zone {
+    display: flex;
+  }
+  .logo-area * {
+    margin: 0;
+  }
+  .buttons-area button {
+    padding: var(--s);
+  }
 }

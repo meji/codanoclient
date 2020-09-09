@@ -53,7 +53,7 @@ export const AddNewCard: React.FC<{
         <>
           <Button
             theme={'transparent'}
-            icon={'id-card'}
+            icon={'image'}
             onClick={() => {
               setCardTypeSelected(imgType)
               setVisibleNameInputForm(true)
