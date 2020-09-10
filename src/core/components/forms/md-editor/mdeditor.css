@@ -4,6 +4,7 @@
   background: var(--background-color);
   min-height: 38vh;
   margin-bottom: var(--s);
+  z-index: 30;
 }
 .myEditor .rc-md-navigation .button-wrap .button {
   color: var(--primary-color);
@@ -33,4 +34,8 @@ body .hljs {
   padding: var(--m);
   max-width: 100%;
   box-sizing: border-box;
+}
+
+.rc-md-editor .editor-container .sec-md .input {
+  resize: vertical;
 }

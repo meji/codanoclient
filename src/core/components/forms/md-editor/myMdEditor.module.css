@@ -1,24 +1,51 @@
+/*Contenedor de la preview del MDE*/
 .unfolded .prev-container {
   color: var(--text-body-color);
   padding: var(--l);
   background: var(--form-background-color);
   position: fixed;
   right: 0;
-  top: 0;
-  height: 100vh;
-  width: 50vw;
-  transition: 0s;
+  top: 60vh;
+  height: 40vh;
+  width: 100vw;
 }
-
+/*Contenedor de la preview del MDE cuando hay imagen*/
 .unfolded .prev-container.image {
-  height: 50vh;
-  top: 50vh;
+  height: 25vh;
+  bottom: 15vh;
+  top: auto;
 }
-
-.prev-container:first-child {
-  min-height: 38vh;
-}
+/*Texto bajo el editor*/
 .notice {
   font-size: var(--font-size-small);
   text-align: right;
+}
+
+.unfolded .prev-container.expanded,
+.unfolded .prev-container.expanded.image {
+  width: 100%;
+  height: 100vh;
+  z-index: 300;
+  top: 0;
+  transition: var(--transition-ultra-fast);
+}
+.expand-editor-icon {
+  right: var(--m);
+  top: var(--m);
+  position: absolute;
+}
+/*RWD*/
+@media screen and (min-width: 1024px) {
+  .unfolded .prev-container {
+    height: 100vh;
+    width: 50vw;
+    top: 0;
+  }
+  .unfolded .prev-container.image {
+    height: 80vh;
+    top: 20vh;
+  }
+  .prev-container:first-child {
+    min-height: 38vh;
+  }
 }

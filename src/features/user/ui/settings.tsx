@@ -49,9 +49,9 @@ export const Settings: React.FC = () => {
     <>
       <Notice />
       <Page flex={'center'} size={'l'}>
-        <h1>Hello {userData.user.name}</h1>
+        {/*<h1>Hello {userData.user.name}</h1>*/}
         <ShadowBox size={'small'}>
-          <h2 className={cx('mtno')}>Settings</h2>
+          <h1 className={cx('mtno')}>Settings</h1>
           <div className={cx('data')}>
             <p>
               <strong>Name:</strong>{' '}
@@ -123,7 +123,7 @@ export const Settings: React.FC = () => {
               </Form>
             )}
             <p className={cx('external-login')}>
-              Linked login Accounts:{' '}
+              Linked Accounts:{' '}
               {user.googleId ? (
                 <Icon image={'/img/google-icon.svg'} />
               ) : (

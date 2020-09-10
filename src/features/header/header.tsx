@@ -65,8 +65,12 @@ export const Header: React.FunctionComponent<Props> = ({ className, children }) 
         <section className={cx('buttons-area')}>
           {user.email && (
             <>
-              <p className={cx('user')}>{user.name}</p>
-              <Icon icon={'users-cog'} onClick={() => history.push(routes.settings)} size={'lg'} />
+              {user.name && (
+                <p className={cx('user')}>
+                  Hi {user.name.split(' ')[0]} <span>:)</span>
+                </p>
+              )}
+              <Icon icon={'cog'} onClick={() => history.push(routes.settings)} size={'lg'} />
               <Icon icon={'sign-out-alt'} onClick={() => logout()} size={'lg'} />
             </>
           )}

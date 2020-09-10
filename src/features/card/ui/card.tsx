@@ -8,7 +8,8 @@ export const Card: React.FC<{
   card: CardData
   deleteCard?: () => void
   onClose?: () => void
-}> = ({ card, onClose, deleteCard }): any => {
+  onClick?: () => void
+}> = ({ card, onClose, deleteCard, onClick }): any => {
   const [cardData, setData] = useState(card)
   const cardRepositoryFactory = CardRepositoryFactory.build()
   const closeCard = (card: CardData) => {
@@ -39,6 +40,7 @@ export const Card: React.FC<{
 
   return (
     <CardBase
+      onClick={onClick}
       card={cardData}
       onClose={card => closeCard(card)}
       saveImg={e => savePicture(e)}

@@ -15,10 +15,11 @@ import { List } from '../domain/list'
 const cx = bind(styles)
 
 export const CardList: React.FC<{ list: List }> = ({ list, children }) => {
+  const { setNotice } = useContext(dataContext)
   const [hover, setHover] = useState(false)
   const [listName, setListName] = useState(list.name)
   const [cardsIn, setCardsIn] = useState<CardD[]>([] as CardD[])
-  const { setNotice } = useContext(dataContext)
+  const [isDraggable, setIsDraggable] = useState(true)
 
   useEffect(() => {
     setListName(list.name)
@@ -76,10 +77,15 @@ export const CardList: React.FC<{ list: List }> = ({ list, children }) => {
               {cardsIn &&
                 cardsIn.map((card: CardD, index) => {
                   return (
-                    <Draggable draggableId={card.id} index={index} key={card.id + 'draggable'}>
+                    <Draggable
+                      draggableId={card.id}
+                      index={index}
+                      key={card.id + Draggable + index}
+                      isDragDisabled={!isDraggable}
+                    >
                       {provided => (
                         <li
-                          key={card.id + 'li'}
+                          key={card.id + 'li' + index * 2}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
                           ref={provided.innerRef}
@@ -87,11 +93,17 @@ export const CardList: React.FC<{ list: List }> = ({ list, children }) => {
                           <Card
                             key={card.id + 'card'}
                             card={card}
-                            onClose={() => fetchCards}
+                            onClose={() => {
+                              fetchCards()
+                              setIsDraggable(!isDraggable)
+                            }}
+                            onClick={() => {
+                              setIsDraggable(!isDraggable)
+                            }}
                             deleteCard={() => deleteCard(card)}
                           />
                           <Icon
-                            key={card.id + 'link'}
+                            key={card.id + 'link' + index * 3}
                             icon={'times-circle'}
                             onClick={() => deleteCard(card)}
                           />

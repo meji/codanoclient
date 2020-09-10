@@ -43,9 +43,9 @@ a:hover,
   word-break: break-all;
 }
 
-/*div,*/
-/*button,*/
-/*a,*/
-/*section {*/
-/*  transition: var(--transition-ultra-fast);*/
-/*}*/
+div,
+button,
+a,
+section {
+  transition: var(--transition-ultra-fast);
+}

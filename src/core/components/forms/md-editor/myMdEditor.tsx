@@ -10,6 +10,7 @@ import ReactHtmlParser from 'react-html-parser'
 import { bind } from '../../../../utils/bind'
 import styles from './myMdEditor.module.css'
 import { Card } from '../../../../features/card/domain/card'
+import { Icon } from '../../icon/icon'
 const cx = bind(styles)
 
 // Initialize a markdown parser
@@ -31,12 +32,14 @@ export const MyMdEditor: React.FC<{
   initialText?: string
   callback?: (content: any) => void
   showContent?: boolean
+  className?: string
   card?: Card
-}> = ({ initialText, showContent, callback, card }) => {
+}> = ({ initialText, showContent, callback, card, className }) => {
   const divRef = useRef<HTMLDivElement>(null)
   const myPlugins = ['header', 'fonts', 'link', 'clear', 'logger']
   const [content, setContent] = useState({ text: initialText, html: '' })
   const [showContentIn, setShowContentIn] = useState(showContent)
+  const [prevExpanded, setPrevExpanded] = useState(false)
   useEffect(() => {
     setShowContentIn(showContent)
   }, [showContent])
@@ -74,7 +77,20 @@ export const MyMdEditor: React.FC<{
         &nbsp;Editor wysiwyg
       </p>
       {showContentIn && (
-        <div className={cx('prev-container', card && card.type, card && card.img && 'image')}>
+        <div
+          className={cx(
+            'prev-container',
+            card && card.type,
+            card && card.img && 'image',
+            prevExpanded && 'expanded',
+            className
+          )}
+        >
+          <Icon
+            className={cx('expand-editor-icon')}
+            icon={prevExpanded ? 'compress' : 'expand'}
+            onClick={() => setPrevExpanded(!prevExpanded)}
+          />
           {content.text && ReactHtmlParser(mdParser.render(content.text))}
         </div>
       )}

@@ -27,7 +27,10 @@ import {
   faMoon,
   faSun,
   faExternalLinkAlt,
-  faUsersCog
+  faUsersCog,
+  faCog,
+  faExpand,
+  faCompress
 } from '@fortawesome/free-solid-svg-icons'
 export type { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core'
 library.add(
@@ -58,5 +61,8 @@ library.add(
   faMoon,
   faSun,
   faExternalLinkAlt,
-  faUsersCog
+  faUsersCog,
+  faCog,
+  faExpand,
+  faCompress
 )

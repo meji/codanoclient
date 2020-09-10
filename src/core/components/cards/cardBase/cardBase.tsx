@@ -21,6 +21,7 @@ interface Props {
   callBack?: (data: any) => void
   deleteCard?: () => void
   saveImg?: (e: any) => void
+  onClick?: () => void
 }
 
 export const CardBase: React.FunctionComponent<Props> = ({
@@ -30,10 +31,13 @@ export const CardBase: React.FunctionComponent<Props> = ({
   onClose,
   children,
   saveImg,
-  deleteCard
+  deleteCard,
+  onClick
 }) => {
   const [unfold, setUnfold] = useState(false)
   const [data, setData] = useState<Card>(card)
+  const [imageExpanded, setImageExpanded] = useState(false)
+  const [formExpanded, setFormExpanded] = useState(false)
   const iconType =
     data.type === 'Image'
       ? 'image'
@@ -48,6 +52,10 @@ export const CardBase: React.FunctionComponent<Props> = ({
   useEffect(() => {
     setData(card)
   }, [card])
+
+  useEffect(() => {
+    unfold && onClick && onClick()
+  }, [unfold])
 
   const close = (data: Card) => {
     setUnfold(false)
@@ -79,11 +87,18 @@ export const CardBase: React.FunctionComponent<Props> = ({
   return (
     <div
       data-id={data.id}
-      className={unfold ? cx('card', 'unfold') : cx('card', 'fold')}
-      onClick={() => !unfold && setUnfold(true)}
+      className={cx('card', unfold && 'unfold', formExpanded && 'expanded')}
+      onClick={() => {
+        !unfold && setUnfold(true)
+      }}
     >
       {/*<div className={cx('inner-container')} ref={divRef}>*/}
       <div className={cx('inner-container')}>
+        <Icon
+          className={cx('expand-form-icon')}
+          icon={formExpanded ? 'compress' : 'expand'}
+          onClick={() => setFormExpanded(!formExpanded)}
+        />
         <div className={cx('title-container')} onBlur={onBlur}>
           {unfold && (
             <>
@@ -151,6 +166,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
             </>
           )}
           <MyMdEditor
+            className={cx('prev-editor')}
             card={card}
             initialText={initialText}
             showContent={unfold}
@@ -172,24 +188,38 @@ export const CardBase: React.FunctionComponent<Props> = ({
             <Button icon={'times'} onClick={() => deleteCard && deleteCard()} theme={'secondary'}>
               Delete Card
             </Button>
-            <Button onClick={() => close(data)} theme={'secondary'}>
+            <Button
+              onClick={() => {
+                close(data)
+              }}
+              theme={'secondary'}
+            >
               Save and close
             </Button>
           </div>
           {data.img && (
-            <div className={cx('img-container')}>
+            <div className={cx('img-container', imageExpanded && 'expanded')}>
+              <Icon
+                className={cx('expand-image-icon')}
+                icon={imageExpanded ? 'compress' : 'expand'}
+                onClick={() => setImageExpanded(!imageExpanded)}
+              />
+
               <img
                 src={process.env.REACT_APP_BACK_URL + 'cards/img/' + data.img}
                 title={data.name}
                 alt={data.name}
               />
-              <Icon
-                icon={'times-circle'}
+              <Button
                 className={cx('delete')}
+                size={'s'}
+                theme={'primary'}
                 onClick={() => {
                   callBack && callBack(data)
                 }}
-              />
+              >
+                Delete Image
+              </Button>
             </div>
           )}
           {children}
