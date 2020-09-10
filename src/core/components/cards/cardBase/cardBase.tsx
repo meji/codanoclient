@@ -94,11 +94,6 @@ export const CardBase: React.FunctionComponent<Props> = ({
     >
       {/*<div className={cx('inner-container')} ref={divRef}>*/}
       <div className={cx('inner-container')}>
-        <Icon
-          className={cx('expand-form-icon')}
-          icon={formExpanded ? 'compress' : 'expand'}
-          onClick={() => setFormExpanded(!formExpanded)}
-        />
         <div className={cx('title-container')} onBlur={onBlur}>
           {unfold && (
             <>
@@ -138,13 +133,20 @@ export const CardBase: React.FunctionComponent<Props> = ({
             </>
           )}
           {unfold && (
-            <Icon
-              icon={'times'}
-              onClick={() => {
-                close(data)
-              }}
-              className={cx('folder')}
-            />
+            <>
+              <Icon
+                icon={'times'}
+                onClick={() => {
+                  close(data)
+                }}
+                className={cx('folder')}
+              />
+              <Icon
+                className={cx('expand-form-icon')}
+                icon={formExpanded ? 'compress' : 'expand'}
+                onClick={() => setFormExpanded(!formExpanded)}
+              />
+            </>
           )}
         </div>
         <div className={unfold ? cx('content', 'unfold') : cx('content')}>

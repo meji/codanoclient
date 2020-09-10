@@ -20,6 +20,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  position: relative;
 }
 .card .title {
   margin-left: 6px;
@@ -189,8 +190,8 @@ p.error {
 .card.unfold .expand-form-icon {
   display: inline-block;
   position: absolute;
-  left: var(--m);
-  top: var(--m);
+  right: calc(var(--l));
+  top: 0;
   fill: var(--secondary-color);
   color: var(--secondary-color);
 }
@@ -208,6 +209,7 @@ p.error {
 .card.unfold.expanded .inner-container .img-container,
 .card.unfold.expanded .prev-editor {
   opacity: 0;
+  z-index: -1;
 }
 
 /*RWD se mobile a desktop, contenedores*/
