@@ -19,7 +19,12 @@ export const Home: React.FC = () => {
     <Page className={cx('home-page')}>
       <div>
         <h1>
-          <small>Welcome to</small> <strong>Codalia</strong>
+          <small>
+            {'<'}
+            <span>Welcome to</span>
+            {'>'}{' '}
+          </small>
+          <strong>Codalia</strong>
         </h1>
         <ul className={cx('icons')}>
           <li>
