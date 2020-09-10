@@ -220,6 +220,44 @@ p.error {
   z-index: -1;
 }
 
+/*Web container*/
+.web-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--form-background-color);
+}
+.img-container.expanded .web-container {
+  width: 375px;
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--form-background-color);
+  border-radius: var(--rm);
+  background: url('/img/phone.png') no-repeat center center;
+}
+
+.img-container.expanded .web-container:before {
+  content: 'Loading';
+  animation: Loading;
+  animation-duration: 5s;
+  font-family: Caveat, sans-serif;
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  width: 375px;
+  font-size: 3rem;
+  z-index: -1;
+  color: var(--primary-color);
+}
+
+.web-container iframe {
+  width: 334px;
+  height: 704px;
+  border-radius: 27px;
+}
+
 /*RWD se mobile a desktop, contenedores*/
 
 @media (min-width: 1024px) {
@@ -248,5 +286,17 @@ p.error {
   }
   .card.unfold.expanded .inner-container {
     max-width: 90%;
+  }
+}
+
+@keyframes Loading {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(360deg);
+  }
+  100% {
+    filter: hue-rotate(0deg);
   }
 }

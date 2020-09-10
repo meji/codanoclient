@@ -151,7 +151,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
         </div>
         <div className={unfold ? cx('content', 'unfold') : cx('content')}>
           {data.url && (
-            <>
+            <div>
               <div className={cx('url-box')}>
                 <Icon
                   image={'http://www.google.com/s2/favicons?domain=' + setUrlDomain(data.url)}
@@ -165,7 +165,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
               <a href={data.url} target={'_blank'} rel={'noopener noreferrer'}>
                 <Icon icon={'external-link-alt'} className={cx('external-link')} size={'xs'} />
               </a>
-            </>
+            </div>
           )}
           <MyMdEditor
             className={cx('prev-editor')}
@@ -199,29 +199,42 @@ export const CardBase: React.FunctionComponent<Props> = ({
               Save and close
             </Button>
           </div>
-          {data.img && (
+          {(data.img || data.url) && (
             <div className={cx('img-container', imageExpanded && 'expanded')}>
               <Icon
                 className={cx('expand-image-icon')}
                 icon={imageExpanded ? 'compress' : 'expand'}
                 onClick={() => setImageExpanded(!imageExpanded)}
               />
-
-              <img
-                src={process.env.REACT_APP_BACK_URL + 'cards/img/' + data.img}
-                title={data.name}
-                alt={data.name}
-              />
-              <Button
-                className={cx('delete')}
-                size={'s'}
-                theme={'primary'}
-                onClick={() => {
-                  callBack && callBack(data)
-                }}
-              >
-                Delete Image
-              </Button>
+              {data.img && (
+                <>
+                  <img
+                    src={process.env.REACT_APP_BACK_URL + 'cards/img/' + data.img}
+                    title={data.name}
+                    alt={data.name}
+                  />
+                  <Button
+                    className={cx('delete')}
+                    size={'s'}
+                    theme={'primary'}
+                    onClick={() => {
+                      callBack && callBack(data)
+                    }}
+                  >
+                    Delete Image
+                  </Button>
+                </>
+              )}
+              {!data.img && data.url && (
+                <div className={cx('web-container', imageExpanded && 'expanded')}>
+                  {imageExpanded && <iframe src={data.url} />}
+                  {!imageExpanded && (
+                    <Button onClick={() => setImageExpanded(true)} theme={'secondary'}>
+                      View mobile preview for {data.url}
+                    </Button>
+                  )}
+                </div>
+              )}
             </div>
           )}
           {children}

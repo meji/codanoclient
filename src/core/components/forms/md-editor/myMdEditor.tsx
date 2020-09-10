@@ -81,7 +81,7 @@ export const MyMdEditor: React.FC<{
           className={cx(
             'prev-container',
             card && card.type,
-            card && card.img && 'image',
+            card && (card.img || card.url) && 'image',
             prevExpanded && 'expanded',
             className
           )}
