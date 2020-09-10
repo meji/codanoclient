@@ -30,7 +30,7 @@
   border: none;
   background: transparent;
   vertical-align: text-top;
-  width: calc(100% - 42px);
+  width: calc(100% - var(--l) * 3);
   margin-bottom: 0;
 }
 .card .title-container .folder {
@@ -205,6 +205,14 @@ p.error {
 
 .card.unfold.expanded .inner-container {
   height: 90vh;
+  max-height: none;
+  justify-content: space-between;
+}
+.card.unfold.expanded .inner-container .content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .card.unfold.expanded .inner-container .img-container,
 .card.unfold.expanded .prev-editor {
@@ -240,8 +248,5 @@ p.error {
   }
   .card.unfold.expanded .inner-container {
     max-width: 90%;
-  }
-  .card.unfold.expanded .inner-container .myEditor {
-    min-height: 60vh;
   }
 }

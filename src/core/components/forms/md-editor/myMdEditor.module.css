@@ -34,6 +34,10 @@
   top: var(--m);
   position: absolute;
 }
+.myEditor {
+  min-height: 40vh;
+}
+
 /*RWD*/
 @media screen and (min-width: 1024px) {
   .unfolded .prev-container {

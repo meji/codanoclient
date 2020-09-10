@@ -1,11 +1,11 @@
 /*Mc editor*/
-.myEditor .rc-md-editor {
+.rc-md-editor {
   border: var(--border-form);
-  background: var(--background-color);
   min-height: 38vh;
   margin-bottom: var(--s);
   z-index: 30;
 }
+
 .myEditor .rc-md-navigation .button-wrap .button {
   color: var(--primary-color);
 }
