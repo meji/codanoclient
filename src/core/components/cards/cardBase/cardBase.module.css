@@ -8,8 +8,11 @@
   word-break: break-all;
 }
 .card:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--box-shadow);
   border-color: transparent;
+}
+.card:hover .title {
+  color: var(--primary-color);
 }
 
 .card.fold:hover {
@@ -31,8 +34,10 @@
   border: none;
   background: transparent;
   vertical-align: text-top;
-  width: calc(100% - var(--l) * 3);
   margin-bottom: 0;
+}
+.card.unfold .title {
+  width: calc(100% - var(--l) * 3);
 }
 .card .title-container .folder {
   justify-self: flex-end;

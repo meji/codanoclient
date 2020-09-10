@@ -16,7 +16,7 @@ header.header {
   font-family: Caveat, cursive;
   margin: 0 var(--l) 0 0;
   align-items: center;
-  display: inline-flex;
+  display: none;
 }
 section {
   display: flex;
@@ -103,6 +103,9 @@ svg[data-icon='sign-out-alt']:hover {
   }
   .buttons-area button {
     padding: var(--s);
+  }
+  .header .user {
+    display: inline-flex;
   }
 }
 /*Logo área*/

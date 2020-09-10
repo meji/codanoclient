@@ -63,3 +63,11 @@ ul.cards > li:hover > svg {
   font-weight: 600;
   margin-bottom: var(--m);
 }
+
+/*Metemos un media para touch screen*/
+@media (hover: none) {
+  .card-list-container {
+    box-shadow: var(--box-shadow);
+    background: var(--form-background-color);
+  }
+}

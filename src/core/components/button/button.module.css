@@ -39,12 +39,8 @@
 .secondary,
 .primary:hover {
   --button-background: var(--primary-color);
-  --button-text: var(--secondary-color);
-  --border-button-color: var(--primary-color);
-}
-
-.primary:hover {
   --button-text: var(--form-background-color);
+  --border-button-color: var(--primary-color);
 }
 
 .button.transparent {
