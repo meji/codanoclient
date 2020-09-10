@@ -70,6 +70,7 @@ button span {
 
 .buttons-area button {
   padding: 0;
+  background: transparent;
 }
 
 .buttons-area button span {

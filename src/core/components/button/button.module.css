@@ -1,6 +1,6 @@
 .button {
   appearance: none;
-  background-color: var(--form-background-color);
+  background-color: var(--button-background);
   border-width: 1px;
   border-style: solid;
   border-color: var(--border-button-color);
@@ -32,11 +32,19 @@
   --border-button-color: var(--primary-color);
 }
 
+.primary {
+  --button-background: transparent;
+}
+
 .secondary,
 .primary:hover {
   --button-background: var(--primary-color);
   --button-text: var(--secondary-color);
   --border-button-color: var(--primary-color);
+}
+
+.primary:hover {
+  --button-text: var(--form-background-color);
 }
 
 .button.transparent {

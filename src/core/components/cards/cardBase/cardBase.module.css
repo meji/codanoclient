@@ -5,6 +5,7 @@
   background: var(--form-background-color);
   border-radius: var(--rm);
   color: var(--text-body-color);
+  word-break: break-all;
 }
 .card:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

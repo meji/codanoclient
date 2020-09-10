@@ -77,12 +77,12 @@ export const Header: React.FunctionComponent<Props> = ({ className, children }) 
           {!user.email && (
             <>
               <Link to={'/auth/login'}>
-                <Button theme={'transparent'} icon={'pencil-alt'}>
+                <Button theme={'transparent'} icon={'sign-in-alt'}>
                   Login
                 </Button>
               </Link>
               <Link to={'/auth/signup'}>
-                <Button theme={'transparent'} icon={'user'}>
+                <Button theme={'transparent'} icon={'user-plus'}>
                   Sign Up
                 </Button>
               </Link>

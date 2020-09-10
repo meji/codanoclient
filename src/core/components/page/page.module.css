@@ -1,12 +1,12 @@
 .container {
-  width: 980px;
+  max-width: 980px;
   margin: 0 auto;
   box-sizing: border-box;
+  padding: 0 var(--s);
 }
 .container.l {
-  width: 100%;
+  max-width: none;
   margin: 0 auto;
-  padding: 0 var(--s);
 }
 .container.center {
   display: flex;
@@ -17,13 +17,13 @@
 }
 
 @media screen and (min-width: 768px) {
-  .container.l {
+  .container {
     padding: 0 var(--m);
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .container.l {
+  .container {
     padding: 0 var(--l);
   }
 }
