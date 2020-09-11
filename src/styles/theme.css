@@ -51,7 +51,7 @@
   --text-body-color: #fff;
   --text-title-color: #fff;
   --text-form-color: #efefef;
-  --text-notice-color: #333;
+  --text-notice-color: #666;
   --label-color: var(--text-notice-color);
   --label-focused-color: #ccc;
   --form-background-color: #000;

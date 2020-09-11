@@ -50,3 +50,5 @@ export const Moon = () => <IconContainer icon={'moon'} size={'lg'} />
 export const Sun = () => <IconContainer icon={'sun'} size={'lg'} />
 export const LinkFuera = () => <IconContainer icon={'external-link-alt'} size={'lg'} />
 export const UserCog = () => <IconContainer icon={'users-cog'} size={'lg'} />
+export const SignInAlt = () => <IconContainer icon={'sign-in-alt'} size={'lg'} />
+export const userPlus = () => <IconContainer icon={'user-plus'} size={'lg'} />

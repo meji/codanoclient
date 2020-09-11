@@ -87,7 +87,7 @@ export const Board: React.FC = () => {
     setLists([...lists.map(list => (list.id === newColumn.id ? newColumn : list))])
   }
   return (
-    <Page size={'l'}>
+    <Page size={'l'} className={cx('body')}>
       <h1>
         <Editingtitle handleKeydown={e => handleKeyDownBoardTitle(e)} value={boardTitle} />
       </h1>

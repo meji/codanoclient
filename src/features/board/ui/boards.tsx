@@ -31,7 +31,7 @@ export const Boards: React.FC = () => {
     })
   }
   return (
-    <Page size={'l'}>
+    <Page size={'l'} className={cx('body')}>
       <h1>Boards</h1>
       {boards.length > 0 && (
         <ul className={cx('board-list')}>
