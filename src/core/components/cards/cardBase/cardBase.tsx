@@ -122,7 +122,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
             <>
               {data.url ? (
                 <Icon
-                  image={'http://www.google.com/s2/favicons?domain=' + setUrlDomain(data.url)}
+                  image={'https://www.google.com/s2/favicons?domain=' + setUrlDomain(data.url)}
                 />
               ) : (
                 <Icon icon={iconType} className={cx('icon')} />
@@ -154,7 +154,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
             <div>
               <div className={cx('url-box')}>
                 <Icon
-                  image={'http://www.google.com/s2/favicons?domain=' + setUrlDomain(data.url)}
+                  image={'https://www.google.com/s2/favicons?domain=' + setUrlDomain(data.url)}
                 />
                 <Editingtitle
                   handleKeydown={e => setData({ ...data, url: e.target.value })}
