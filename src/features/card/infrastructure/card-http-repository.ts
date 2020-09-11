@@ -32,7 +32,7 @@ export class CardHttpRepository implements CardRepository {
   }
 
   async delete(card: Card): Promise<void> {
-    await http.delete('/cards/delete/' + card.id)
+    await http.delete('/cards/delete/' + card.id + '?inList=' + card.inList)
   }
 
   async newImg(imageFile: any, id: Id): Promise<string> {
