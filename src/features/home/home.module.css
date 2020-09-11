@@ -1,12 +1,12 @@
 .home-page {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  height: calc(100vh - 64px);
   text-align: center;
   line-height: 1.4;
   padding-bottom: var(--l);
+  min-height: calc(100vh - 160px);
 }
 .home-page h1 {
   display: flex;
@@ -36,10 +36,11 @@
   font-weight: normal;
 }
 .home-page h2 {
-  font-size: var(--font-size-small);
+  display: none;
+  font-size: 0.75rem;
   line-height: 1.6;
-  max-width: 90%;
   font-weight: 500;
+  margin: var(--l) 0 0;
 }
 
 .home-page h2 strong {
@@ -80,7 +81,8 @@ body .home-page ul.icons li:nth-child(4) svg {
 .home-page .links-container {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 100%;
+  max-width: 90%;
 }
 
 .home-page .links-container button {
@@ -104,14 +106,14 @@ body .home-page ul.icons li:nth-child(4) svg {
     height: 30px;
   }
   .home-page h2 {
+    display: block;
     font-size: 1rem;
-    max-width: 60%;
+    max-width: none;
+    margin: 0;
   }
   .home-page .links-container {
     display: flex;
     flex-direction: column;
-    max-width: 60%;
-    width: 300px;
   }
 }
 

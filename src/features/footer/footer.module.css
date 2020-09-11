@@ -6,8 +6,15 @@
   align-items: center;
   font-size: var(--font-size-small);
   color: var(--label-color);
+  flex-direction: column;
 }
 
 .footer p {
   color: var(--label-color);
+}
+
+@media (min-width: 768px) {
+  .footer {
+    flex-direction: row;
+  }
 }

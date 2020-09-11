@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { routes } from '../../routes/routes'
 import { dataContext } from '../providers/dataProvider'
@@ -7,7 +7,6 @@ import { bind } from '../../utils/bind'
 import styles from './home.module.css'
 import { Icon } from '../../core/components/icon/icon'
 import { Button } from '../../core/components/button/button'
-import { upDateVh } from '../../core/components/utils/updateVh'
 const cx = bind(styles)
 
 function HomeIcons() {
@@ -50,14 +49,16 @@ function HomeText() {
 
 function HomeHero() {
   return (
-    <h1>
-      <small>
-        {'<'}
-        <span>Welcome to</span>
-        {'>'}{' '}
-      </small>
-      <strong>Codalia</strong>
-    </h1>
+    <>
+      <h1>
+        <small>
+          {'<'}
+          <span>Welcome to</span>
+          {'>'}{' '}
+        </small>
+        <strong>Codalia</strong>
+      </h1>
+    </>
   )
 }
 
@@ -74,19 +75,12 @@ function HomeLoginTexts(props: { onClick: () => void }) {
         </Link>{' '}
         if you have an account
       </p>
+      <HomeText />
     </div>
   )
 }
 
 export const Home: React.FC = () => {
-  useEffect(() => {
-    upDateVh()
-    return window.removeEventListener('resize', () => {
-      let vh = window.innerHeight * 0.01
-      document.documentElement.style.setProperty('--vh', `${vh}px`)
-    })
-  }, [])
-
   const history = useHistory()
   const { user } = useContext(dataContext)
   if (user.name) {
@@ -99,7 +93,6 @@ export const Home: React.FC = () => {
         <HomeIcons />
       </div>
       <HomeLoginTexts onClick={() => history.push('/auth/signup')} />
-      <HomeText />
     </Page>
   )
 }
