@@ -8,6 +8,7 @@
   top: 60vh;
   height: 40vh;
   width: 100vw;
+  overflow-y: auto;
 }
 /*Contenedor de la preview del MDE cuando hay imagen*/
 .unfolded .prev-container.image {

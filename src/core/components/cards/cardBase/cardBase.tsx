@@ -230,7 +230,7 @@ export const CardBase: React.FunctionComponent<Props> = ({
                   {imageExpanded && <iframe src={data.url} />}
                   {!imageExpanded && (
                     <Button onClick={() => setImageExpanded(true)} theme={'secondary'}>
-                      View mobile preview for {data.url}
+                      View mobile preview<span className={cx('hidden')}> for {data.url}</span>
                     </Button>
                   )}
                 </div>

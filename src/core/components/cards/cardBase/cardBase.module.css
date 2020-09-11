@@ -73,6 +73,7 @@
   flex-direction: column;
   z-index: 10;
   transition: 0s;
+  padding: 0;
 }
 
 .card.unfold .inner-container {
@@ -263,6 +264,9 @@ p.error {
   height: 704px;
   border-radius: 27px;
 }
+.web-container button span.hidden {
+  display: none;
+}
 
 /*RWD se mobile a desktop, contenedores*/
 
@@ -272,6 +276,7 @@ p.error {
     height: 100vh;
     top: 0;
     left: 0;
+    padding: calc(var(--l) / 4) var(--s);
   }
   .card.unfold .img-container {
     top: 0;
@@ -292,6 +297,9 @@ p.error {
   }
   .card.unfold.expanded .inner-container {
     max-width: 90%;
+  }
+  .web-container button span.hidden {
+    display: inline;
   }
 }
 

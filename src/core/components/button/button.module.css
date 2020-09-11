@@ -5,10 +5,10 @@
   border-style: solid;
   border-color: var(--border-button-color);
   color: var(--button-text);
-  padding: var(--s) var(--m);
+  padding: calc(var(--s) / 2);
   border-radius: var(--rm);
   /*text-transform: uppercase;*/
-  font-weight: 600;
+  font-weight: 500;
   /*letter-spacing: 1px;*/
   font-size: 0.9rem;
   cursor: pointer;
@@ -62,5 +62,15 @@
 }
 .button.l {
   font-size: 1rem;
-  padding: calc(var(--m) / 2) var(--l);
+  height: 49px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+@media (min-width: 768px) {
+  .button {
+    padding: var(--s) var(--m);
+    font-weight: 600;
+  }
 }

@@ -5,7 +5,7 @@ import { Notice } from '../../notice/notice'
 import { dataContext } from '../../providers/dataProvider'
 import { Editingtitle } from '../../../core/components/forms/editing-title/editingTitle'
 import { bind } from '../../../utils/bind'
-import styles from '../../header/header.module.css'
+import styles from './login.module.css'
 import { Button } from '../../../core/components/button/button'
 import { Form } from '../../../core/components/forms/forms/form'
 import { FormRow } from '../../../core/components/forms/rows/formRow'
@@ -50,7 +50,7 @@ export const Settings: React.FC = () => {
       <Notice />
       <Page flex={'center'} size={'l'}>
         {/*<h1>Hello {userData.user.name}</h1>*/}
-        <ShadowBox size={'small'}>
+        <ShadowBox size={'small'} className={cx('settings')}>
           <h1 className={cx('mtno')}>Settings</h1>
           <div className={cx('data')}>
             <p>

@@ -1,5 +1,5 @@
 .form-row {
-  margin-bottom: var(--l);
+  margin-bottom: var(--m);
   display: flex;
   align-items: center;
   justify-content: stretch;
@@ -17,4 +17,10 @@
 
 .form-row label input:not([type='radio']):not([type='checkbox']) {
   width: 100%;
+}
+
+@media (min-width: 768px) {
+  .form-row {
+    margin-bottom: var(--l);
+  }
 }

@@ -41,7 +41,7 @@ export const Home: React.FC = () => {
           </li>
         </ul>
       </div>
-      <div className={cx('button-container')}>
+      <div className={cx('links-container')}>
         <Button
           onClick={() => history.push('/auth/signup')}
           theme={'transparent'}

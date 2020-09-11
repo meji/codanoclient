@@ -4,11 +4,9 @@ import { FormRow } from '../../../core/components/forms/rows/formRow'
 import { Button } from '../../../core/components/button/button'
 import { EmailInput } from '../../../core/components/forms/inputs/email-input/email-input'
 import { UserHttpService } from '../infrastructure/userHttpService'
-import { bind } from '../../../utils/bind'
-import styles from './login.module.css'
 import { dataContext } from '../../providers/dataProvider'
-import { GithubIcon } from '../../../core/components/icon/githubIcon'
-const cx = bind(styles)
+import { Link } from 'react-router-dom'
+import { Connections } from './connections'
 
 export const LoginForm: React.FC = () => {
   const userService = new UserHttpService()
@@ -51,28 +49,10 @@ export const LoginForm: React.FC = () => {
           </Button>
         </FormRow>
       </form>
-      <Button
-        theme={'secondary'}
-        onClick={() => window.location.assign(process.env.REACT_APP_BACK_URL + 'auth/google')}
-        className={cx('transparent')}
-      >
-        <img
-          src="/img/google-icon.svg"
-          alt={'Login with Google'}
-          title={'Login with Google'}
-          width={'20'}
-          height={'20'}
-        />
-        &nbsp;Login Google
-      </Button>
-      <Button
-        theme={'secondary'}
-        className={cx('transparent')}
-        onClick={() => window.location.assign(process.env.REACT_APP_BACK_URL + 'auth/github')}
-      >
-        <GithubIcon />
-        &nbsp;Login Github
-      </Button>
+      <p>
+        <Link to={'/auth/signup'}>Sign Up</Link> to create an account
+      </p>
+      <Connections />
     </>
   )
 }

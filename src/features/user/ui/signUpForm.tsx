@@ -10,7 +10,9 @@ import { UserHttpService } from '../infrastructure/userHttpService'
 import { dataContext } from '../../providers/dataProvider'
 import { ThemeContext } from '../../providers/themeProvider'
 import { User } from '../domain/user'
-import { GithubIcon } from '../../../core/components/icon/githubIcon'
+import { Link } from 'react-router-dom'
+import { Connections } from './connections'
+
 const cx = bind(styles)
 
 export const SignUpForm: React.FC = () => {
@@ -32,7 +34,7 @@ export const SignUpForm: React.FC = () => {
     e.preventDefault()
   }
   return (
-    <>
+    <div className={cx('signup')}>
       <h1>
         Sign Up in <span className={'caveat'}>Codalia</span>
       </h1>
@@ -67,28 +69,10 @@ export const SignUpForm: React.FC = () => {
           </Button>
         </FormRow>
       </form>
-      <Button
-        theme={'secondary'}
-        onClick={() => window.location.assign(process.env.REACT_APP_BACK_URL + 'auth/google')}
-        className={cx('transparent')}
-      >
-        <img
-          src="/img/google-icon.svg"
-          alt={'Login with Google'}
-          title={'Login with Google'}
-          width={'20'}
-          height={'20'}
-        />
-        &nbsp;Signup Google
-      </Button>
-      <Button
-        theme={'secondary'}
-        className={cx('transparent')}
-        onClick={() => window.location.assign(process.env.REACT_APP_BACK_URL + 'auth/github')}
-      >
-        <GithubIcon />
-        &nbsp;Signup Github
-      </Button>
-    </>
+      <p>
+        Do you have an account?, <Link to={'/auth/login'}>Login</Link>
+      </p>
+      <Connections />
+    </div>
   )
 }

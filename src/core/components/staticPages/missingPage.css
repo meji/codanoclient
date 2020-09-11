@@ -23,6 +23,8 @@ h2.neon-title {
   text-shadow: 0 0 4px #12000a;
   animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite,
     hueRotate 6s ease-in-out 3s infinite;
+  width: 90%;
+  text-align: center;
 }
 
 #svgWrap_1,

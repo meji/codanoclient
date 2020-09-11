@@ -59,33 +59,66 @@ h5,
 h1,
 .h1 {
   margin-top: 0;
-  font-size: 1.383em;
+  font-size: 1.215rem;
 }
 
 h2,
 .h2 {
-  font-size: 1.296em;
+  font-size: 1.138rem;
 }
 
 h3,
 .h3 {
-  font-size: 1.215em;
+  font-size: 1.067rem;
 }
 
 h4,
 .h4 {
-  font-size: 1.138em;
+  font-size: 1rem;
 }
 
 h5,
 .h5 {
-  font-size: 1.067em;
+  font-size: 1.067rem;
 }
 
 small,
 .text_small {
-  font-size: 0.937em;
+  font-size: 0.937rem;
 }
 .caveat {
   font-family: Caveat, cursive;
+}
+
+@media (min-width: 768px) {
+  h1,
+  .h1 {
+    margin-top: 0;
+    font-size: 1.383rem;
+  }
+
+  h2,
+  .h2 {
+    font-size: 1.296rem;
+  }
+
+  h3,
+  .h3 {
+    font-size: 1.215rem;
+  }
+
+  h4,
+  .h4 {
+    font-size: 1.138rem;
+  }
+
+  h5,
+  .h5 {
+    font-size: 1.067rem;
+  }
+
+  small,
+  .text_small {
+    font-size: 0.937rem;
+  }
 }

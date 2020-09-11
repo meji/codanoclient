@@ -1,27 +1,47 @@
 .shadow-box {
   border-radius: var(--rm);
-  padding: var(--l) var(--m);
+  padding: var(--m) var(--l);
   box-shadow: var(--box-shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
   background: var(--form-background-color);
-  max-width: 90%;
+  max-width: 90vw;
+  box-sizing: border-box;
 }
 
-.shadow-box.medium {
-  min-width: 600px;
-  margin: auto;
+.shadow-box form {
+  width: 100%;
+  margin-bottom: var(--l);
 }
+.shadow-box.medium,
 .shadow-box.small {
-  min-width: 400px;
+  min-width: 90vw;
   margin: auto;
 }
+
 .shadow-box.small .button {
   width: 100%;
 }
 
 .shadow-box.small form {
-  width: 80%;
-  margin-top: var(--l);
+  margin-top: var(--s);
+}
+@media (min-width: 768px) {
+  .shadow-box {
+    padding: var(--l) var(--m);
+  }
+  .shadow-box.small form {
+    width: 80%;
+    margin: 0 auto var(--l);
+  }
+  .shadow-box.medium {
+    padding: var(--l) var(--m);
+  }
+  .shadow-box.medium {
+    min-width: 600px;
+  }
+  .shadow-box.small {
+    min-width: 400px;
+  }
 }
