@@ -71,3 +71,10 @@ ul.cards > li:hover > svg {
     background: var(--form-background-color);
   }
 }
+
+@media (max-width: 1024px) {
+  .card-list-container {
+    box-shadow: var(--box-shadow);
+    background: var(--form-background-color);
+  }
+}

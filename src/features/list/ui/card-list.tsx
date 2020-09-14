@@ -11,6 +11,7 @@ import { Editingtitle } from '../../../core/components/forms/editing-title/editi
 import { dataContext } from '../../providers/dataProvider'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
 import { List } from '../domain/list'
+import { is_touch_device } from '../../../utils/isTouchDevice'
 
 const cx = bind(styles)
 
@@ -25,6 +26,9 @@ export const CardList: React.FC<{ list: List }> = ({ list, children }) => {
     setListName(list.name)
     fetchCards()
   }, [list])
+  useEffect(() => {
+    is_touch_device() && setHover(true)
+  }, [hover])
   const cardRepository = CardRepositoryFactory.build()
   const listRepository = ListRepositoryFactory.build()
 
