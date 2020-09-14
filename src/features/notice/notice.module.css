@@ -17,4 +17,5 @@
   transition: var(--transition-slow);
   left: 0;
   box-sizing: border-box;
+  z-index: 10000000;
 }
