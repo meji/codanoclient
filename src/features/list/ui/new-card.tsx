@@ -36,6 +36,7 @@ export const AddNewCard: React.FC<{
       cardCreated(card)
     }
     setVisibleNameInputForm(false)
+    setVisibleTypeButtons(false)
   }
   return (
     <div
@@ -97,6 +98,7 @@ export const AddNewCard: React.FC<{
           size={'s'}
           onBlur={() => {
             setVisibleNameInputForm(false)
+            setVisibleTypeButtons(false)
           }}
         />
       )}

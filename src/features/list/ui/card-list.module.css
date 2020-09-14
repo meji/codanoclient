@@ -1,5 +1,6 @@
 .card-list-container {
-  width: 300px;
+  min-width: 200px;
+  max-width: 300px;
   padding: calc(var(--l) - var(--s));
   border-radius: var(--rm);
   border: var(--border-box);
@@ -47,6 +48,7 @@ ul.cards > li:hover > svg {
 .new-card-container.with-buttons {
   display: flex;
   justify-content: space-between;
+  width: 90%;
 }
 
 .new-card-container.with-buttons .button {

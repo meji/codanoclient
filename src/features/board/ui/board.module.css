@@ -36,7 +36,7 @@ ul.lists-container {
   align-items: center;
   justify-content: flex-start;
   height: calc(100vh - 200px);
-  width: 100%;
+  width: calc(100% + var(--l));
   overflow-x: auto;
   padding: var(--s) var(--l);
   margin-left: calc((var(--l) * (-1)));
