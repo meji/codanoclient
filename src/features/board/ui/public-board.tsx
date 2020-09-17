@@ -20,7 +20,6 @@ export const PublicBoard: React.FC = () => {
   const params = new URLSearchParams(querystring)
   const boardCripted = params.get('id')
   const inBoard = encryptor.decrypt(boardCripted)
-  console.log(inBoard)
   const { boardName } = useParams()
   const [lists, setLists] = useState([] as listModel[])
   const [share, setShare] = useState(false)
@@ -39,7 +38,7 @@ export const PublicBoard: React.FC = () => {
         history.push('/404.html')
         setNotice(error.message)
       })
-  }, [boardName])
+  }, [boardName, inBoard])
 
   async function fetchLists() {
     await listRepository.findAll(inBoard).then(response => {
