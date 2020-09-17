@@ -34,6 +34,7 @@ body .hljs {
   padding: var(--m);
   max-width: 100%;
   box-sizing: border-box;
+  white-space: pre-wrap;
 }
 
 .rc-md-editor .editor-container .sec-md .input {
