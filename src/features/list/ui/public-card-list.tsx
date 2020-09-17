@@ -19,7 +19,7 @@ export const PublicCardList: React.FC<{ list: List }> = ({ list }) => {
   }
   return (
     <div className={cx('card-list-container')}>
-      <p className={cx('list-title')}>{'listName'}</p>
+      <p className={cx('list-title')}>{list.name}</p>
       <ul className={cx('cards')}>
         {cardsIn &&
           cardsIn.map((card: CardD, index) => {
