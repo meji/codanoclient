@@ -30,10 +30,12 @@ import {
   faUsersCog,
   faCog,
   faExpand,
-  faCompress,
   faSign,
   faSignInAlt,
-  faUserPlus
+  faUserPlus,
+  faCompress,
+  faShare,
+  faShareAlt
 } from '@fortawesome/free-solid-svg-icons'
 export type { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core'
 library.add(
@@ -70,5 +72,7 @@ library.add(
   faCompress,
   faSign,
   faSignInAlt,
-  faUserPlus
+  faUserPlus,
+  faShare,
+  faShareAlt
 )

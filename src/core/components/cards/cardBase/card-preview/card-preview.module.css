@@ -1,0 +1,136 @@
+.preview-container {
+  width: 50vw;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: var(--form-background-color);
+}
+.preview-container.multimedia-expanded {
+  width: 100vw;
+  overflow-y: hidden;
+}
+.close-preview {
+  position: absolute;
+  left: 25vw;
+  bottom: var(--m);
+  transform: translateX(-50%);
+}
+
+/*Preview de multimedian*/
+.multimedia-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 15vh;
+  width: 100vw;
+  padding: var(--s);
+  background: var(--background-color);
+}
+
+.multimedia-container img {
+  max-width: 99%;
+  max-height: 99%;
+}
+
+.expand-multimedia-icon {
+  position: absolute;
+  right: var(--m);
+  top: var(--m);
+}
+
+.multimedia-expanded .multimedia-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.content-container {
+  position: relative;
+  padding: var(--m);
+  padding-bottom: 56px;
+}
+
+.content-expanded .multimedia-container {
+  height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+.content-expanded .expand-multimedia-icon {
+  display: none;
+}
+.expand-content-icon {
+  display: inline-block;
+  position: absolute;
+  right: var(--m);
+  top: var(--m);
+  fill: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+/*Web container*/
+.web-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--form-background-color);
+}
+.multimedia-expanded .multimedia-container .web-container {
+  width: 375px;
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--form-background-color);
+  border-radius: var(--rm);
+  background: url('phone.png') no-repeat center center;
+}
+
+.multimedia-expanded .multimedia-container .web-container:before {
+  content: 'Loading';
+  animation: Loading;
+  animation-duration: 5s;
+  font-family: Caveat, sans-serif;
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  width: 375px;
+  font-size: 3rem;
+  z-index: -1;
+  color: var(--primary-color);
+}
+
+.web-container iframe {
+  width: 334px;
+  height: 704px;
+  border-radius: 27px;
+}
+
+/*RWD se mobile a desktop, contenedores*/
+
+@media (min-width: 1024px) {
+  .multimedia-container {
+    top: 0;
+    right: 0;
+    height: 20vh;
+    width: 50vw;
+    padding: var(--s);
+  }
+  .multimedia-container img {
+    max-width: 90%;
+    max-height: 90%;
+  }
+}
+
+@keyframes Loading {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(360deg);
+  }
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}

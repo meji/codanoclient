@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { ListRepositoryFactory } from '../../list/infrastructure/list-repository-factory'
 import { List, List as listModel } from '../../list/domain/list'
@@ -11,7 +11,11 @@ import { Editingtitle } from '../../../core/components/forms/editing-title/editi
 import { BoardRepositoryFactory } from '../infrastructure/board-repository-factory'
 import { dataContext } from '../../providers/dataProvider'
 import { DragDropContext } from 'react-beautiful-dnd'
+import { Button } from '../../../core/components/button/button'
+import { Modal } from '../../../core/components/modal/modal'
 const cx = bind(styles)
+const key = process.env.REACT_APP_SECRET_CRIPT
+const encryptor = require('simple-encryptor')(key)
 
 export const Board: React.FC = () => {
   const history = useHistory()
@@ -21,9 +25,16 @@ export const Board: React.FC = () => {
   const { boardName } = useParams()
   const [boardTitle, setBoardTitle] = useState(boardName)
   const [lists, setLists] = useState([] as listModel[])
+  const [share, setShare] = useState(false)
   const listRepository = ListRepositoryFactory.build()
   const boardRepository = BoardRepositoryFactory.build()
   const { setBoards, setNotice } = useContext(dataContext)
+  const sharedUrl =
+    process.env.REACT_APP_FRONT_URL +
+    'public/boards/' +
+    boardName +
+    '?id=' +
+    encryptor.encrypt(inBoard)
   useEffect(() => {
     boardRepository
       .getById(inBoard)
@@ -69,6 +80,11 @@ export const Board: React.FC = () => {
       })
     }
   }
+  const urlToCopy = useRef<HTMLTextAreaElement>(null)
+  const copyUrl = () => {
+    urlToCopy.current && urlToCopy.current.select()
+    document.execCommand('copy')
+  }
   const onDragEnd = (result: any) => {
     const { destination, source, draggableId } = result
     if (!destination) {
@@ -87,10 +103,25 @@ export const Board: React.FC = () => {
     setLists([...lists.map(list => (list.id === newColumn.id ? newColumn : list))])
   }
   return (
-    <Page size={'l'} className={cx('body')}>
-      <h1>
+    <Page size={'l'}>
+      <h1 className={cx('board-name')}>
         <Editingtitle handleKeydown={e => handleKeyDownBoardTitle(e)} value={boardTitle} />
+        <Icon icon={'share-alt'} size={'xs'} onClick={() => setShare(true)} />
       </h1>
+      {share && (
+        <Modal isVisible={share} onClose={() => setShare(false)}>
+          <h1>Copy next link to share this board:</h1>
+          <textarea
+            readOnly={true}
+            ref={urlToCopy}
+            value={sharedUrl}
+            className={cx('copied-text')}
+          />
+          <Button theme={'primary'} onClick={() => copyUrl()}>
+            Copiar
+          </Button>
+        </Modal>
+      )}
       <DragDropContext onDragEnd={onDragEnd}>
         <ul className={cx('lists-container')}>
           {lists.length > 0 &&
