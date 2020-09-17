@@ -36,15 +36,13 @@ export const PublicCard: React.FunctionComponent<Props> = ({ card, onClick }) =>
   }, [unfold])
 
   return (
-    <div
-      data-id={data.id}
-      className={cx('card', unfold && 'unfold')}
-      onClick={() => {
-        !unfold && setUnfold(true)
-      }}
-    >
-      {/*<div className={cx('inner-container')} ref={divRef}>*/}
-      {!unfold && (
+    <>
+      <div
+        className={cx('card')}
+        onClick={() => {
+          !unfold && setUnfold(true)
+        }}
+      >
         <div className={cx('inner-container')}>
           <div className={cx('title-container')}>
             {data.url ? (
@@ -57,8 +55,12 @@ export const PublicCard: React.FunctionComponent<Props> = ({ card, onClick }) =>
             </p>
           </div>
         </div>
+      </div>
+      {unfold && (
+        <div className={cx('card', 'unfold')}>
+          <CardPreview card={data} closePreview={() => setUnfold(false)} />
+        </div>
       )}
-      {unfold && <CardPreview card={data} closePreview={() => setUnfold(false)} />}
-    </div>
+    </>
   )
 }
