@@ -1,0 +1,13 @@
+.preview-container {
+  width: 50vw;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: var(--form-background-color);
+}
+.close-preview {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

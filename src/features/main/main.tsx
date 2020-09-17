@@ -13,6 +13,7 @@ import styles from './main.module.css'
 import { Header } from '../header/header'
 import { MissingPage } from '../../core/components/staticPages/missingPage'
 import { Settings } from '../user/ui/settings'
+import { PublicBoard } from '../board/ui/public-board'
 
 const cx = bind(styles)
 
@@ -45,6 +46,9 @@ export const Main: React.FC = ({ children }) => {
             <PrivateRoute path={routes.settings} exact>
               <Settings />
             </PrivateRoute>
+            <Route path={routes.publicBoard} exact>
+              <PublicBoard />
+            </Route>
             <Route>
               <MissingPage />
             </Route>
