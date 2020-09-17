@@ -26,19 +26,25 @@ export const CardPreview: React.FC<{ card: Card; closePreview: () => void }> = (
   card,
   closePreview
 }) => {
-  const [imageExpanded, setImageExpanded] = useState(false)
-  const [prevExpanded, setPrevExpanded] = useState(false)
-
+  const [multimediaExpanded, setMultimediaExpanded] = useState(false)
+  const [contentExpanded, setContentExpanded] = useState(false)
   return (
-    <div className={cx('preview-container')}>
-      <Icon className={cx('close-preview')} icon={'times'} onClick={() => closePreview()} />
-
+    <div
+      className={cx(
+        'preview-container',
+        multimediaExpanded && 'multimedia-expanded',
+        contentExpanded && 'content-expanded'
+      )}
+    >
+      <Button className={cx('close-preview')} theme={'primary'} onClick={() => closePreview()}>
+        Close Card
+      </Button>
       {(card.img || card.url) && (
-        <div className={cx('img-container', imageExpanded && 'expanded')}>
+        <div className={cx('multimedia-container')}>
           <Icon
-            className={cx('expand-image-icon')}
-            icon={imageExpanded ? 'compress' : 'expand'}
-            onClick={() => setImageExpanded(!imageExpanded)}
+            className={cx('expand-multimedia-icon')}
+            icon={multimediaExpanded ? 'compress' : 'expand'}
+            onClick={() => setMultimediaExpanded(!multimediaExpanded)}
           />
           {card.img && (
             <img
@@ -48,10 +54,10 @@ export const CardPreview: React.FC<{ card: Card; closePreview: () => void }> = (
             />
           )}
           {!card.img && card.url && (
-            <div className={cx('web-container', imageExpanded && 'expanded')}>
-              {imageExpanded && <iframe src={card.url} />}
-              {!imageExpanded && (
-                <Button onClick={() => setImageExpanded(true)} theme={'secondary'}>
+            <div className={cx('web-container', multimediaExpanded && 'expanded')}>
+              {multimediaExpanded && <iframe src={card.url} />}
+              {!multimediaExpanded && (
+                <Button onClick={() => setMultimediaExpanded(true)} theme={'secondary'}>
                   View mobile preview for {card.url}
                 </Button>
               )}
@@ -59,13 +65,13 @@ export const CardPreview: React.FC<{ card: Card; closePreview: () => void }> = (
           )}
         </div>
       )}
-      <div className={cx('content-container', prevExpanded && 'expanded')}>
+      <div className={cx('content-container')}>
         <Icon
-          className={cx('expand-editor-icon')}
-          icon={prevExpanded ? 'compress' : 'expand'}
-          onClick={() => setPrevExpanded(!prevExpanded)}
+          className={cx('expand-content-icon')}
+          icon={contentExpanded ? 'compress' : 'expand'}
+          onClick={() => setContentExpanded(!contentExpanded)}
         />
-        <p>{card.description && ReactHtmlParser(mdParser.render(card.description))}</p>
+        {card.description ? ReactHtmlParser(mdParser.render(card.description)) : 'Card Empty'}
       </div>
     </div>
   )

@@ -1,0 +1,25 @@
+.modal-container {
+  position: fixed;
+  content: '';
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg-overlay);
+  z-index: 10;
+  left: 0;
+  top: 0;
+}
+.modal-content {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translateX(-50%) translateY(-50%);
+  padding: var(--l);
+  border-radius: var(--rl);
+  background: var(--form-background-color);
+}
+
+.close-modal {
+  position: absolute;
+  top: var(--m);
+  right: var(--m);
+}

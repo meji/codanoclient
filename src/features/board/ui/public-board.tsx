@@ -9,12 +9,15 @@ import { BoardRepositoryFactory } from '../infrastructure/board-repository-facto
 import { dataContext } from '../../providers/dataProvider'
 import { PublicCardList } from '../../list/ui/public-card-list'
 const cx = bind(styles)
+const encryptor = require('simple-encryptor')(process.env.REACT_APP_SECRET_CRIPT)
 
 export const PublicBoard: React.FC = () => {
   const history = useHistory()
   const querystring = window.location.search
   const params = new URLSearchParams(querystring)
-  const inBoard: any = params.get('id')
+  const boardCripted = params.get('id')
+  const inBoard = encryptor.decrypt(boardCripted)
+  console.log(inBoard)
   const { boardName } = useParams()
   const [lists, setLists] = useState([] as listModel[])
   const listRepository = ListRepositoryFactory.build()

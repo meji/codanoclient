@@ -32,6 +32,7 @@
     "react-html-parser": "^2.0.2",
     "react-markdown-editor-lite": "^1.0.2",
     "react-scripts": "^3.4.3",
+    "simple-encryptor": "^4.0.0",
     "typescript": "3.8.3"
   },
   "scripts": {
