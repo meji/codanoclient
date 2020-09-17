@@ -63,7 +63,6 @@
   top: 0;
   left: 0;
   box-sizing: border-box;
-  overflow: auto;
   background: var(--bg-overlay);
   border: none;
   border-radius: 0;
