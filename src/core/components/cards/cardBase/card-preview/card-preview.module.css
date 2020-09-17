@@ -50,6 +50,8 @@
   position: relative;
   padding: var(--m);
   padding-bottom: 56px;
+  overflow-y: auto;
+  max-height: 100%;
 }
 
 .content-expanded .multimedia-container {
