@@ -13,7 +13,7 @@ import styles from './main.module.css'
 import { Header } from '../header/header'
 import { MissingPage } from '../../core/components/staticPages/missingPage'
 import { Settings } from '../user/ui/settings'
-import { Footer } from '../footer/footer'
+import { PublicBoard } from '../board/ui/public-board'
 
 const cx = bind(styles)
 
@@ -22,8 +22,8 @@ export const Main: React.FC = ({ children }) => {
   return (
     <main id="wrapper" className={cx(theme)}>
       <Router>
+        <Header />
         <Suspense fallback={<h1>Loading</h1>}>
-          <Header />
           <Switch>
             <Route path={routes.home} exact>
               <Home />
@@ -46,11 +46,13 @@ export const Main: React.FC = ({ children }) => {
             <PrivateRoute path={routes.settings} exact>
               <Settings />
             </PrivateRoute>
+            <Route path={routes.publicBoard} exact>
+              <PublicBoard />
+            </Route>
             <Route>
               <MissingPage />
             </Route>
           </Switch>
-          <Footer />
         </Suspense>
       </Router>
       {children}
