@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { ListRepositoryFactory } from '../../list/infrastructure/list-repository-factory'
 import { List as listModel } from '../../list/domain/list'
@@ -8,6 +8,9 @@ import { Page } from '../../../core/components/page/page'
 import { BoardRepositoryFactory } from '../infrastructure/board-repository-factory'
 import { dataContext } from '../../providers/dataProvider'
 import { PublicCardList } from '../../list/ui/public-card-list'
+import { Icon } from '../../../core/components/icon/icon'
+import { Modal } from '../../../core/components/modal/modal'
+import { Button } from '../../../core/components/button/button'
 const cx = bind(styles)
 const encryptor = require('simple-encryptor')(process.env.REACT_APP_SECRET_CRIPT)
 
@@ -20,9 +23,12 @@ export const PublicBoard: React.FC = () => {
   console.log(inBoard)
   const { boardName } = useParams()
   const [lists, setLists] = useState([] as listModel[])
+  const [share, setShare] = useState(false)
   const listRepository = ListRepositoryFactory.build()
   const boardRepository = BoardRepositoryFactory.build()
   const { setNotice } = useContext(dataContext)
+  const sharedUrl =
+    process.env.REACT_APP_FRONT_URL + 'public/boards/' + boardName + '?id=' + boardCripted
   useEffect(() => {
     boardRepository
       .getById(inBoard)
@@ -40,10 +46,33 @@ export const PublicBoard: React.FC = () => {
       setLists(response)
     })
   }
+  const urlToCopy = useRef<HTMLTextAreaElement>(null)
+
+  const copyUrl = () => {
+    urlToCopy.current && urlToCopy.current.select()
+    document.execCommand('copy')
+  }
 
   return (
     <Page size={'l'}>
-      <h1>{boardName}</h1>
+      <h1 className={cx('board-name')}>
+        {boardName}
+        <Icon icon={'share-alt'} size={'xs'} onClick={() => setShare(true)} />
+      </h1>
+      {share && (
+        <Modal isVisible={share} onClose={() => setShare(false)}>
+          <h1>Copy next link to share this board:</h1>
+          <textarea
+            readOnly={true}
+            ref={urlToCopy}
+            value={sharedUrl}
+            className={cx('copied-text')}
+          />
+          <Button theme={'primary'} onClick={() => copyUrl()}>
+            Copiar
+          </Button>
+        </Modal>
+      )}
       <ul className={cx('lists-container')}>
         {lists.length > 0 &&
           lists.map((list: listModel) => {

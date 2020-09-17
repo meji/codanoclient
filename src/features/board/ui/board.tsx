@@ -82,8 +82,7 @@ export const Board: React.FC = () => {
   }
   const urlToCopy = useRef<HTMLTextAreaElement>(null)
   const copyUrl = () => {
-    // @ts-ignore
-    urlToCopy.current.select()
+    urlToCopy.current && urlToCopy.current.select()
     document.execCommand('copy')
   }
   const onDragEnd = (result: any) => {
